@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>单词精灵 - 趣味背单词</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <!-- 启动画面 -->
+    <div id="splash-screen" class="screen active">
+        <div class="splash-content">
+            <div class="splash-logo">🥚</div>
+            <h1 class="splash-title">单词精灵</h1>
+            <p class="splash-subtitle">养一只精灵，背一串单词</p>
+            <button class="btn-primary btn-glow" onclick="App.start()">开始冒险</button>
+        </div>
+    </div>
+
+    <!-- 输入名字 -->
+    <div id="name-screen" class="screen">
+        <div class="screen-content">
+            <div class="emoji-large">👋</div>
+            <h2>你好呀！我叫什么好呢？</h2>
+            <input type="text" id="user-name" placeholder="输入你的名字" maxlength="8" class="input-name">
+            <button class="btn-primary" onclick="App.setName()">确认</button>
+        </div>
+    </div>
+
+    <!-- 选择精灵蛋 -->
+    <div id="egg-screen" class="screen">
+        <div class="screen-content">
+            <h2 id="egg-greeting">选一只精灵蛋吧！</h2>
+            <p class="hint-text">它会陪你一起学单词哦</p>
+            <div class="egg-choices">
+                <div class="egg-option" onclick="App.choosePet('fire')">
+                    <div class="egg-display">🔥</div>
+                    <span>火焰蛋</span>
+                </div>
+                <div class="egg-option" onclick="App.choosePet('water')">
+                    <div class="egg-display">💧</div>
+                    <span>水滴蛋</span>
+                </div>
+                <div class="egg-option" onclick="App.choosePet('leaf')">
+                    <div class="egg-display">🌿</div>
+                    <span>叶子蛋</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主页面 -->
+    <div id="home-screen" class="screen">
+        <div class="home-header">
+            <div class="user-info" onclick="App.showScreen('profile-screen')">
+                <span id="home-user-name" class="user-name"></span>
+                <span id="home-streak" class="streak-badge">🔥 0天</span>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" onclick="App.showScreen('stats-screen')">📊</button>
+            </div>
+        </div>
+
+        <!-- 精灵展示区 -->
+        <div class="pet-area">
+            <div id="pet-container" class="pet-container">
+                <div id="pet-emoji" class="pet-emoji">🥚</div>
+                <div id="pet-name-tag" class="pet-name-tag"></div>
+                <div id="pet-mood" class="pet-mood"></div>
+            </div>
+            <div class="pet-stats">
+                <div class="stat-bar">
+                    <span class="stat-label">经验值</span>
+                    <div class="stat-track">
+                        <div id="exp-bar" class="stat-fill exp-fill" style="width: 0%"></div>
+                    </div>
+                    <span id="exp-text" class="stat-text">Lv.1</span>
+                </div>
+                <div class="pet-energy-display">
+                    <span>⚡ 能量: </span>
+                    <span id="energy-count">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能按钮 -->
+        <div class="home-actions">
+            <button class="btn-action btn-learn" onclick="App.startLearn()">
+                <span class="btn-emoji">📖</span>
+                <span class="btn-label">学新词</span>
+                <span class="btn-count" id="new-word-count">0个新词</span>
+            </button>
+            <button class="btn-action btn-review" onclick="App.startReview()">
+                <span class="btn-emoji">🔄</span>
+                <span class="btn-label">复习</span>
+                <span class="btn-count" id="review-count">0个待复习</span>
+            </button>
+            <button class="btn-action btn-challenge" onclick="App.startChallenge()">
+                <span class="btn-emoji">🏆</span>
+                <span class="btn-label">挑战赛</span>
+                <span class="btn-count">限时闯关</span>
+            </button>
+            <button class="btn-action btn-book" onclick="App.showScreen('wordbook-screen')">
+                <span class="btn-emoji">📚</span>
+                <span class="btn-label">单词本</span>
+                <span class="btn-count" id="total-words">已学0词</span>
+            </button>
+        </div>
+
+        <!-- 今日目标 -->
+        <div class="daily-goal">
+            <h3>📅 今日目标</h3>
+            <div class="goal-progress">
+                <div class="goal-track">
+                    <div id="goal-fill" class="goal-fill" style="width: 0%"></div>
+                </div>
+                <span id="goal-text">0/10 词</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 学习页面 -->
+    <div id="learn-screen" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回</button>
+            <div class="progress-dots" id="learn-progress"></div>
+        </div>
+        <div id="learn-card" class="learn-card">
+            <div class="word-display">
+                <div id="learn-word" class="word-main"></div>
+                <div id="learn-phonetic" class="word-phonetic"></div>
+                <button class="btn-speak" onclick="App.speakWord()">🔊</button>
+            </div>
+            <div id="learn-meaning" class="word-meaning hidden"></div>
+            <div id="learn-example" class="word-example hidden"></div>
+            <div id="learn-image-hint" class="image-hint hidden"></div>
+        </div>
+        <div class="learn-actions">
+            <button id="btn-show-answer" class="btn-primary" onclick="App.showAnswer()">显示释义</button>
+            <div id="rate-buttons" class="rate-buttons hidden">
+                <button class="btn-rate btn-hard" onclick="App.rateWord(1)">😰 不熟</button>
+                <button class="btn-rate btn-ok" onclick="App.rateWord(3)">🤔 一般</button>
+                <button class="btn-rate btn-easy" onclick="App.rateWord(5)">😊 简单</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复习页面 -->
+    <div id="review-screen" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回</button>
+            <span id="review-counter" class="review-counter">1/10</span>
+        </div>
+        <div id="review-card" class="review-card">
+            <div id="review-question" class="review-question"></div>
+            <div id="review-options" class="review-options"></div>
+        </div>
+        <div id="review-feedback" class="review-feedback hidden">
+            <div id="feedback-icon" class="feedback-icon"></div>
+            <div id="feedback-text" class="feedback-text"></div>
+            <button class="btn-primary" onclick="App.nextReview()">下一题</button>
+        </div>
+    </div>
+
+    <!-- 拼写挑战 -->
+    <div id="spell-screen" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回</button>
+            <div class="timer" id="challenge-timer">⏱ 60s</div>
+        </div>
+        <div class="spell-area">
+            <div id="spell-meaning" class="spell-hint"></div>
+            <div id="spell-inputs" class="spell-inputs"></div>
+            <div id="spell-feedback" class="spell-feedback hidden"></div>
+        </div>
+        <div class="spell-keyboard">
+            <div id="keyboard-keys" class="keyboard-keys"></div>
+        </div>
+    </div>
+
+    <!-- 单词本 -->
+    <div id="wordbook-screen" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回</button>
+            <h2>📚 我的单词本</h2>
+        </div>
+        <div class="filter-tabs">
+            <button class="tab active" onclick="App.filterWords('all')">全部</button>
+            <button class="tab" onclick="App.filterWords('mastered')">已掌握</button>
+            <button class="tab" onclick="App.filterWords('learning')">学习中</button>
+            <button class="tab" onclick="App.filterWords('new')">未学习</button>
+        </div>
+        <div id="wordbook-list" class="wordbook-list"></div>
+    </div>
+
+    <!-- 统计页面 -->
+    <div id="stats-screen" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回</button>
+            <h2>📊 学习统计</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="stat-total">0</div>
+                <div class="stat-desc">已学单词</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="stat-mastered">0</div>
+                <div class="stat-desc">已掌握</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="stat-streak">0</div>
+                <div class="stat-desc">连续天数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="stat-accuracy">0%</div>
+                <div class="stat-desc">正确率</div>
+            </div>
+        </div>
+        <div class="stats-chart">
+            <h3>近7天学习量</h3>
+            <div id="weekly-chart" class="weekly-chart"></div>
+        </div>
+        <div class="stats-detail">
+            <h3>成就墙</h3>
+            <div id="achievements" class="achievements"></div>
+        </div>
+    </div>
+
+    <!-- 个人页面 -->
+    <div id="profile-screen" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回</button>
+            <h2>👤 我的资料</h2>
+        </div>
+        <div class="profile-info">
+            <div class="profile-avatar" id="profile-avatar">🥚</div>
+            <div class="profile-name" id="profile-name"></div>
+            <div class="profile-level" id="profile-level">Lv.1</div>
+        </div>
+        <div class="profile-grade">
+            <h3>选择年级</h3>
+            <div class="grade-options">
+                <button class="grade-btn" onclick="App.setGrade(3)">三年级</button>
+                <button class="grade-btn" onclick="App.setGrade(4)">四年级</button>
+                <button class="grade-btn" onclick="App.setGrade(5)">五年级</button>
+                <button class="grade-btn" onclick="App.setGrade(6)">六年级</button>
+            </div>
+        </div>
+        <div class="profile-actions">
+            <button class="btn-secondary" onclick="App.resetData()">🔄 重置进度</button>
+        </div>
+    </div>
+
+    <!-- 完成庆祝 -->
+    <div id="celebration-screen" class="screen">
+        <div class="screen-content celebration">
+            <div id="celebrate-emoji" class="celebrate-emoji">🎉</div>
+            <h2 id="celebrate-title">太棒了！</h2>
+            <div id="celebrate-details" class="celebrate-details"></div>
+            <div id="pet-reaction" class="pet-reaction"></div>
+            <button class="btn-primary btn-glow" onclick="App.showScreen('home-screen')">回到首页</button>
+        </div>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
