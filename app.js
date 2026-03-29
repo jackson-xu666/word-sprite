@@ -41,21 +41,19 @@ const App = (() => {
         return {
             userName: '',
             grade: 4,
-            petType: null,      // 'fire' | 'water' | 'leaf'
-            petLevel: 0,        // 0=蛋, 1=孵化...
+            petType: null,
+            petLevel: 0,
             petExp: 0,
             energy: 0,
             totalEnergy: 0,
             streak: 0,
             lastStudyDate: null,
-            // 单词学习状态: { wordKey: { status, ease, interval, repetitions, nextReview, lastReview } }
             words: {},
             totalLearned: 0,
             masteredCount: 0,
             perfectReviews: 0,
             bestChallengeScore: 0,
             achievements: [],
-            // 每日统计 { 'YYYY-MM-DD': { learned, reviewed, correct, total } }
             dailyStats: {},
             dailyGoal: 10,
             dailyLearned: 0,
@@ -69,7 +67,6 @@ const App = (() => {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved) {
                 const parsed = JSON.parse(saved);
-                // 补充新字段
                 return { ...defaultState(), ...parsed };
             }
         } catch (e) {}
@@ -87,23 +84,18 @@ const App = (() => {
 
     // ===== 间隔重复算法 (SM-2变体) =====
     function calculateNextReview(wordState, quality) {
-        // quality: 1=不熟, 3=一般, 5=简单
         let { ease = 2.5, interval = 0, repetitions = 0 } = wordState;
 
         if (quality < 3) {
-            // 忘记了，重置
             repetitions = 0;
             interval = 1;
         } else {
-            // 记住了
             if (repetitions === 0) interval = 1;
             else if (repetitions === 1) interval = 3;
             else interval = Math.round(interval * ease);
-
             repetitions++;
         }
 
-        // 调整难度因子
         ease = Math.max(1.3, ease + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
 
         const nextReview = Date.now() + interval * 24 * 60 * 60 * 1000;
@@ -122,7 +114,7 @@ const App = (() => {
         const key = `${state.grade}_${word}`;
         return state.words[key] || {
             word,
-            status: 'new',      // new | learning | mastered
+            status: 'new',
             ease: 2.5,
             interval: 0,
             repetitions: 0,
@@ -153,11 +145,41 @@ const App = (() => {
         });
     }
 
+    // ===== 侧边栏管理 =====
+    function updateSidebar() {
+        // 更新侧边栏用户信息
+        const sidebarAvatar = document.getElementById('sidebar-avatar');
+        const sidebarUsername = document.getElementById('sidebar-username');
+        if (sidebarAvatar) sidebarAvatar.textContent = getPetEmoji();
+        if (sidebarUsername) sidebarUsername.textContent = state.userName || '未设置';
+    }
+
+    function highlightNav(screenId) {
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.dataset.screen === screenId) {
+                item.classList.add('active');
+            }
+        });
+    }
+
     // ===== 屏幕管理 =====
     function showScreen(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         const screen = document.getElementById(id);
         if (screen) screen.classList.add('active');
+
+        // 设置模式下隐藏侧边栏
+        const setupScreens = ['splash-screen', 'name-screen', 'egg-screen'];
+        if (setupScreens.includes(id)) {
+            document.body.classList.add('setup-mode');
+        } else {
+            document.body.classList.remove('setup-mode');
+        }
+
+        // 更新侧边栏高亮
+        highlightNav(id);
+        updateSidebar();
 
         // 屏幕切换时更新数据
         if (id === 'home-screen') updateHome();
@@ -193,7 +215,6 @@ const App = (() => {
         state.setupDone = true;
         saveState();
 
-        // 孵化动画
         const eggEl = document.querySelector('.pet-emoji');
         if (eggEl) eggEl.style.animation = 'hatch 0.8s ease';
 
@@ -229,11 +250,9 @@ const App = (() => {
         state.totalEnergy += amount;
         state.energy += amount;
 
-        // 升级检查 (每50经验升一级)
         const newLevel = Math.floor(state.petExp / 50);
         if (newLevel > state.petLevel) {
             state.petLevel = newLevel;
-            // 升级特效
             showCelebration('levelup');
         }
 
@@ -252,12 +271,10 @@ const App = (() => {
         if (state.lastStudyDate === yesterdayKey) {
             // 连续
         } else if (state.lastStudyDate !== today) {
-            // 断了
             state.streak = 0;
             state.dailyLearned = 0;
         }
 
-        // 重置每日学习计数
         if (state.todayKey !== today) {
             state.todayKey = today;
             state.dailyLearned = 0;
@@ -306,7 +323,29 @@ const App = (() => {
         document.getElementById('goal-fill').style.width = `${progress * 100}%`;
         document.getElementById('goal-text').textContent = `${state.dailyLearned}/${state.dailyGoal} 词`;
 
+        // 快速统计
+        updateQuickStats();
+
         checkAchievements();
+    }
+
+    function updateQuickStats() {
+        const qsLearned = document.getElementById('qs-learned');
+        const qsMastered = document.getElementById('qs-mastered');
+        const qsStreak = document.getElementById('qs-streak');
+        const qsAccuracy = document.getElementById('qs-accuracy');
+
+        if (qsLearned) qsLearned.textContent = state.totalLearned;
+        if (qsMastered) qsMastered.textContent = state.masteredCount;
+        if (qsStreak) qsStreak.textContent = state.streak;
+
+        let totalCorrect = 0, totalAttempts = 0;
+        Object.values(state.dailyStats).forEach(d => {
+            totalCorrect += d.correct || 0;
+            totalAttempts += d.total || 0;
+        });
+        const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+        if (qsAccuracy) qsAccuracy.textContent = `${accuracy}%`;
     }
 
     // ===== 学习模式 =====
@@ -320,7 +359,7 @@ const App = (() => {
             return;
         }
 
-        learnQueue = shuffle(newWords).slice(0, 5); // 每次学5个
+        learnQueue = shuffle(newWords).slice(0, 5);
         learnIndex = 0;
         renderLearnProgress();
         showLearnCard();
@@ -369,7 +408,6 @@ const App = (() => {
         document.getElementById('btn-show-answer').classList.add('hidden');
         document.getElementById('rate-buttons').classList.remove('hidden');
 
-        // 自动发音
         speakWord();
     }
 
@@ -385,10 +423,9 @@ const App = (() => {
         if (ws.status === 'learning') {
             state.totalLearned++;
             state.dailyLearned++;
-            addExp(5); // 每学一个词得5经验
+            addExp(5);
             markStudyToday();
 
-            // 记录每日统计
             const today = getTodayKey();
             if (!state.dailyStats[today]) state.dailyStats[today] = { learned: 0, reviewed: 0, correct: 0, total: 0 };
             state.dailyStats[today].learned++;
@@ -422,7 +459,6 @@ const App = (() => {
     function startReview() {
         const reviewWords = getReviewWords();
         if (reviewWords.length === 0) {
-            // 如果没有待复习的，用已学过的所有词
             const allLearned = getWordsForGrade().filter(w => {
                 const ws = getWordState(w.word);
                 return ws.status !== 'new';
@@ -453,7 +489,6 @@ const App = (() => {
         document.getElementById('review-feedback').classList.add('hidden');
         document.getElementById('review-card').classList.remove('hidden');
 
-        // 随机选择题型：英译中 or 中译英
         const isEnToCn = Math.random() > 0.3;
         const allWords = getWordsForGrade();
 
@@ -489,7 +524,6 @@ const App = (() => {
     }
 
     function checkReviewAnswer(btn, isCorrect, correctAnswer) {
-        // 禁用所有选项
         document.querySelectorAll('.review-option').forEach(b => {
             b.onclick = null;
             if (b.textContent === correctAnswer) b.classList.add('correct');
@@ -507,7 +541,6 @@ const App = (() => {
         let ws = getWordState(word.word);
         ws = calculateNextReview(ws, isCorrect ? 5 : 1);
 
-        // 掌握检查
         if (ws.repetitions >= 3 && ws.interval >= 7) {
             ws.status = 'mastered';
             state.masteredCount++;
@@ -526,7 +559,6 @@ const App = (() => {
         markStudyToday();
         saveState();
 
-        // 显示反馈
         setTimeout(() => {
             document.getElementById('review-card').classList.add('hidden');
             const feedback = document.getElementById('review-feedback');
@@ -602,7 +634,6 @@ const App = (() => {
         document.getElementById('spell-meaning').textContent = `${challengeWord.emoji} ${challengeWord.meaning}`;
         document.getElementById('spell-feedback').classList.add('hidden');
 
-        // 创建输入格
         const inputsEl = document.getElementById('spell-inputs');
         inputsEl.innerHTML = '';
         for (let i = 0; i < challengeWord.word.length; i++) {
@@ -612,13 +643,11 @@ const App = (() => {
             inputsEl.appendChild(div);
         }
 
-        // 创建键盘
         renderKeyboard();
     }
 
     function renderKeyboard() {
         const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        // 确保包含答案的字母
         const container = document.getElementById('keyboard-keys');
         container.innerHTML = '';
         keys.forEach(k => {
@@ -628,11 +657,10 @@ const App = (() => {
             btn.onclick = () => typeLetter(k.toLowerCase());
             container.appendChild(btn);
         });
-        // 删除键
         const del = document.createElement('button');
         del.className = 'key-btn';
         del.textContent = '←';
-        del.style.width = '50px';
+        del.style.width = '60px';
         del.style.background = '#FFE0E0';
         del.onclick = () => deleteLetter();
         container.appendChild(del);
@@ -648,7 +676,6 @@ const App = (() => {
             el.classList.add('filled');
         }
 
-        // 自动检查
         if (challengeInput.length === challengeWord.word.length) {
             checkSpelling();
         }
@@ -706,7 +733,6 @@ const App = (() => {
     function renderWordbook(filter) {
         if (filter) currentFilter = filter;
 
-        // 更新tab
         document.querySelectorAll('.filter-tabs .tab').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.filter-tabs .tab').forEach(t => {
             if (t.textContent.includes(
@@ -727,7 +753,7 @@ const App = (() => {
         });
 
         if (filtered.length === 0) {
-            list.innerHTML = '<div style="text-align:center;padding:40px;color:#7F8C8D;">暂无单词</div>';
+            list.innerHTML = '<div style="text-align:center;padding:40px;color:#7F8C8D;grid-column:1/-1;">暂无单词</div>';
             return;
         }
 
@@ -763,12 +789,10 @@ const App = (() => {
 
     // ===== 统计页面 =====
     function updateStats() {
-        // 统计卡片
         document.getElementById('stat-total').textContent = state.totalLearned;
         document.getElementById('stat-mastered').textContent = state.masteredCount;
         document.getElementById('stat-streak').textContent = state.streak;
 
-        // 正确率
         let totalCorrect = 0, totalAttempts = 0;
         Object.values(state.dailyStats).forEach(d => {
             totalCorrect += d.correct || 0;
@@ -777,10 +801,7 @@ const App = (() => {
         const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
         document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
 
-        // 近7天图表
         renderWeeklyChart();
-
-        // 成就
         renderAchievements();
     }
 
@@ -806,7 +827,7 @@ const App = (() => {
         days.forEach(d => {
             const wrapper = document.createElement('div');
             wrapper.className = 'chart-bar-wrapper';
-            const height = Math.max((d.count / maxCount) * 80, 4);
+            const height = Math.max((d.count / maxCount) * 100, 4);
             wrapper.innerHTML = `
                 <div class="chart-bar" style="height:${height}px"></div>
                 <span class="chart-label">${d.label}</span>
@@ -857,7 +878,6 @@ const App = (() => {
         document.getElementById('profile-name').textContent = state.userName;
         document.getElementById('profile-level').textContent = `Lv.${state.petLevel + 1}`;
 
-        // 更新年级按钮
         document.querySelectorAll('.grade-btn').forEach(btn => {
             const grade = parseInt(btn.textContent.replace('年级', ''));
             btn.classList.toggle('active', grade === state.grade);
@@ -866,7 +886,6 @@ const App = (() => {
 
     function setGrade(grade) {
         state.grade = grade;
-        // 重置该年级的单词状态（如果还没学过）
         saveState();
         updateProfile();
         updateHome();
@@ -928,6 +947,20 @@ const App = (() => {
         }
         return a;
     }
+
+    // ===== 键盘快捷键支持 =====
+    document.addEventListener('keydown', (e) => {
+        // 拼写挑战中支持物理键盘
+        const spellScreen = document.getElementById('spell-screen');
+        if (spellScreen && spellScreen.classList.contains('active')) {
+            if (e.key === 'Backspace') {
+                e.preventDefault();
+                deleteLetter();
+            } else if (e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+                typeLetter(e.key.toLowerCase());
+            }
+        }
+    });
 
     // ===== 暴露公共API =====
     return {
