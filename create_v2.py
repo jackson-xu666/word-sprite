@@ -1,0 +1,34 @@
+import json
+
+# V2 CSS - Part 1
+with open('style_v2_part1.css', 'w') as f:
+    f.write('''/* V2.0 Design */
+:root {
+    --primary: #FF6B6B;
+    --primary-light: #FFE8E8;
+    --secondary: #4ECDC4;
+    --secondary-light: #E8FFF9;
+    --accent: #FFE66D;
+    --accent-light: #FFF9E0;
+    --success: #51CF66;
+    --warning: #FFA94D;
+    --danger: #FF6B6B;
+    --text-dark: #2D3436;
+    --text-light: #636E72;
+    --text-muted: #B2BEC3;
+    --white: #FFFFFF;
+    --gray-50: #FAFAFA;
+    --gray-100: #F5F6FA;
+    --gray-200: #E8E9ED;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+    --shadow-glow: 0 0 30px rgba(255,107,107,0.4);
+    --radius-sm: 12px;
+    --radius: 20px;
+    --radius-lg: 28px;
+    --radius-full: 50px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+''')
+print('Part 1 created')

@@ -1092,17 +1092,3 @@ body.setup-mode .main-content {
 body.setup-mode .screen.active {
     max-width: 100%;
 }
-
-/* V2.0 Enhanced Styles */
-body { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important; }
-.sidebar { background: rgba(255,255,255,0.95) !important; backdrop-filter: blur(20px); }
-.main-content { background: transparent; }
-.stat-card { background: rgba(255,255,255,0.9) !important; backdrop-filter: blur(20px); }
-.stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(0,0,0,0.15); }
-.btn-primary { background: linear-gradient(135deg, #FF6B6B, #FF8E8E) !important; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(255,107,107,0.4); }
-.profile-info { background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1)) !important; }
-.grade-btn:hover { border-color: #FF6B6B !important; background: #FFE8E8 !important; }
-.grade-btn.active { background: linear-gradient(135deg, #FF6B6B, #FF8E8E) !important; }
-.celebration { background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%) !important; }
-
