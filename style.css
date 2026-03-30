@@ -1414,6 +1414,241 @@ html, body {
     background: linear-gradient(180deg, #FFB898, #FF9B7A);
 }
 
+/* ===== 今日推荐单词 ===== */
+.daily-word-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 3px solid #FFE8D6;
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.daily-word-card::before {
+    content: '\1F4D6';
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    font-size: 32px;
+    opacity: 0.15;
+}
+
+.daily-word-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.daily-word-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.daily-word-emoji {
+    font-size: 42px;
+    flex-shrink: 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+.daily-word-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.daily-word-en {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+
+.daily-word-cn {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-top: 2px;
+    font-weight: 600;
+}
+
+.daily-word-status {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.daily-word-status.new-word {
+    background: var(--accent-light);
+    color: #B8860B;
+}
+
+.daily-word-status.mastered-word {
+    background: var(--success-light);
+    color: #27AE60;
+}
+
+.daily-word-status.learning-word {
+    background: var(--secondary-light);
+    color: #1A9E8F;
+}
+
+.btn-daily-speak {
+    background: linear-gradient(135deg, var(--primary-light), #FFD6D6);
+    border: 2px solid #FFD6D6;
+    font-size: 22px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.btn-daily-speak:hover {
+    background: linear-gradient(135deg, var(--primary), #FF8E8E);
+    transform: scale(1.1);
+    border-color: var(--primary);
+}
+
+/* ===== 精灵互动 ===== */
+.pet-interactions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 14px 0 8px;
+}
+
+.btn-interact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: 2px solid #FFE0CC;
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+.btn-interact:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: scale(1.08);
+}
+
+.btn-interact:active {
+    transform: scale(0.95);
+}
+
+.btn-interact .interact-emoji {
+    font-size: 24px;
+}
+
+.pet-reaction-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 700;
+    min-height: 22px;
+    animation: bounceIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===== 最近成就 ===== */
+.recent-achievements {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 3px solid #FFE8D6;
+    padding: 22px 24px;
+}
+
+.recent-achievements h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.achievement-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, var(--accent-light), #FFF8DC);
+    border-radius: var(--radius-sm);
+    border: 2px solid #FFE8A0;
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.achievement-row .ach-r-emoji {
+    font-size: 28px;
+}
+
+.achievement-row .ach-r-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+}
+
+.achievement-row .ach-r-tag {
+    font-size: 12px;
+    padding: 3px 10px;
+    background: linear-gradient(135deg, var(--accent), #FFE066);
+    color: #8B6914;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+}
+
+.achievement-empty {
+    text-align: center;
+    padding: 16px;
+    color: var(--text-lighter);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-all-achievements {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--purple-light), #E8DFFF);
+    border: 2px solid #D4C4FF;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--purple);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-all-achievements:hover {
+    background: linear-gradient(135deg, var(--purple), #C4B5FD);
+    color: white;
+    border-color: var(--purple);
+    transform: scale(1.02);
+}
+
 /* ===== 设置模式隐藏侧边栏 ===== */
 body.setup-mode .sidebar {
     display: none;
