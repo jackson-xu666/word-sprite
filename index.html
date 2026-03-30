@@ -128,6 +128,35 @@
                                     <span id="energy-count">0</span>
                                 </div>
                             </div>
+                            <div class="pet-interactions">
+                                <button class="btn-interact" onclick="App.interactPet('feed')">
+                                    <span class="interact-emoji">🍖</span>
+                                    喂食
+                                </button>
+                                <button class="btn-interact" onclick="App.interactPet('pet')">
+                                    <span class="interact-emoji">🤗</span>
+                                    抚摸
+                                </button>
+                                <button class="btn-interact" onclick="App.interactPet('play')">
+                                    <span class="interact-emoji">🎾</span>
+                                    玩耍
+                                </button>
+                            </div>
+                            <div id="pet-reaction-text" class="pet-reaction-text"></div>
+                        </div>
+                    </div>
+
+                    <!-- 今日推荐单词 -->
+                    <div class="daily-word-card">
+                        <div class="daily-word-header">📅 今日推荐单词</div>
+                        <div class="daily-word-body">
+                            <span id="daily-word-emoji" class="daily-word-emoji"></span>
+                            <div class="daily-word-info">
+                                <div id="daily-word-en" class="daily-word-en"></div>
+                                <div id="daily-word-cn" class="daily-word-cn"></div>
+                                <span id="daily-word-status" class="daily-word-status"></span>
+                            </div>
+                            <button id="btn-daily-speak" class="btn-daily-speak" onclick="App.speakDailyWord()">🔊</button>
                         </div>
                     </div>
 
@@ -187,11 +216,18 @@
                             <div class="qs-label">正确率</div>
                         </div>
                     </div>
+
+                    <!-- 最近成就 -->
+                    <div class="recent-achievements">
+                        <h3>🏅 最近成就</h3>
+                        <div id="achievement-list" class="achievement-list">
+                            <div class="achievement-empty">继续学习解锁成就吧~</div>
+                        </div>
+                        <button class="btn-all-achievements" onclick="App.showScreen('stats-screen')">查看全部成就 →</button>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- 学习页面 -->
         <div id="learn-screen" class="screen">
             <div class="screen-header">
                 <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>

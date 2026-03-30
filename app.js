@@ -221,6 +221,117 @@ const App = (() => {
         showScreen('home-screen');
     }
 
+    // ===== 今日推荐单词 =====
+    let _dailyWord = null;
+
+    function getDailyWord() {
+        const allWords = getWordsForGrade();
+        if (allWords.length === 0) return null;
+        // 基于日期生成稳定的索引
+        const today = getTodayKey();
+        let hash = 0;
+        for (let i = 0; i < today.length; i++) {
+            hash = ((hash << 5) - hash) + today.charCodeAt(i);
+            hash |= 0;
+        }
+        const idx = Math.abs(hash) % allWords.length;
+        return allWords[idx];
+    }
+
+    function renderDailyWord() {
+        const word = getDailyWord();
+        if (!word) return;
+        _dailyWord = word;
+
+        document.getElementById('daily-word-emoji').textContent = word.emoji;
+        document.getElementById('daily-word-en').textContent = word.word;
+        document.getElementById('daily-word-cn').textContent = word.meaning;
+
+        const ws = getWordState(word.word);
+        const statusEl = document.getElementById('daily-word-status');
+        if (ws.status === 'mastered') {
+            statusEl.textContent = '已掌握';
+            statusEl.className = 'daily-word-status mastered-word';
+        } else if (ws.status === 'learning') {
+            statusEl.textContent = '学习中';
+            statusEl.className = 'daily-word-status learning-word';
+        } else {
+            statusEl.textContent = '新发现';
+            statusEl.className = 'daily-word-status new-word';
+        }
+    }
+
+    function speakDailyWord() {
+        if (_dailyWord && 'speechSynthesis' in window) {
+            const u = new SpeechSynthesisUtterance(_dailyWord.word);
+            u.lang = 'en-US';
+            u.rate = 0.8;
+            speechSynthesis.speak(u);
+        }
+    }
+
+    // ===== 精灵互动 =====
+    const PET_REACTIONS = {
+        feed: ['好饱好饱~', '真好吃！', '吃饱了有力气学习！', '谢谢投喂~'],
+        pet: ['好舒服~', '嘻嘻~', '还要还要！', '最喜欢你了！'],
+        play: ['好开心！', '再来一次！', '太好玩了~', '冲冲冲！'],
+    };
+
+    function interactPet(action) {
+        if (state.energy < 3) {
+            const el = document.getElementById('pet-reaction-text');
+            el.textContent = '💤 能量不足，快去学习吧！';
+            el.style.color = '#E67E22';
+            return;
+        }
+
+        state.energy -= 3;
+        saveState();
+        document.getElementById('energy-count').textContent = state.energy;
+
+        const reactions = PET_REACTIONS[action] || PET_REACTIONS.play;
+        const reaction = reactions[Math.floor(Math.random() * reactions.length)];
+        const el = document.getElementById('pet-reaction-text');
+        el.textContent = reaction;
+        el.style.color = '';
+
+        // 精灵动画反馈
+        const petEl = document.getElementById('pet-emoji');
+        petEl.style.animation = 'none';
+        petEl.offsetHeight; // 触发重排
+        petEl.style.animation = action === 'feed' ? 'bounce 0.6s ease' :
+                                action === 'pet' ? 'pulse 0.6s ease' : 'hatch 0.6s ease';
+        setTimeout(() => {
+            petEl.style.animation = 'wobble 4s ease-in-out infinite';
+        }, 700);
+    }
+
+    // ===== 最近成就 =====
+    function renderRecentAchievements() {
+        const container = document.getElementById('achievement-list');
+        container.innerHTML = '';
+
+        if (state.achievements.length === 0) {
+            container.innerHTML = '<div class="achievement-empty">继续学习解锁成就吧~</div>';
+            return;
+        }
+
+        // 取最近3个成就
+        const recent = state.achievements.slice(-3).reverse();
+        recent.forEach(id => {
+            const ach = ACHIEVEMENTS.find(a => a.id === id);
+            if (!ach) return;
+            const row = document.createElement('div');
+            row.className = 'achievement-row';
+            row.innerHTML = `
+                <span class="ach-r-emoji">${ach.emoji}</span>
+                <span class="ach-r-name">${ach.name}</span>
+                <span class="ach-r-tag">已解锁</span>
+            `;
+            container.appendChild(row);
+        });
+    }
+
     // ===== 精灵系统 =====
     function getPetEmoji() {
         if (!state.petType) return '🥚';
@@ -325,6 +436,12 @@ const App = (() => {
 
         // 快速统计
         updateQuickStats();
+
+        // 今日推荐单词
+        renderDailyWord();
+
+        // 最近成就
+        renderRecentAchievements();
 
         checkAchievements();
     }
@@ -978,6 +1095,8 @@ const App = (() => {
         filterWords,
         setGrade,
         resetData,
+        interactPet,
+        speakDailyWord,
     };
 })();
 
