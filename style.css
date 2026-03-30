@@ -71,17 +71,16 @@ html, body {
 }
 
 .sidebar-top {
-    padding: 16px;
+    padding: 20px 16px;
     border-bottom: 3px dashed #FFD6BA;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
 }
 
 .sidebar-logo {
     font-size: 42px;
     animation: wobble 3s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
 .sidebar-title {
@@ -90,6 +89,7 @@ html, body {
     color: var(--primary);
     letter-spacing: 2px;
     text-shadow: 1px 1px 0px rgba(255,107,107,0.15);
+    margin-left: auto;
 }
 
 .sidebar-nav {
@@ -143,12 +143,8 @@ html, body {
 }
 
 .sidebar-bottom {
-    padding: 16px;
+    padding: 12px;
     border-top: 3px dashed #FFD6BA;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
 }
 
 .sidebar-user {
