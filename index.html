@@ -11,8 +11,11 @@
     <!-- 侧边栏导航 -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-top">
-            <div class="sidebar-logo">🥚</div>
-            <div class="sidebar-title">单词精灵</div>
+            <div class="sidebar-user" id="sidebar-user">
+                <span class="sidebar-avatar" id="sidebar-avatar">🥚</span>
+                <span class="sidebar-username" id="sidebar-username">未登录</span>
+            </div>
+            <span id="sidebar-streak" class="streak-badge">🔥 0天</span>
         </div>
         <div class="sidebar-nav">
             <button class="nav-item active" data-screen="home-screen" onclick="App.showScreen('home-screen')">
@@ -45,10 +48,8 @@
             </button>
         </div>
         <div class="sidebar-bottom">
-            <div class="sidebar-user" id="sidebar-user">
-                <span class="sidebar-avatar" id="sidebar-avatar">🥚</span>
-                <span class="sidebar-username" id="sidebar-username">未登录</span>
-            </div>
+            <div class="sidebar-logo">🥚</div>
+            <div class="sidebar-title">单词精灵</div>
         </div>
     </nav>
 
