@@ -147,12 +147,11 @@ const App = (() => {
 
     // ===== 侧边栏管理 =====
     function updateSidebar() {
+        // 更新侧边栏用户信息
         const sidebarAvatar = document.getElementById('sidebar-avatar');
         const sidebarUsername = document.getElementById('sidebar-username');
-        const sidebarStreak = document.getElementById('sidebar-streak');
         if (sidebarAvatar) sidebarAvatar.textContent = getPetEmoji();
         if (sidebarUsername) sidebarUsername.textContent = state.userName || '未设置';
-        if (sidebarStreak) sidebarStreak.textContent = `🔥 ${state.streak}天`;
     }
 
     function highlightNav(screenId) {
