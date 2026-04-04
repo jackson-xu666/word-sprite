@@ -992,7 +992,7 @@ const App = (() => {
     function switchVersion(version) {
         // 教材选择屏切换版本
         document.querySelectorAll('#textbook-screen .version-tab').forEach(t => t.classList.remove('active'));
-        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大' };
+        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教' };
         document.querySelectorAll('#textbook-screen .version-tab').forEach(t => {
             if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
         });
@@ -1000,12 +1000,13 @@ const App = (() => {
         document.getElementById('version-WYS')?.classList.toggle('hidden', version !== 'WYS');
         document.getElementById('version-YL')?.classList.toggle('hidden', version !== 'YL');
         document.getElementById('version-BNU')?.classList.toggle('hidden', version !== 'BNU');
+        document.getElementById('version-MJ')?.classList.toggle('hidden', version !== 'MJ');
     }
 
     function switchVersionProfile(version) {
         // 个人页切换版本
         document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => t.classList.remove('active'));
-        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大' };
+        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教' };
         document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => {
             if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
         });
@@ -1013,6 +1014,7 @@ const App = (() => {
         document.getElementById('profile-version-WYS')?.classList.toggle('hidden', version !== 'WYS');
         document.getElementById('profile-version-YL')?.classList.toggle('hidden', version !== 'YL');
         document.getElementById('profile-version-BNU')?.classList.toggle('hidden', version !== 'BNU');
+        document.getElementById('profile-version-MJ')?.classList.toggle('hidden', version !== 'MJ');
     }
 
     function filterByUnit(unit) {
