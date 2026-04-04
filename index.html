@@ -96,12 +96,52 @@
             </div>
         </div>
 
+        <!-- 选择教材 -->
+        <div id="textbook-screen" class="screen">
+            <div class="screen-content textbook-select">
+                <div class="emoji-large">📚</div>
+                <h2>选择你的教材</h2>
+                <p class="hint-text">人教版PEP小学英语</p>
+                <div class="textbook-grid">
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">三年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="PEP_3上" onclick="App.selectTextbook('PEP_3上')">上册</button>
+                            <button class="textbook-btn" data-textbook="PEP_3下" onclick="App.selectTextbook('PEP_3下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">四年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="PEP_4上" onclick="App.selectTextbook('PEP_4上')">上册</button>
+                            <button class="textbook-btn" data-textbook="PEP_4下" onclick="App.selectTextbook('PEP_4下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">五年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="PEP_5上" onclick="App.selectTextbook('PEP_5上')">上册</button>
+                            <button class="textbook-btn" data-textbook="PEP_5下" onclick="App.selectTextbook('PEP_5下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">六年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="PEP_6上" onclick="App.selectTextbook('PEP_6上')">上册</button>
+                            <button class="textbook-btn" data-textbook="PEP_6下" onclick="App.selectTextbook('PEP_6下')">下册</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 主页面 -->
         <div id="home-screen" class="screen">
             <div class="home-top-bar">
                 <div class="home-greeting">
                     <span id="home-user-name" class="user-name"></span>
                     <span id="home-streak" class="streak-badge">🔥 0天</span>
+                    <span id="home-textbook-tag" class="textbook-badge">📖 教材</span>
                 </div>
             </div>
 
@@ -301,6 +341,9 @@
                 <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>
                 <div class="screen-title">📚 我的单词本</div>
             </div>
+            <div class="unit-tabs" id="unit-tabs">
+                <button class="tab active" data-unit="all" onclick="App.filterByUnit('all')">全部单元</button>
+            </div>
             <div class="filter-tabs">
                 <button class="tab active" onclick="App.filterWords('all')">全部</button>
                 <button class="tab" onclick="App.filterWords('mastered')">已掌握</button>
@@ -357,13 +400,38 @@
                     <div class="profile-level" id="profile-level">Lv.1</div>
                 </div>
                 <div class="profile-settings">
-                    <div class="profile-grade">
-                        <h3>选择年级</h3>
-                        <div class="grade-options">
-                            <button class="grade-btn" onclick="App.setGrade(3)">三年级</button>
-                            <button class="grade-btn" onclick="App.setGrade(4)">四年级</button>
-                            <button class="grade-btn" onclick="App.setGrade(5)">五年级</button>
-                            <button class="grade-btn" onclick="App.setGrade(6)">六年级</button>
+                    <div id="textbook-progress" class="textbook-progress-info">当前教材信息</div>
+                    <div class="profile-textbook">
+                        <h3>选择教材</h3>
+                        <div class="textbook-select-grid">
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">三年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="PEP_3上" onclick="App.setTextbook('PEP_3上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="PEP_3下" onclick="App.setTextbook('PEP_3下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">四年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="PEP_4上" onclick="App.setTextbook('PEP_4上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="PEP_4下" onclick="App.setTextbook('PEP_4下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">五年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="PEP_5上" onclick="App.setTextbook('PEP_5上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="PEP_5下" onclick="App.setTextbook('PEP_5下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">六年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="PEP_6上" onclick="App.setTextbook('PEP_6上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="PEP_6下" onclick="App.setTextbook('PEP_6下')">下册</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="profile-actions">
