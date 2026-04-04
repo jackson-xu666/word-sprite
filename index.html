@@ -111,6 +111,7 @@
                     <button class="version-tab" onclick="App.switchVersion('MJ')">闽教版</button>
                     <button class="version-tab" onclick="App.switchVersion('GD')">广东开心版</button>
                     <button class="version-tab" onclick="App.switchVersion('JJ')">冀教版</button>
+                    <button class="version-tab" onclick="App.switchVersion('SL')">陕旅版</button>
                 </div>
                 <!-- PEP 教材 -->
                 <div class="textbook-grid" id="version-PEP">
@@ -325,6 +326,37 @@
                         <div class="textbook-semester-btns">
                             <button class="textbook-btn" data-textbook="JJ_6上" onclick="App.selectTextbook('JJ_6上')">上册</button>
                             <button class="textbook-btn" data-textbook="JJ_6下" onclick="App.selectTextbook('JJ_6下')">下册</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 陕旅版教材 -->
+                <div class="textbook-grid hidden" id="version-SL">
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">三年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="SL_3上" onclick="App.selectTextbook('SL_3上')">上册</button>
+                            <button class="textbook-btn" data-textbook="SL_3下" onclick="App.selectTextbook('SL_3下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">四年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="SL_4上" onclick="App.selectTextbook('SL_4上')">上册</button>
+                            <button class="textbook-btn" data-textbook="SL_4下" onclick="App.selectTextbook('SL_4下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">五年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="SL_5上" onclick="App.selectTextbook('SL_5上')">上册</button>
+                            <button class="textbook-btn" data-textbook="SL_5下" onclick="App.selectTextbook('SL_5下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">六年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="SL_6上" onclick="App.selectTextbook('SL_6上')">上册</button>
+                            <button class="textbook-btn" data-textbook="SL_6下" onclick="App.selectTextbook('SL_6下')">下册</button>
                         </div>
                     </div>
                 </div>
@@ -607,6 +639,7 @@
                             <button class="version-tab" onclick="App.switchVersionProfile('MJ')">闽教版</button>
                             <button class="version-tab" onclick="App.switchVersionProfile('GD')">广东开心版</button>
                             <button class="version-tab" onclick="App.switchVersionProfile('JJ')">冀教版</button>
+                            <button class="version-tab" onclick="App.switchVersionProfile('SL')">陕旅版</button>
                         </div>
                         <div class="textbook-select-grid" id="profile-version-PEP">
                             <div class="textbook-grade-group">
@@ -816,6 +849,36 @@
                                 <div class="textbook-semester-btns">
                                     <button class="textbook-btn" data-textbook="JJ_6上" onclick="App.setTextbook('JJ_6上')">上册</button>
                                     <button class="textbook-btn" data-textbook="JJ_6下" onclick="App.setTextbook('JJ_6下')">下册</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="textbook-select-grid hidden" id="profile-version-SL">
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">三年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="SL_3上" onclick="App.setTextbook('SL_3上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="SL_3下" onclick="App.setTextbook('SL_3下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">四年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="SL_4上" onclick="App.setTextbook('SL_4上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="SL_4下" onclick="App.setTextbook('SL_4下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">五年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="SL_5上" onclick="App.setTextbook('SL_5上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="SL_5下" onclick="App.setTextbook('SL_5下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">六年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="SL_6上" onclick="App.setTextbook('SL_6上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="SL_6下" onclick="App.setTextbook('SL_6下')">下册</button>
                                 </div>
                             </div>
                         </div>
