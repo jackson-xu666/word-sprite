@@ -989,6 +989,26 @@ const App = (() => {
         renderWordbook();
     }
 
+    function switchVersion(version) {
+        // 教材选择屏切换版本
+        document.querySelectorAll('#textbook-screen .version-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('#textbook-screen .version-tab').forEach(t => {
+            if (t.textContent.includes(version === 'PEP' ? '人教' : '外研')) t.classList.add('active');
+        });
+        document.getElementById('version-PEP')?.classList.toggle('hidden', version !== 'PEP');
+        document.getElementById('version-WYS')?.classList.toggle('hidden', version !== 'WYS');
+    }
+
+    function switchVersionProfile(version) {
+        // 个人页切换版本
+        document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => {
+            if (t.textContent.includes(version === 'PEP' ? '人教' : '外研')) t.classList.add('active');
+        });
+        document.getElementById('profile-version-PEP')?.classList.toggle('hidden', version !== 'PEP');
+        document.getElementById('profile-version-WYS')?.classList.toggle('hidden', version !== 'WYS');
+    }
+
     function filterByUnit(unit) {
         currentUnit = unit;
         // 更新单元 tab 状态
@@ -1210,6 +1230,8 @@ const App = (() => {
         startChallenge,
         filterWords,
         filterByUnit,
+        switchVersion,
+        switchVersionProfile,
         setTextbook,
         setGrade: setTextbook, // 向后兼容
         resetData,
