@@ -41,6 +41,7 @@ const App = (() => {
         return {
             userName: '',
             grade: 4,
+            textbook: 'PEP_4上',
             petType: null,
             petLevel: 0,
             petExp: 0,
@@ -67,6 +68,10 @@ const App = (() => {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved) {
                 const parsed = JSON.parse(saved);
+                // 迁移老数据：如果没有 textbook 字段，根据 grade 生成默认教材
+                if (!parsed.textbook && parsed.grade) {
+                    parsed.textbook = `PEP_${parsed.grade}上`;
+                }
                 return { ...defaultState(), ...parsed };
             }
         } catch (e) {}
@@ -111,7 +116,7 @@ const App = (() => {
     }
 
     function getWordState(word) {
-        const key = `${state.grade}_${word}`;
+        const key = `${state.textbook}_${word}`;
         return state.words[key] || {
             word,
             status: 'new',
@@ -124,13 +129,20 @@ const App = (() => {
     }
 
     // ===== 单词获取 =====
-    function getWordsForGrade() {
-        return WORD_DB[state.grade] || WORD_DB[4];
+    function getWordsForTextbook() {
+        const book = WORD_DB[state.textbook];
+        if (!book) return [];
+        // 返回所有单元的词汇合并
+        const allWords = [];
+        for (const unit of Object.values(book.units)) {
+            allWords.push(...unit.words);
+        }
+        return allWords;
     }
 
     function getNewWords() {
-        const gradeWords = getWordsForGrade();
-        return gradeWords.filter(w => {
+        const words = getWordsForTextbook();
+        return words.filter(w => {
             const ws = getWordState(w.word);
             return ws.status === 'new';
         });
@@ -138,8 +150,8 @@ const App = (() => {
 
     function getReviewWords() {
         const now = Date.now();
-        const gradeWords = getWordsForGrade();
-        return gradeWords.filter(w => {
+        const words = getWordsForTextbook();
+        return words.filter(w => {
             const ws = getWordState(w.word);
             return ws.status !== 'new' && ws.nextReview <= now;
         });
@@ -170,7 +182,7 @@ const App = (() => {
         if (screen) screen.classList.add('active');
 
         // 设置模式下隐藏侧边栏
-        const setupScreens = ['splash-screen', 'name-screen', 'egg-screen'];
+        const setupScreens = ['splash-screen', 'name-screen', 'egg-screen', 'textbook-screen'];
         if (setupScreens.includes(id)) {
             document.body.classList.add('setup-mode');
         } else {
@@ -184,7 +196,10 @@ const App = (() => {
         // 屏幕切换时更新数据
         if (id === 'home-screen') updateHome();
         if (id === 'stats-screen') updateStats();
-        if (id === 'wordbook-screen') renderWordbook();
+        if (id === 'wordbook-screen') {
+            renderUnitTabs();
+            renderWordbook();
+        }
         if (id === 'profile-screen') updateProfile();
     }
 
@@ -212,12 +227,21 @@ const App = (() => {
 
     function choosePet(type) {
         state.petType = type;
-        state.setupDone = true;
         saveState();
 
         const eggEl = document.querySelector('.pet-emoji');
         if (eggEl) eggEl.style.animation = 'hatch 0.8s ease';
 
+        // 选完精灵后进入教材选择
+        showScreen('textbook-screen');
+    }
+
+    function selectTextbook(textbook) {
+        state.textbook = textbook;
+        const book = WORD_DB[textbook];
+        if (book) state.grade = book.grade;
+        state.setupDone = true;
+        saveState();
         showScreen('home-screen');
     }
 
@@ -225,7 +249,7 @@ const App = (() => {
     let _dailyWord = null;
 
     function getDailyWord() {
-        const allWords = getWordsForGrade();
+        const allWords = getWordsForTextbook();
         if (allWords.length === 0) return null;
         // 基于日期生成稳定的索引
         const today = getTodayKey();
@@ -410,6 +434,13 @@ const App = (() => {
         document.getElementById('home-user-name').textContent = state.userName || '小朋友';
         document.getElementById('home-streak').textContent = `🔥 ${state.streak}天`;
 
+        // 显示当前教材信息
+        const book = WORD_DB[state.textbook];
+        const textbookTag = document.getElementById('home-textbook-tag');
+        if (textbookTag && book) {
+            textbookTag.textContent = `📖 ${book.name}`;
+        }
+
         // 精灵
         document.getElementById('pet-emoji').textContent = getPetEmoji();
         document.getElementById('pet-name-tag').textContent = getPetName();
@@ -530,7 +561,7 @@ const App = (() => {
 
     function rateWord(quality) {
         const word = learnQueue[learnIndex];
-        const key = `${state.grade}_${word.word}`;
+        const key = `${state.textbook}_${word.word}`;
         let ws = getWordState(word.word);
 
         ws = calculateNextReview(ws, quality);
@@ -576,7 +607,7 @@ const App = (() => {
     function startReview() {
         const reviewWords = getReviewWords();
         if (reviewWords.length === 0) {
-            const allLearned = getWordsForGrade().filter(w => {
+            const allLearned = getWordsForTextbook().filter(w => {
                 const ws = getWordState(w.word);
                 return ws.status !== 'new';
             });
@@ -607,7 +638,7 @@ const App = (() => {
         document.getElementById('review-card').classList.remove('hidden');
 
         const isEnToCn = Math.random() > 0.3;
-        const allWords = getWordsForGrade();
+        const allWords = getWordsForTextbook();
 
         if (isEnToCn) {
             document.getElementById('review-question').textContent = `"${word.word}" 是什么意思？`;
@@ -654,7 +685,7 @@ const App = (() => {
         }
 
         const word = reviewQueue[reviewIndex];
-        const key = `${state.grade}_${word.word}`;
+        const key = `${state.textbook}_${word.word}`;
         let ws = getWordState(word.word);
         ws = calculateNextReview(ws, isCorrect ? 5 : 1);
 
@@ -708,7 +739,7 @@ const App = (() => {
     let challengeTimeLeft = 60;
 
     function startChallenge() {
-        const learnedWords = getWordsForGrade().filter(w => {
+        const learnedWords = getWordsForTextbook().filter(w => {
             const ws = getWordState(w.word);
             return ws.status !== 'new';
         });
@@ -741,7 +772,7 @@ const App = (() => {
     }
 
     function nextChallengeWord() {
-        const learnedWords = getWordsForGrade().filter(w => {
+        const learnedWords = getWordsForTextbook().filter(w => {
             const ws = getWordState(w.word);
             return ws.status !== 'new';
         });
@@ -846,9 +877,11 @@ const App = (() => {
 
     // ===== 单词本 =====
     let currentFilter = 'all';
+    let currentUnit = 'all';
 
-    function renderWordbook(filter) {
+    function renderWordbook(filter, unitFilter) {
         if (filter) currentFilter = filter;
+        if (unitFilter !== undefined) currentUnit = unitFilter;
 
         document.querySelectorAll('.filter-tabs .tab').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.filter-tabs .tab').forEach(t => {
@@ -862,7 +895,26 @@ const App = (() => {
         const list = document.getElementById('wordbook-list');
         list.innerHTML = '';
 
-        const allWords = getWordsForGrade();
+        const book = WORD_DB[state.textbook];
+        if (!book) return;
+
+        // 收集词汇，支持按单元筛选
+        let allWords = [];
+        if (currentUnit === 'all') {
+            for (const unit of Object.values(book.units)) {
+                for (const w of unit.words) {
+                    allWords.push({ ...w, unitName: unit.name });
+                }
+            }
+        } else {
+            const unit = book.units[currentUnit];
+            if (unit) {
+                for (const w of unit.words) {
+                    allWords.push({ ...w, unitName: unit.name });
+                }
+            }
+        }
+
         const filtered = allWords.filter(w => {
             const ws = getWordState(w.word);
             if (currentFilter === 'all') return true;
@@ -882,6 +934,7 @@ const App = (() => {
                 <div>
                     <div class="wb-word">${w.emoji} ${w.word}</div>
                     <div class="wb-meaning">${w.phonetic} ${w.meaning}</div>
+                    <div class="wb-unit">${w.unitName || ''}</div>
                 </div>
                 <span class="wb-status ${ws.status}">${
                     ws.status === 'new' ? '未学' :
@@ -902,6 +955,48 @@ const App = (() => {
 
     function filterWords(filter) {
         renderWordbook(filter);
+    }
+
+    function renderUnitTabs() {
+        const container = document.getElementById('unit-tabs');
+        if (!container) return;
+        container.innerHTML = '';
+
+        // "全部单元" 按钮
+        const allBtn = document.createElement('button');
+        allBtn.className = 'tab' + (currentUnit === 'all' ? ' active' : '');
+        allBtn.textContent = '全部单元';
+        allBtn.onclick = () => filterByUnit('all');
+        container.appendChild(allBtn);
+
+        const book = WORD_DB[state.textbook];
+        if (!book) return;
+
+        for (const [uid, unit] of Object.entries(book.units)) {
+            const btn = document.createElement('button');
+            btn.className = 'tab' + (currentUnit === String(uid) ? ' active' : '');
+            btn.textContent = unit.name;
+            btn.onclick = () => filterByUnit(uid);
+            container.appendChild(btn);
+        }
+    }
+
+    function filterByUnit(unit) {
+        currentUnit = String(unit);
+        document.querySelectorAll('.unit-tabs .tab').forEach(t => {
+            t.classList.toggle('active', t.dataset.unit === String(unit));
+        });
+        renderWordbook();
+    }
+
+    function filterByUnit(unit) {
+        currentUnit = unit;
+        // 更新单元 tab 状态
+        document.querySelectorAll('.unit-tabs .tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.unit-tabs .tab').forEach(t => {
+            if (t.dataset.unit === String(unit)) t.classList.add('active');
+        });
+        renderWordbook();
     }
 
     // ===== 统计页面 =====
@@ -995,14 +1090,34 @@ const App = (() => {
         document.getElementById('profile-name').textContent = state.userName;
         document.getElementById('profile-level').textContent = `Lv.${state.petLevel + 1}`;
 
-        document.querySelectorAll('.grade-btn').forEach(btn => {
-            const grade = parseInt(btn.textContent.replace('年级', ''));
-            btn.classList.toggle('active', grade === state.grade);
+        // 更新教材选择按钮状态
+        document.querySelectorAll('.textbook-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.textbook === state.textbook);
         });
+
+        // 显示当前教材进度
+        const book = WORD_DB[state.textbook];
+        if (book) {
+            const allWords = [];
+            for (const unit of Object.values(book.units)) {
+                allWords.push(...unit.words);
+            }
+            const learnedCount = allWords.filter(w => {
+                const ws = getWordState(w.word);
+                return ws.status !== 'new';
+            }).length;
+            const progressEl = document.getElementById('textbook-progress');
+            if (progressEl) {
+                progressEl.textContent = `${book.name} — 已学 ${learnedCount}/${allWords.length} 词`;
+            }
+        }
     }
 
-    function setGrade(grade) {
-        state.grade = grade;
+    function setTextbook(textbook) {
+        state.textbook = textbook;
+        // 同步更新 grade 字段
+        const book = WORD_DB[textbook];
+        if (book) state.grade = book.grade;
         saveState();
         updateProfile();
         updateHome();
@@ -1084,6 +1199,7 @@ const App = (() => {
         start,
         setName,
         choosePet,
+        selectTextbook,
         showScreen,
         startLearn,
         showAnswer,
@@ -1093,7 +1209,9 @@ const App = (() => {
         nextReview,
         startChallenge,
         filterWords,
-        setGrade,
+        filterByUnit,
+        setTextbook,
+        setGrade: setTextbook, // 向后兼容
         resetData,
         interactPet,
         speakDailyWord,
