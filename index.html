@@ -101,8 +101,14 @@
             <div class="screen-content textbook-select">
                 <div class="emoji-large">📚</div>
                 <h2>选择你的教材</h2>
-                <p class="hint-text">人教版PEP小学英语</p>
-                <div class="textbook-grid">
+                <p class="hint-text">选择教材版本和年级</p>
+                <!-- 版本切换 -->
+                <div class="textbook-version-tabs">
+                    <button class="version-tab active" onclick="App.switchVersion('PEP')">人教版PEP</button>
+                    <button class="version-tab" onclick="App.switchVersion('WYS')">外研版</button>
+                </div>
+                <!-- PEP 教材 -->
+                <div class="textbook-grid" id="version-PEP">
                     <div class="textbook-grade-group">
                         <div class="textbook-grade-label">三年级</div>
                         <div class="textbook-semester-btns">
@@ -129,6 +135,37 @@
                         <div class="textbook-semester-btns">
                             <button class="textbook-btn" data-textbook="PEP_6上" onclick="App.selectTextbook('PEP_6上')">上册</button>
                             <button class="textbook-btn" data-textbook="PEP_6下" onclick="App.selectTextbook('PEP_6下')">下册</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 外研版教材 -->
+                <div class="textbook-grid hidden" id="version-WYS">
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">三年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="WYS_3上" onclick="App.selectTextbook('WYS_3上')">上册</button>
+                            <button class="textbook-btn" data-textbook="WYS_3下" onclick="App.selectTextbook('WYS_3下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">四年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="WYS_4上" onclick="App.selectTextbook('WYS_4上')">上册</button>
+                            <button class="textbook-btn" data-textbook="WYS_4下" onclick="App.selectTextbook('WYS_4下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">五年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="WYS_5上" onclick="App.selectTextbook('WYS_5上')">上册</button>
+                            <button class="textbook-btn" data-textbook="WYS_5下" onclick="App.selectTextbook('WYS_5下')">下册</button>
+                        </div>
+                    </div>
+                    <div class="textbook-grade-group">
+                        <div class="textbook-grade-label">六年级</div>
+                        <div class="textbook-semester-btns">
+                            <button class="textbook-btn" data-textbook="WYS_6上" onclick="App.selectTextbook('WYS_6上')">上册</button>
+                            <button class="textbook-btn" data-textbook="WYS_6下" onclick="App.selectTextbook('WYS_6下')">下册</button>
                         </div>
                     </div>
                 </div>
@@ -403,7 +440,11 @@
                     <div id="textbook-progress" class="textbook-progress-info">当前教材信息</div>
                     <div class="profile-textbook">
                         <h3>选择教材</h3>
-                        <div class="textbook-select-grid">
+                        <div class="textbook-version-tabs" id="profile-version-tabs">
+                            <button class="version-tab active" onclick="App.switchVersionProfile('PEP')">人教版PEP</button>
+                            <button class="version-tab" onclick="App.switchVersionProfile('WYS')">外研版</button>
+                        </div>
+                        <div class="textbook-select-grid" id="profile-version-PEP">
                             <div class="textbook-grade-group">
                                 <div class="textbook-grade-label">三年级</div>
                                 <div class="textbook-semester-btns">
@@ -430,6 +471,36 @@
                                 <div class="textbook-semester-btns">
                                     <button class="textbook-btn" data-textbook="PEP_6上" onclick="App.setTextbook('PEP_6上')">上册</button>
                                     <button class="textbook-btn" data-textbook="PEP_6下" onclick="App.setTextbook('PEP_6下')">下册</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="textbook-select-grid hidden" id="profile-version-WYS">
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">三年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="WYS_3上" onclick="App.setTextbook('WYS_3上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="WYS_3下" onclick="App.setTextbook('WYS_3下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">四年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="WYS_4上" onclick="App.setTextbook('WYS_4上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="WYS_4下" onclick="App.setTextbook('WYS_4下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">五年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="WYS_5上" onclick="App.setTextbook('WYS_5上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="WYS_5下" onclick="App.setTextbook('WYS_5下')">下册</button>
+                                </div>
+                            </div>
+                            <div class="textbook-grade-group">
+                                <div class="textbook-grade-label">六年级</div>
+                                <div class="textbook-semester-btns">
+                                    <button class="textbook-btn" data-textbook="WYS_6上" onclick="App.setTextbook('WYS_6上')">上册</button>
+                                    <button class="textbook-btn" data-textbook="WYS_6下" onclick="App.setTextbook('WYS_6下')">下册</button>
                                 </div>
                             </div>
                         </div>
