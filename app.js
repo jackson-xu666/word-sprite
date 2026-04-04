@@ -992,7 +992,7 @@ const App = (() => {
     function switchVersion(version) {
         // 教材选择屏切换版本
         document.querySelectorAll('#textbook-screen .version-tab').forEach(t => t.classList.remove('active'));
-        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教', GD: '广东开心', JJ: '冀教', SL: '陕旅' };
+        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教', GD: '广东开心', JJ: '冀教', SL: '陕旅', XS: '湘少' };
         document.querySelectorAll('#textbook-screen .version-tab').forEach(t => {
             if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
         });
@@ -1004,12 +1004,13 @@ const App = (() => {
         document.getElementById('version-GD')?.classList.toggle('hidden', version !== 'GD');
         document.getElementById('version-JJ')?.classList.toggle('hidden', version !== 'JJ');
         document.getElementById('version-SL')?.classList.toggle('hidden', version !== 'SL');
+        document.getElementById('version-XS')?.classList.toggle('hidden', version !== 'XS');
     }
 
     function switchVersionProfile(version) {
         // 个人页切换版本
         document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => t.classList.remove('active'));
-        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教', GD: '广东开心', JJ: '冀教', SL: '陕旅' };
+        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教', GD: '广东开心', JJ: '冀教', SL: '陕旅', XS: '湘少' };
         document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => {
             if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
         });
@@ -1021,6 +1022,7 @@ const App = (() => {
         document.getElementById('profile-version-GD')?.classList.toggle('hidden', version !== 'GD');
         document.getElementById('profile-version-JJ')?.classList.toggle('hidden', version !== 'JJ');
         document.getElementById('profile-version-SL')?.classList.toggle('hidden', version !== 'SL');
+        document.getElementById('profile-version-XS')?.classList.toggle('hidden', version !== 'XS');
     }
 
     function filterByUnit(unit) {
