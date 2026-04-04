@@ -992,21 +992,25 @@ const App = (() => {
     function switchVersion(version) {
         // 教材选择屏切换版本
         document.querySelectorAll('#textbook-screen .version-tab').forEach(t => t.classList.remove('active'));
+        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林' };
         document.querySelectorAll('#textbook-screen .version-tab').forEach(t => {
-            if (t.textContent.includes(version === 'PEP' ? '人教' : '外研')) t.classList.add('active');
+            if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
         });
         document.getElementById('version-PEP')?.classList.toggle('hidden', version !== 'PEP');
         document.getElementById('version-WYS')?.classList.toggle('hidden', version !== 'WYS');
+        document.getElementById('version-YL')?.classList.toggle('hidden', version !== 'YL');
     }
 
     function switchVersionProfile(version) {
         // 个人页切换版本
         document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => t.classList.remove('active'));
+        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林' };
         document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => {
-            if (t.textContent.includes(version === 'PEP' ? '人教' : '外研')) t.classList.add('active');
+            if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
         });
         document.getElementById('profile-version-PEP')?.classList.toggle('hidden', version !== 'PEP');
         document.getElementById('profile-version-WYS')?.classList.toggle('hidden', version !== 'WYS');
+        document.getElementById('profile-version-YL')?.classList.toggle('hidden', version !== 'YL');
     }
 
     function filterByUnit(unit) {
