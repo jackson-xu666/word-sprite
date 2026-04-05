@@ -7,6 +7,10 @@ const App = (() => {
     const STORAGE_KEY = 'word_sprite_data';
     let state = loadState();
 
+    // Restore sidebar state
+    const sidebarState = localStorage.getItem('word_sprite_sidebar');
+    if (sidebarState === 'collapsed') document.body.classList.add('sidebar-collapsed');
+
     // 精灵进化表
     const PET_EVOLUTION = {
         fire: ['🥚', '🐣', '🐤', '🐦', '🦅', '🐉'],
@@ -177,11 +181,23 @@ const App = (() => {
 
     // ===== 屏幕管理 =====
     function showScreen(id) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        const screen = document.getElementById(id);
-        if (screen) screen.classList.add('active');
+        const currentActive = document.querySelector('.screen.active');
+        const target = document.getElementById(id);
+        if (!target || (currentActive && currentActive.id === id)) return;
 
-        // 设置模式下隐藏侧边栏
+        if (currentActive) {
+            currentActive.classList.add('screen-exit');
+            setTimeout(() => {
+                currentActive.classList.remove('active', 'screen-exit');
+            }, 200);
+        }
+
+        setTimeout(() => {
+            target.classList.add('active', 'screen-enter');
+            setTimeout(() => target.classList.remove('screen-enter'), 400);
+        }, currentActive ? 150 : 0);
+
+        // Setup mode
         const setupScreens = ['splash-screen', 'name-screen', 'egg-screen', 'textbook-screen'];
         if (setupScreens.includes(id)) {
             document.body.classList.add('setup-mode');
@@ -189,11 +205,9 @@ const App = (() => {
             document.body.classList.remove('setup-mode');
         }
 
-        // 更新侧边栏高亮
         highlightNav(id);
         updateSidebar();
 
-        // 屏幕切换时更新数据
         if (id === 'home-screen') updateHome();
         if (id === 'stats-screen') updateStats();
         if (id === 'wordbook-screen') {
@@ -201,6 +215,9 @@ const App = (() => {
             renderWordbook();
         }
         if (id === 'profile-screen') updateProfile();
+        if (id === 'textbook-screen') {
+            renderTextbookGrid('textbook-grid', 'PEP', 'selectTextbook');
+        }
     }
 
     // ===== 应用启动 =====
@@ -503,7 +520,7 @@ const App = (() => {
     function startLearn() {
         const newWords = getNewWords();
         if (newWords.length === 0) {
-            alert('今天的新词都学完啦！去复习吧~');
+            showToast('今天的新词都学完啦！去复习吧~', 'warning');
             return;
         }
 
@@ -612,7 +629,7 @@ const App = (() => {
                 return ws.status !== 'new';
             });
             if (allLearned.length === 0) {
-                alert('还没有学过的词哦，先去学新词吧！');
+                showToast('还没有学过的词哦，先去学新词吧！', 'warning');
                 return;
             }
             reviewQueue = shuffle(allLearned).slice(0, 10);
@@ -745,7 +762,7 @@ const App = (() => {
         });
 
         if (learnedWords.length < 4) {
-            alert('至少学会4个单词才能参加挑战赛哦！');
+            showToast('至少学会4个单词才能参加挑战赛哦！', 'warning');
             return;
         }
 
@@ -990,39 +1007,17 @@ const App = (() => {
     }
 
     function switchVersion(version) {
-        // 教材选择屏切换版本
-        document.querySelectorAll('#textbook-screen .version-tab').forEach(t => t.classList.remove('active'));
-        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教', GD: '广东开心', JJ: '冀教', SL: '陕旅', XS: '湘少' };
         document.querySelectorAll('#textbook-screen .version-tab').forEach(t => {
-            if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
+            t.classList.toggle('active', t.dataset.version === version);
         });
-        document.getElementById('version-PEP')?.classList.toggle('hidden', version !== 'PEP');
-        document.getElementById('version-WYS')?.classList.toggle('hidden', version !== 'WYS');
-        document.getElementById('version-YL')?.classList.toggle('hidden', version !== 'YL');
-        document.getElementById('version-BNU')?.classList.toggle('hidden', version !== 'BNU');
-        document.getElementById('version-MJ')?.classList.toggle('hidden', version !== 'MJ');
-        document.getElementById('version-GD')?.classList.toggle('hidden', version !== 'GD');
-        document.getElementById('version-JJ')?.classList.toggle('hidden', version !== 'JJ');
-        document.getElementById('version-SL')?.classList.toggle('hidden', version !== 'SL');
-        document.getElementById('version-XS')?.classList.toggle('hidden', version !== 'XS');
+        renderTextbookGrid('textbook-grid', version, 'selectTextbook');
     }
 
     function switchVersionProfile(version) {
-        // 个人页切换版本
-        document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => t.classList.remove('active'));
-        const versionLabels = { PEP: '人教', WYS: '外研', YL: '译林', BNU: '北师大', MJ: '闽教', GD: '广东开心', JJ: '冀教', SL: '陕旅', XS: '湘少' };
         document.querySelectorAll('#profile-version-tabs .version-tab').forEach(t => {
-            if (t.textContent.includes(versionLabels[version] || version)) t.classList.add('active');
+            t.classList.toggle('active', t.dataset.version === version);
         });
-        document.getElementById('profile-version-PEP')?.classList.toggle('hidden', version !== 'PEP');
-        document.getElementById('profile-version-WYS')?.classList.toggle('hidden', version !== 'WYS');
-        document.getElementById('profile-version-YL')?.classList.toggle('hidden', version !== 'YL');
-        document.getElementById('profile-version-BNU')?.classList.toggle('hidden', version !== 'BNU');
-        document.getElementById('profile-version-MJ')?.classList.toggle('hidden', version !== 'MJ');
-        document.getElementById('profile-version-GD')?.classList.toggle('hidden', version !== 'GD');
-        document.getElementById('profile-version-JJ')?.classList.toggle('hidden', version !== 'JJ');
-        document.getElementById('profile-version-SL')?.classList.toggle('hidden', version !== 'SL');
-        document.getElementById('profile-version-XS')?.classList.toggle('hidden', version !== 'XS');
+        renderTextbookGrid('profile-textbook-grid', version, 'setTextbook');
     }
 
     function filterByUnit(unit) {
@@ -1131,6 +1126,10 @@ const App = (() => {
             btn.classList.toggle('active', btn.dataset.textbook === state.textbook);
         });
 
+        // Update textbook grid for current version
+        const currentVersion = state.textbook.split('_')[0];
+        renderTextbookGrid('profile-textbook-grid', currentVersion, 'setTextbook');
+
         // 显示当前教材进度
         const book = WORD_DB[state.textbook];
         if (book) {
@@ -1159,11 +1158,13 @@ const App = (() => {
         updateHome();
     }
 
-    function resetData() {
-        if (confirm('确定要重置所有进度吗？这不可恢复！')) {
+    async function resetData() {
+        const confirmed = await showConfirm('重置进度', '确定要重置所有进度吗？这不可恢复！');
+        if (confirmed) {
             localStorage.removeItem(STORAGE_KEY);
             state = defaultState();
             showScreen('splash-screen');
+            showToast('进度已重置', 'info');
         }
     }
 
@@ -1218,6 +1219,31 @@ const App = (() => {
 
     // ===== 键盘快捷键支持 =====
     document.addEventListener('keydown', (e) => {
+        // Escape → go to home screen
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            showScreen('home-screen');
+            return;
+        }
+
+        // Ctrl+B → toggle sidebar
+        if (e.ctrlKey && e.key === 'b') {
+            e.preventDefault();
+            toggleSidebar();
+            return;
+        }
+
+        // During learn: 1/2/3 for rating (hard/ok/easy)
+        const learnScreen = document.getElementById('learn-screen');
+        if (learnScreen && learnScreen.classList.contains('active')) {
+            const rateButtons = document.getElementById('rate-buttons');
+            if (rateButtons && !rateButtons.classList.contains('hidden')) {
+                if (e.key === '1') { rateWord(1); return; }
+                if (e.key === '2') { rateWord(3); return; }
+                if (e.key === '3') { rateWord(5); return; }
+            }
+        }
+
         // 拼写挑战中支持物理键盘
         const spellScreen = document.getElementById('spell-screen');
         if (spellScreen && spellScreen.classList.contains('active')) {
@@ -1229,6 +1255,150 @@ const App = (() => {
             }
         }
     });
+
+    // ===== Toast 通知系统 =====
+    function showToast(msg, type = 'info', duration = 3000) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        const icons = { info: '💡', success: '✅', warning: '⚠️', error: '❌' };
+        toast.innerHTML = `<span class="toast-icon">${icons[type] || '💡'}</span><span class="toast-msg">${msg}</span>`;
+        container.appendChild(toast);
+        requestAnimationFrame(() => toast.classList.add('toast-show'));
+        setTimeout(() => {
+            toast.classList.remove('toast-show');
+            toast.classList.add('toast-hide');
+            setTimeout(() => toast.remove(), 400);
+        }, duration);
+    }
+
+    // ===== Modal 确认框系统 =====
+    function showConfirm(title, message) {
+        return new Promise(resolve => {
+            const overlay = document.getElementById('modal-overlay');
+            if (!overlay) { resolve(false); return; }
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+            overlay.classList.add('active');
+            const confirmBtn = document.getElementById('modal-confirm');
+            const cancelBtn = document.getElementById('modal-cancel');
+            const cleanup = (result) => {
+                overlay.classList.remove('active');
+                confirmBtn.replaceWith(confirmBtn.cloneNode(true));
+                cancelBtn.replaceWith(cancelBtn.cloneNode(true));
+                resolve(result);
+            };
+            document.getElementById('modal-confirm').onclick = () => cleanup(true);
+            document.getElementById('modal-cancel').onclick = () => cleanup(false);
+        });
+    }
+
+    // ===== 数字动画 =====
+    function animateNumber(el, target, duration = 800) {
+        const start = parseInt(el.textContent) || 0;
+        if (start === target) return;
+        const startTime = performance.now();
+        function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(start + (target - start) * eased);
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    // ===== 教材版本数据 =====
+    const TEXTBOOK_VERSIONS = [
+        { id: 'PEP', label: '人教版PEP' },
+        { id: 'WYS', label: '外研版' },
+        { id: 'YL', label: '译林版' },
+        { id: 'BNU', label: '北师大版' },
+        { id: 'MJ', label: '闽教版' },
+        { id: 'GD', label: '广东开心版' },
+        { id: 'JJ', label: '冀教版' },
+        { id: 'SL', label: '陕旅版' },
+        { id: 'XS', label: '湘少版' },
+    ];
+
+    function renderTextbookGrid(containerId, version, onSelectFn) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        const grades = [3, 4, 5, 6];
+        const gradeLabels = { 3: '三年级', 4: '四年级', 5: '五年级', 6: '六年级' };
+        grades.forEach(grade => {
+            const group = document.createElement('div');
+            group.className = 'textbook-grade-group';
+            const hasUpper = WORD_DB[`${version}_${grade}上`];
+            const hasLower = WORD_DB[`${version}_${grade}下`];
+            if (!hasUpper && !hasLower) return;
+            group.innerHTML = `
+                <div class="textbook-grade-label">${gradeLabels[grade]}</div>
+                <div class="textbook-semester-btns">
+                    ${hasUpper ? `<button class="textbook-btn" data-textbook="${version}_${grade}上" onclick="App.${onSelectFn}('${version}_${grade}上')">上册</button>` : ''}
+                    ${hasLower ? `<button class="textbook-btn" data-textbook="${version}_${grade}下" onclick="App.${onSelectFn}('${version}_${grade}下')">下册</button>` : ''}
+                </div>
+            `;
+            container.appendChild(group);
+        });
+    }
+
+    // ===== 侧边栏切换 =====
+    function toggleSidebar() {
+        document.body.classList.toggle('sidebar-collapsed');
+        const collapsed = document.body.classList.contains('sidebar-collapsed');
+        localStorage.setItem('word_sprite_sidebar', collapsed ? 'collapsed' : 'expanded');
+    }
+
+    // ===== 单词搜索 =====
+    function searchWords(query) {
+        if (!query) { renderWordbook(); return; }
+        const q = query.toLowerCase();
+        const book = WORD_DB[state.textbook];
+        if (!book) return;
+        let allWords = [];
+        for (const unit of Object.values(book.units)) {
+            for (const w of unit.words) {
+                allWords.push({ ...w, unitName: unit.name });
+            }
+        }
+        const filtered = allWords.filter(w =>
+            w.word.toLowerCase().includes(q) || w.meaning.includes(q)
+        );
+        // Render filtered results
+        const list = document.getElementById('wordbook-list');
+        list.innerHTML = '';
+        if (filtered.length === 0) {
+            list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-lighter, #7F8C8D);grid-column:1/-1;">没有找到匹配的单词</div>';
+            return;
+        }
+        filtered.forEach(w => {
+            const ws = getWordState(w.word);
+            const item = document.createElement('div');
+            item.className = 'wordbook-item';
+            item.innerHTML = `
+                <div>
+                    <div class="wb-word">${w.emoji} ${w.word}</div>
+                    <div class="wb-meaning">${w.phonetic} ${w.meaning}</div>
+                    <div class="wb-unit">${w.unitName || ''}</div>
+                </div>
+                <span class="wb-status ${ws.status}">${
+                    ws.status === 'new' ? '未学' :
+                    ws.status === 'mastered' ? '已掌握' : '学习中'
+                }</span>
+            `;
+            item.onclick = () => {
+                if ('speechSynthesis' in window) {
+                    const u = new SpeechSynthesisUtterance(w.word);
+                    u.lang = 'en-US'; u.rate = 0.8;
+                    speechSynthesis.speak(u);
+                }
+            };
+            list.appendChild(item);
+        });
+    }
 
     // ===== 暴露公共API =====
     return {
@@ -1253,6 +1423,8 @@ const App = (() => {
         resetData,
         interactPet,
         speakDailyWord,
+        toggleSidebar,
+        searchWords,
     };
 })();
 
