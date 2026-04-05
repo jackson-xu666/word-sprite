@@ -732,14 +732,22 @@ const App = (() => {
                 showReviewQuestion();
             }, 1000);
         } else {
-            // 答错：显示正确答案，手动点下一题
+            // 答错：高亮错误选项 + 正确答案，让用户继续选择正确答案
             setTimeout(() => {
-                document.getElementById('review-card').classList.add('hidden');
-                const feedback = document.getElementById('review-feedback');
-                feedback.classList.remove('hidden');
-                document.getElementById('feedback-icon').textContent = '❌';
-                document.getElementById('feedback-text').textContent = `正确答案是: ${correctAnswer}`;
-            }, 600);
+                document.querySelectorAll('.review-option').forEach(b => {
+                    if (b.classList.contains('wrong')) {
+                        b.classList.remove('wrong');
+                        b.style.opacity = '0.4';
+                        b.style.pointerEvents = 'none';
+                    } else if (b.classList.contains('correct')) {
+                        b.onclick = () => {
+                            playSound('correct');
+                            reviewIndex++;
+                            showReviewQuestion();
+                        };
+                    }
+                });
+            }, 800);
         }
     }
 
