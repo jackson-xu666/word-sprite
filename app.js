@@ -550,11 +550,11 @@ const App = (() => {
         }
 
         const word = learnQueue[learnIndex];
+        document.getElementById('learn-emoji').textContent = word.emoji;
         document.getElementById('learn-word').textContent = word.word;
         document.getElementById('learn-phonetic').textContent = word.phonetic;
         document.getElementById('learn-meaning').classList.add('hidden');
         document.getElementById('learn-example').classList.add('hidden');
-        document.getElementById('learn-image-hint').classList.add('hidden');
         document.getElementById('btn-show-answer').classList.remove('hidden');
         document.getElementById('rate-buttons').classList.add('hidden');
 
@@ -567,8 +567,6 @@ const App = (() => {
         document.getElementById('learn-meaning').classList.remove('hidden');
         document.getElementById('learn-example').innerHTML = word.example;
         document.getElementById('learn-example').classList.remove('hidden');
-        document.getElementById('learn-image-hint').textContent = word.emoji;
-        document.getElementById('learn-image-hint').classList.remove('hidden');
 
         document.getElementById('btn-show-answer').classList.add('hidden');
         document.getElementById('rate-buttons').classList.remove('hidden');
@@ -653,6 +651,7 @@ const App = (() => {
         document.getElementById('review-counter').textContent = `${reviewIndex + 1}/${reviewQueue.length}`;
         document.getElementById('review-feedback').classList.add('hidden');
         document.getElementById('review-card').classList.remove('hidden');
+        document.getElementById('review-emoji').textContent = word.emoji;
 
         const isEnToCn = Math.random() > 0.3;
         const allWords = getWordsForTextbook();
