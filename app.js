@@ -723,14 +723,24 @@ const App = (() => {
         markStudyToday();
         saveState();
 
-        setTimeout(() => {
-            document.getElementById('review-card').classList.add('hidden');
-            const feedback = document.getElementById('review-feedback');
-            feedback.classList.remove('hidden');
-            document.getElementById('feedback-icon').textContent = isCorrect ? '✅' : '❌';
-            document.getElementById('feedback-text').textContent = isCorrect ?
-                '太棒了！回答正确！' : `正确答案是: ${correctAnswer}`;
-        }, 600);
+        playSound(isCorrect ? 'correct' : 'wrong');
+
+        if (isCorrect) {
+            // 答对：短暂高亮后自动跳转下一题
+            setTimeout(() => {
+                reviewIndex++;
+                showReviewQuestion();
+            }, 1000);
+        } else {
+            // 答错：显示正确答案，手动点下一题
+            setTimeout(() => {
+                document.getElementById('review-card').classList.add('hidden');
+                const feedback = document.getElementById('review-feedback');
+                feedback.classList.remove('hidden');
+                document.getElementById('feedback-icon').textContent = '❌';
+                document.getElementById('feedback-text').textContent = `正确答案是: ${correctAnswer}`;
+            }, 600);
+        }
     }
 
     function nextReview() {
@@ -1204,6 +1214,43 @@ const App = (() => {
         document.getElementById('pet-reaction').textContent = petReaction;
 
         showScreen('celebration-screen');
+    }
+
+    // ===== 音效系统 =====
+    let audioCtx = null;
+    function getAudioCtx() {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        return audioCtx;
+    }
+    function playSound(type) {
+        try {
+            const ctx = getAudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+            if (type === 'correct') {
+                [523.25, 659.25].forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.12);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + i * 0.12 + 0.3);
+                    osc.connect(gain).connect(ctx.destination);
+                    osc.start(ctx.currentTime + i * 0.12);
+                    osc.stop(ctx.currentTime + i * 0.12 + 0.3);
+                });
+            } else {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.value = 200;
+                osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.25);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                osc.connect(gain).connect(ctx.destination);
+                osc.start(ctx.currentTime);
+                osc.stop(ctx.currentTime + 0.3);
+            }
+        } catch (e) {}
     }
 
     // ===== 工具函数 =====
