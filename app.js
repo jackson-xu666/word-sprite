@@ -18,9 +18,9 @@ const App = (() => {
         leaf:  ['🥚', '🐣', '🐛', '🦋', '🦚', '🦄']
     };
     const PET_NAMES = {
-        fire: ['小火苗', '火焰鸟', '烈焰龙'],
-        water: ['小水滴', '小锦鲤', '海洋之心'],
-        leaf:  ['小嫩芽', '花蝴蝶', '森林精灵']
+        fire:  ['火焰蛋', '小火苗', '火焰雏', '火焰鸟', '烈焰鹰', '烈焰龙'],
+        water: ['水滴蛋', '小水滴', '小鱼苗', '小锦鲤', '海豚灵', '海洋之心'],
+        leaf:  ['叶子蛋', '小嫩芽', '叶毛虫', '花蝴蝶', '孔雀灵', '森林精灵']
     };
     const MOODS = ['开心极了！', '状态不错~', '心情还好', '有点无聊...', '想你了！快来学习吧'];
 
@@ -384,7 +384,7 @@ const App = (() => {
     function getPetName() {
         if (!state.petType) return '精灵蛋';
         const names = PET_NAMES[state.petType];
-        const nameIdx = Math.min(Math.floor(state.petLevel / 2), names.length - 1);
+        const nameIdx = Math.min(state.petLevel, names.length - 1);
         return names[nameIdx];
     }
 
