@@ -405,10 +405,20 @@ const App = (() => {
         const newLevel = Math.floor(state.petExp / 50);
         if (newLevel > state.petLevel) {
             state.petLevel = newLevel;
-            showCelebration('levelup');
+            state._pendingLevelUp = true;
         }
 
         saveState();
+    }
+
+    function checkPendingLevelUp() {
+        if (state._pendingLevelUp) {
+            state._pendingLevelUp = false;
+            saveState();
+            showCelebration('levelup');
+            return true;
+        }
+        return false;
     }
 
     // ===== 连续天数 =====
@@ -601,7 +611,13 @@ const App = (() => {
 
     function finishLearn() {
         const learned = learnQueue.length;
-        showCelebration('learn', { count: learned });
+        if (state._pendingLevelUp) {
+            state._pendingLevelUp = false;
+            saveState();
+            showCelebration('levelup');
+        } else {
+            showCelebration('learn', { count: learned });
+        }
     }
 
     function speakWord() {
@@ -762,7 +778,13 @@ const App = (() => {
             state.perfectReviews = (state.perfectReviews || 0) + 1;
         }
         saveState();
-        showCelebration('review', { correct: reviewCorrect, total: reviewQueue.length, accuracy });
+        if (state._pendingLevelUp) {
+            state._pendingLevelUp = false;
+            saveState();
+            showCelebration('levelup');
+        } else {
+            showCelebration('review', { correct: reviewCorrect, total: reviewQueue.length, accuracy });
+        }
     }
 
     // ===== 拼写挑战 =====
