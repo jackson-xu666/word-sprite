@@ -64,6 +64,7 @@ const App = (() => {
             dailyLearned: 0,
             todayKey: getTodayKey(),
             setupDone: false,
+            visitLog: {},
         };
     }
 
@@ -89,6 +90,33 @@ const App = (() => {
 
     function getTodayKey() {
         return new Date().toISOString().split('T')[0];
+    }
+
+    // ===== 访问统计 =====
+    function trackVisit() {
+        const today = getTodayKey();
+        if (!state.visitLog) state.visitLog = {};
+        if (!state.visitLog[today]) {
+            state.visitLog[today] = { visits: 0, firstVisit: Date.now() };
+        }
+        state.visitLog[today].visits++;
+        // 只保留最近 90 天的日志
+        const cutoff = new Date();
+        cutoff.setDate(cutoff.getDate() - 90);
+        const cutoffKey = cutoff.toISOString().split('T')[0];
+        Object.keys(state.visitLog).forEach(k => {
+            if (k < cutoffKey) delete state.visitLog[k];
+        });
+        saveState();
+    }
+
+    function getVisitStats() {
+        const log = state.visitLog || {};
+        const days = Object.keys(log).length;
+        const totalVisits = Object.values(log).reduce((s, d) => s + (d.visits || 0), 0);
+        const today = getTodayKey();
+        const todayVisits = log[today] ? log[today].visits : 0;
+        return { days, totalVisits, todayVisits, log };
     }
 
     // ===== 间隔重复算法 (SM-2变体) =====
@@ -222,6 +250,7 @@ const App = (() => {
 
     // ===== 应用启动 =====
     function start() {
+        trackVisit();
         if (!state.setupDone) {
             showScreen('name-screen');
         } else {
@@ -1083,6 +1112,12 @@ const App = (() => {
         const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
         document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
 
+        // 访问统计
+        const vs = getVisitStats();
+        document.getElementById('stat-total-visits').textContent = vs.totalVisits;
+        document.getElementById('stat-visit-days').textContent = vs.days;
+        renderVisitChart(vs.log);
+
         renderWeeklyChart();
         renderAchievements();
     }
@@ -1112,6 +1147,38 @@ const App = (() => {
             const height = Math.max((d.count / maxCount) * 100, 4);
             wrapper.innerHTML = `
                 <div class="chart-bar" style="height:${height}px"></div>
+                <span class="chart-label">${d.label}</span>
+            `;
+            chart.appendChild(wrapper);
+        });
+    }
+
+    function renderVisitChart(log) {
+        const chart = document.getElementById('visit-chart');
+        if (!chart) return;
+        chart.innerHTML = '';
+
+        const days = [];
+        const dayNames = ['日', '一', '二', '三', '四', '五', '六'];
+        for (let i = 13; i >= 0; i--) {
+            const d = new Date();
+            d.setDate(d.getDate() - i);
+            const key = d.toISOString().split('T')[0];
+            const entry = log[key];
+            days.push({
+                label: (i === 0 ? '今' : dayNames[d.getDay()]),
+                count: entry ? entry.visits : 0
+            });
+        }
+
+        const maxCount = Math.max(...days.map(d => d.count), 1);
+
+        days.forEach(d => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'chart-bar-wrapper';
+            const height = Math.max((d.count / maxCount) * 80, 4);
+            wrapper.innerHTML = `
+                <div class="chart-bar visit-bar" style="height:${height}px"></div>
                 <span class="chart-label">${d.label}</span>
             `;
             chart.appendChild(wrapper);

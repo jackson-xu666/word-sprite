@@ -6,6 +6,24 @@
     <title>单词精灵 - 趣味背单词</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Analytics: 替换 GA_MEASUREMENT_ID 为你的 Tracking ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <!-- 百度统计: 替换 BAIDU_TONGJI_KEY 为你的统计 key -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_KEY";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
 </head>
 <body>
     <!-- 侧边栏导航 -->
@@ -363,6 +381,23 @@
                 <div class="stat-card">
                     <div class="stat-number" id="stat-accuracy">0%</div>
                     <div class="stat-desc">正确率</div>
+                </div>
+            </div>
+            <div class="visit-stats-section">
+                <h3>📈 访问统计</h3>
+                <div class="visit-stats-grid">
+                    <div class="visit-stat-card">
+                        <div class="visit-stat-number" id="stat-total-visits">0</div>
+                        <div class="visit-stat-desc">累计访问</div>
+                    </div>
+                    <div class="visit-stat-card">
+                        <div class="visit-stat-number" id="stat-visit-days">0</div>
+                        <div class="visit-stat-desc">活跃天数</div>
+                    </div>
+                </div>
+                <div class="visit-chart-container">
+                    <div class="chart-title">近14天访问量</div>
+                    <div id="visit-chart" class="weekly-chart"></div>
                 </div>
             </div>
             <div class="stats-chart">
