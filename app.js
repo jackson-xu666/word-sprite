@@ -44,8 +44,8 @@ const App = (() => {
     function defaultState() {
         return {
             userName: '',
-            grade: 4,
-            textbook: 'PEP_4上',
+            grade: 3,
+            textbook: 'RJY_3上',
             petType: null,
             petLevel: 0,
             petExp: 0,
@@ -1454,15 +1454,7 @@ const App = (() => {
 
     // ===== 教材版本数据 =====
     const TEXTBOOK_VERSIONS = [
-        { id: 'PEP', label: '人教版PEP' },
-        { id: 'WYS', label: '外研版' },
-        { id: 'YL', label: '译林版' },
-        { id: 'BNU', label: '北师大版' },
-        { id: 'MJ', label: '闽教版' },
-        { id: 'GD', label: '广东开心版' },
-        { id: 'JJ', label: '冀教版' },
-        { id: 'SL', label: '陕旅版' },
-        { id: 'XS', label: '湘少版' },
+        { id: 'RJY', label: '人教版(一年起点)' },
     ];
 
     function renderTextbookGrid(containerId, version, onSelectFn) {
