@@ -864,18 +864,13 @@ body.sidebar-collapsed .sidebar-toggle { transform: rotate(180deg); }
 /* ===== 教材选择 ===== */
 .textbook-select { padding: 40px 28px; overflow-y: auto; }
 .textbook-version-tabs {
-    display: flex; gap: 8px; margin: 16px 0 8px;
-    overflow-x: auto; -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
-    padding: 4px 0;
+    display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px;
+    justify-content: center; padding: 4px 0;
 }
-.textbook-version-tabs::-webkit-scrollbar { height: 4px; }
-.textbook-version-tabs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-.textbook-version-tabs .version-tab { flex-shrink: 0; white-space: nowrap; }
 .version-tab {
-    padding: 10px 24px; border: 2px solid var(--border);
+    padding: 8px 14px; border: 2px solid var(--border);
     border-radius: var(--radius-full); background: var(--bg-card);
-    font-size: 15px; font-weight: 700; cursor: pointer;
+    font-size: 13px; font-weight: 700; cursor: pointer;
     transition: var(--transition); color: var(--text);
 }
 .version-tab:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); transform: scale(1.05); }
