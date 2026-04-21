@@ -122,9 +122,7 @@
                 <h2>选择你的教材</h2>
                 <p class="hint-text">选择教材版本和年级</p>
                 <!-- 版本切换 -->
-                <div class="textbook-version-tabs">
-                    <button class="version-tab active" data-version="RJY" onclick="App.switchVersion('RJY')">人教版(一年起点)</button>
-                </div>
+                <div class="textbook-version-tabs" id="textbook-version-tabs"></div>
                 <div class="textbook-grid" id="textbook-grid"></div>
             </div>
         </div>
@@ -418,9 +416,7 @@
                     <div id="textbook-progress" class="textbook-progress-info">当前教材信息</div>
                     <div class="profile-textbook">
                         <h3>选择教材</h3>
-                        <div class="textbook-version-tabs" id="profile-version-tabs">
-                            <button class="version-tab active" data-version="RJY" onclick="App.switchVersionProfile('RJY')">人教版(一年起点)</button>
-                        </div>
+                        <div class="textbook-version-tabs" id="profile-version-tabs"></div>
                         <div class="textbook-select-grid" id="profile-textbook-grid"></div>
                     </div>
                     <div class="profile-actions">

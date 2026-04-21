@@ -244,7 +244,8 @@ const App = (() => {
         }
         if (id === 'profile-screen') updateProfile();
         if (id === 'textbook-screen') {
-            renderTextbookGrid('textbook-grid', 'PEP', 'selectTextbook');
+            renderVersionTabs('textbook-version-tabs', 'RJY', 'switchVersion');
+            renderTextbookGrid('textbook-grid', 'RJY', 'selectTextbook');
         }
     }
 
@@ -1234,6 +1235,7 @@ const App = (() => {
 
         // Update textbook grid for current version
         const currentVersion = state.textbook.split('_')[0];
+        renderVersionTabs('profile-version-tabs', currentVersion, 'switchVersionProfile');
         renderTextbookGrid('profile-textbook-grid', currentVersion, 'setTextbook');
 
         // 显示当前教材进度
@@ -1455,7 +1457,45 @@ const App = (() => {
     // ===== 教材版本数据 =====
     const TEXTBOOK_VERSIONS = [
         { id: 'RJY', label: '人教版(一年起点)' },
+        { id: 'PEP', label: '人教版(PEP)' },
+        { id: 'RJ_JT', label: '人教版(精通·苗兴伟)' },
+        { id: 'RJ_JT2', label: '人教版(精通·郝建平)' },
+        { id: 'RJ_DT', label: '人教大同版' },
+        { id: 'BJ', label: '北京版' },
+        { id: 'BNU', label: '北师大版' },
+        { id: 'QH', label: '清华大学版' },
+        { id: 'WYS_CL', label: '外研社版(陈琳)' },
+        { id: 'WYS_CL1', label: '外研社版·一年起点(陈琳)' },
+        { id: 'WYS_LZY', label: '外研社版(刘兆义)' },
+        { id: 'WYS_GSC', label: '外研社版(桂诗春)' },
+        { id: 'WYS_SYZ', label: '外研社版(孙有中)' },
+        { id: 'WYS_ZZC', label: '外研社版(张祖春)' },
+        { id: 'YL', label: '译林版' },
+        { id: 'MJ', label: '闽教版' },
+        { id: 'JJ', label: '冀教版' },
+        { id: 'JJ_Y', label: '冀教版(一年级起点)' },
+        { id: 'SL', label: '陕旅版' },
+        { id: 'HJ', label: '沪教版' },
+        { id: 'CJ', label: '川教版' },
+        { id: 'GD', label: '粤教粤人版' },
+        { id: 'GD_SH', label: '粤教沪外教版' },
+        { id: 'LJ', label: '接力社版' },
+        { id: 'KP', label: '科普版' },
+        { id: 'XS', label: '湘少版' },
+        { id: 'LJ_XJ', label: '鲁教湘教版' },
+        { id: 'CQD', label: '重庆大学版' },
+        { id: 'JK_EEC', label: '教科版(EEC学院)' },
+        { id: 'JK_GLF', label: '教科版(龚亚夫&鲁宗干)' },
+        { id: 'LN', label: '辽宁师大版' },
     ];
+
+    function renderVersionTabs(containerId, activeVersion, switchFn) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = TEXTBOOK_VERSIONS.map(v =>
+            `<button class="version-tab${v.id === activeVersion ? ' active' : ''}" data-version="${v.id}" onclick="App.${switchFn}('${v.id}')">${v.label}</button>`
+        ).join('');
+    }
 
     function renderTextbookGrid(containerId, version, onSelectFn) {
         const container = document.getElementById(containerId);
@@ -1463,19 +1503,31 @@ const App = (() => {
         container.innerHTML = '';
         const grades = [3, 4, 5, 6];
         const gradeLabels = { 3: '三年级', 4: '四年级', 5: '五年级', 6: '六年级' };
+        const hasAny = grades.some(g => WORD_DB[`${version}_${g}上`] || WORD_DB[`${version}_${g}下`]);
         grades.forEach(grade => {
             const group = document.createElement('div');
             group.className = 'textbook-grade-group';
             const hasUpper = WORD_DB[`${version}_${grade}上`];
             const hasLower = WORD_DB[`${version}_${grade}下`];
-            if (!hasUpper && !hasLower) return;
-            group.innerHTML = `
-                <div class="textbook-grade-label">${gradeLabels[grade]}</div>
-                <div class="textbook-semester-btns">
-                    ${hasUpper ? `<button class="textbook-btn" data-textbook="${version}_${grade}上" onclick="App.${onSelectFn}('${version}_${grade}上')">上册</button>` : ''}
-                    ${hasLower ? `<button class="textbook-btn" data-textbook="${version}_${grade}下" onclick="App.${onSelectFn}('${version}_${grade}下')">下册</button>` : ''}
-                </div>
-            `;
+            if (!hasAny && !hasUpper && !hasLower) {
+                // 无数据版本：显示灰显按钮
+                group.innerHTML = `
+                    <div class="textbook-grade-label">${gradeLabels[grade]}</div>
+                    <div class="textbook-semester-btns">
+                        <button class="textbook-btn disabled" onclick="alert('该教材正在加速更新中，敬请期待...')">上册</button>
+                        <button class="textbook-btn disabled" onclick="alert('该教材正在加速更新中，敬请期待...')">下册</button>
+                    </div>
+                `;
+            } else {
+                if (!hasUpper && !hasLower) return;
+                group.innerHTML = `
+                    <div class="textbook-grade-label">${gradeLabels[grade]}</div>
+                    <div class="textbook-semester-btns">
+                        ${hasUpper ? `<button class="textbook-btn" data-textbook="${version}_${grade}上" onclick="App.${onSelectFn}('${version}_${grade}上')">上册</button>` : ''}
+                        ${hasLower ? `<button class="textbook-btn" data-textbook="${version}_${grade}下" onclick="App.${onSelectFn}('${version}_${grade}下')">下册</button>` : ''}
+                    </div>
+                `;
+            }
             container.appendChild(group);
         });
     }
