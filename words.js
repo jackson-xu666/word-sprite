@@ -2526,6 +2526,123 @@ const WORD_DB = {
             }
         }
     },
+    "PEP_6下": {
+        "name": "六年级下册（人教版PEP·三年级起点）",
+        "grade": 6,
+        "semester": "下",
+        "units": {
+            "1": {
+                "name": "Unit 1 形容词比较级与基础名词",
+                "words": [
+                    { "word": "younger", "phonetic": "/ˈjʌŋɡə(r)/", "meaning": "更年轻的", "example": "You are <em>younger</em> than me.", "emoji": "👶" },
+                    { "word": "older", "phonetic": "/ˈəʊldə(r)/", "meaning": "更年长的", "example": "She is <em>older</em> than me.", "emoji": "🧓" },
+                    { "word": "taller", "phonetic": "/ˈtɔːlə(r)/", "meaning": "更高的", "example": "He is <em>taller</em> than me.", "emoji": "📏" },
+                    { "word": "shorter", "phonetic": "/ˈʃɔːtə(r)/", "meaning": "更矮的；更短的", "example": "I am <em>shorter</em> than you.", "emoji": "📐" },
+                    { "word": "longer", "phonetic": "/ˈlɒŋɡə(r)/", "meaning": "更长的", "example": "This ruler is <em>longer</em>.", "emoji": "📏" },
+                    { "word": "thinner", "phonetic": "/ˈθɪnə(r)/", "meaning": "更瘦的", "example": "She is <em>thinner</em> than before.", "emoji": "🍃" },
+                    { "word": "heavier", "phonetic": "/ˈheviə(r)/", "meaning": "更重的", "example": "The box is <em>heavier</em>.", "emoji": "🏋️" },
+                    { "word": "bigger", "phonetic": "/ˈbɪɡə(r)/", "meaning": "更大的", "example": "My room is <em>bigger</em>.", "emoji": "📐" },
+                    { "word": "smaller", "phonetic": "/ˈsmɔːlə(r)/", "meaning": "更小的", "example": "This one is <em>smaller</em>.", "emoji": "🔍" },
+                    { "word": "stronger", "phonetic": "/ˈstrɒŋɡə(r)/", "meaning": "更强壮的", "example": "He is <em>stronger</em> than me.", "emoji": "💪" },
+                    { "word": "dinosaur", "phonetic": "/ˈdaɪnəsɔː(r)/", "meaning": "恐龙", "example": "The <em>dinosaur</em> is very tall.", "emoji": "🦕" },
+                    { "word": "hall", "phonetic": "/hɔːl/", "meaning": "大厅", "example": "The <em>hall</em> is very big.", "emoji": "🏛️" },
+                    { "word": "metre", "phonetic": "/ˈmiːtə(r)/", "meaning": "米", "example": "It is 2 <em>metres</em> tall.", "emoji": "📏" },
+                    { "word": "than", "phonetic": "/ðən/", "meaning": "比", "example": "I am taller <em>than</em> you.", "emoji": "⚖️" },
+                    { "word": "both", "phonetic": "/bəʊθ/", "meaning": "两个都", "example": "<em>Both</em> of us like sports.", "emoji": "2️⃣" },
+                    { "word": "kilogram", "phonetic": "/ˈkɪləɡræm/", "meaning": "千克；公斤", "example": "It weighs 50 <em>kilograms</em>.", "emoji": "⚖️" },
+                    { "word": "countryside", "phonetic": "/ˈkʌntrisaɪd/", "meaning": "乡村", "example": "I go to the <em>countryside</em>.", "emoji": "🌾" },
+                    { "word": "lower", "phonetic": "/ˈləʊə(r)/", "meaning": "更低", "example": "The sun is <em>lower</em>.", "emoji": "⬇️" },
+                    { "word": "shadow", "phonetic": "/ˈʃædəʊ/", "meaning": "阴影；影子", "example": "Look at my <em>shadow</em>.", "emoji": "👤" },
+                    { "word": "smarter", "phonetic": "/ˈsmɑːtə(r)/", "meaning": "更聪明的", "example": "She is <em>smarter</em> than me.", "emoji": "🧠" },
+                    { "word": "become", "phonetic": "/bɪˈkʌm/", "meaning": "开始变得；变成", "example": "It <em>becomes</em> warmer.", "emoji": "🦋" }
+                ]
+            },
+            "2": {
+                "name": "Unit 2 动词过去式（日常活动）",
+                "words": [
+                    { "word": "cleaned", "phonetic": "/kliːnd/", "meaning": "打扫（过去式）", "example": "I <em>cleaned</em> my room.", "emoji": "🧹" },
+                    { "word": "stayed", "phonetic": "/steɪd/", "meaning": "停留；待（过去式）", "example": "I <em>stayed</em> at home.", "emoji": "🏠" },
+                    { "word": "washed", "phonetic": "/wɒʃt/", "meaning": "洗（过去式）", "example": "I <em>washed</em> my clothes.", "emoji": "🧼" },
+                    { "word": "watched", "phonetic": "/wɒtʃt/", "meaning": "看（过去式）", "example": "I <em>watched</em> TV.", "emoji": "📺" },
+                    { "word": "had", "phonetic": "/hæd/", "meaning": "患病；得病（过去式）", "example": "I <em>had</em> a cold.", "emoji": "🤒" },
+                    { "word": "had a cold", "phonetic": "/hæd ə kəʊld/", "meaning": "感冒", "example": "I <em>had a cold</em> yesterday.", "emoji": "🤧" },
+                    { "word": "slept", "phonetic": "/slept/", "meaning": "睡觉（过去式）", "example": "I <em>slept</em> all day.", "emoji": "😴" },
+                    { "word": "read", "phonetic": "/red/", "meaning": "读（过去式）", "example": "I <em>read</em> a book.", "emoji": "📖" },
+                    { "word": "saw", "phonetic": "/sɔː/", "meaning": "看见（过去式）", "example": "I <em>saw</em> a film.", "emoji": "👀" },
+                    { "word": "last", "phonetic": "/lɑːst/", "meaning": "最近的；上一个的", "example": "<em>Last</em> weekend I went fishing.", "emoji": "⬅️" },
+                    { "word": "yesterday", "phonetic": "/ˈjestədeɪ/", "meaning": "昨天", "example": "I played football <em>yesterday</em>.", "emoji": "📅" },
+                    { "word": "before", "phonetic": "/bɪˈfɔː(r)/", "meaning": "在……之前", "example": "Go to bed <em>before</em> 10.", "emoji": "⏰" },
+                    { "word": "drank", "phonetic": "/dræŋk/", "meaning": "喝（过去式）", "example": "I <em>drank</em> some juice.", "emoji": "🥤" },
+                    { "word": "show", "phonetic": "/ʃəʊ/", "meaning": "演出", "example": "We saw a <em>show</em>.", "emoji": "🎭" },
+                    { "word": "magazine", "phonetic": "/ˌmæɡəˈziːn/", "meaning": "杂志", "example": "I read a <em>magazine</em>.", "emoji": "📰" },
+                    { "word": "better", "phonetic": "/ˈbetə(r)/", "meaning": "更好的", "example": "I feel <em>better</em> now.", "emoji": "👍" },
+                    { "word": "faster", "phonetic": "/ˈfɑːstə(r)/", "meaning": "更快的", "example": "He runs <em>faster</em> than me.", "emoji": "🏃" },
+                    { "word": "hotel", "phonetic": "/həʊˈtel/", "meaning": "旅馆", "example": "We stayed in a <em>hotel</em>.", "emoji": "🏨" },
+                    { "word": "fixed", "phonetic": "/fɪkst/", "meaning": "修理（过去式）", "example": "He <em>fixed</em> the bike.", "emoji": "🔧" },
+                    { "word": "broken", "phonetic": "/ˈbrəʊkən/", "meaning": "破损的", "example": "The lamp is <em>broken</em>.", "emoji": "💔" },
+                    { "word": "lamp", "phonetic": "/læmp/", "meaning": "台灯", "example": "Turn on the <em>lamp</em>.", "emoji": "💡" },
+                    { "word": "loud", "phonetic": "/laʊd/", "meaning": "喧闹的；大声的", "example": "The music is <em>loud</em>.", "emoji": "📢" },
+                    { "word": "enjoy", "phonetic": "/ɪnˈdʒɔɪ/", "meaning": "享受……乐趣；喜爱", "example": "I <em>enjoy</em> the trip.", "emoji": "😊" },
+                    { "word": "stay", "phonetic": "/steɪ/", "meaning": "暂住；逗留", "example": "I <em>stay</em> at a hotel.", "emoji": "🏨" }
+                ]
+            },
+            "3": {
+                "name": "Unit 3 过去假期活动",
+                "words": [
+                    { "word": "went", "phonetic": "/went/", "meaning": "去（过去式）", "example": "I <em>went</em> to the park.", "emoji": "🚶" },
+                    { "word": "camp", "phonetic": "/kæmp/", "meaning": "野营", "example": "We go to <em>camp</em>.", "emoji": "⛺" },
+                    { "word": "went camping", "phonetic": "/went ˈkæmpɪŋ/", "meaning": "野营", "example": "I <em>went camping</em> last summer.", "emoji": "⛺" },
+                    { "word": "fish", "phonetic": "/fɪʃ/", "meaning": "钓鱼；捕鱼", "example": "Let's go <em>fish</em>.", "emoji": "🎣" },
+                    { "word": "went fishing", "phonetic": "/went ˈfɪʃɪŋ/", "meaning": "去钓鱼", "example": "I <em>went fishing</em> yesterday.", "emoji": "🎣" },
+                    { "word": "rode", "phonetic": "/rəʊd/", "meaning": "骑（过去式）", "example": "I <em>rode</em> a horse.", "emoji": "🏇" },
+                    { "word": "hurt", "phonetic": "/hɜːt/", "meaning": "受伤（过去式）", "example": "I <em>hurt</em> my foot.", "emoji": "🤕" },
+                    { "word": "ate", "phonetic": "/eɪt/", "meaning": "吃（过去式）", "example": "I <em>ate</em> fresh food.", "emoji": "🍽️" },
+                    { "word": "took", "phonetic": "/tʊk/", "meaning": "拍照（过去式）", "example": "I <em>took</em> pictures.", "emoji": "📷" },
+                    { "word": "took pictures", "phonetic": "/tʊk ˈpɪktʃəz/", "meaning": "照相", "example": "I <em>took pictures</em> of the mountain.", "emoji": "📸" },
+                    { "word": "bought", "phonetic": "/bɔːt/", "meaning": "买（过去式）", "example": "I <em>bought</em> a gift.", "emoji": "🛍️" },
+                    { "word": "gift", "phonetic": "/ɡɪft/", "meaning": "礼物", "example": "This is a <em>gift</em> for you.", "emoji": "🎁" },
+                    { "word": "fell", "phonetic": "/fel/", "meaning": "摔倒（过去式）", "example": "I <em>fell</em> off the bike.", "emoji": "💥" },
+                    { "word": "off", "phonetic": "/ɒf/", "meaning": "从（某处）落下", "example": "I fell <em>off</em> the horse.", "emoji": "⬇️" },
+                    { "word": "mule", "phonetic": "/mjuːl/", "meaning": "骡子", "example": "He rode a <em>mule</em>.", "emoji": "🐴" },
+                    { "word": "Turpan", "phonetic": "/ˈtuəˈpɑːn/", "meaning": "吐鲁番", "example": "We went to <em>Turpan</em>.", "emoji": "🏜️" },
+                    { "word": "could", "phonetic": "/kəd/", "meaning": "能（过去式）", "example": "I <em>could</em> swim when I was five.", "emoji": "💪" },
+                    { "word": "till", "phonetic": "/tɪl/", "meaning": "直到", "example": "I waited <em>till</em> 5 o'clock.", "emoji": "⏳" },
+                    { "word": "beach", "phonetic": "/biːtʃ/", "meaning": "海滩；沙滩", "example": "We played on the <em>beach</em>.", "emoji": "🏖️" },
+                    { "word": "basket", "phonetic": "/ˈbɑːskɪt/", "meaning": "篮；筐", "example": "Put it in the <em>basket</em>.", "emoji": "🧺" },
+                    { "word": "part", "phonetic": "/pɑːt/", "meaning": "角色", "example": "He played a <em>part</em> in the play.", "emoji": "🎭" },
+                    { "word": "licked", "phonetic": "/lɪkt/", "meaning": "舔（过去式）", "example": "The dog <em>licked</em> my face.", "emoji": "🐶" },
+                    { "word": "laughed", "phonetic": "/lɑːft/", "meaning": "笑（过去式）", "example": "We <em>laughed</em> a lot.", "emoji": "😂" }
+                ]
+            },
+            "4": {
+                "name": "Unit 4 今昔对比与过去能力",
+                "words": [
+                    { "word": "dining hall", "phonetic": "/ˈdaɪnɪŋ hɔːl/", "meaning": "饭厅", "example": "We eat in the <em>dining hall</em>.", "emoji": "🍽️" },
+                    { "word": "grass", "phonetic": "/ɡrɑːs/", "meaning": "草坪", "example": "Don't walk on the <em>grass</em>.", "emoji": "🌿" },
+                    { "word": "gym", "phonetic": "/dʒɪm/", "meaning": "体育馆", "example": "We play in the <em>gym</em>.", "emoji": "🏋️" },
+                    { "word": "ago", "phonetic": "/əˈɡəʊ/", "meaning": "以前", "example": "I was short five years <em>ago</em>.", "emoji": "⏪" },
+                    { "word": "cycling", "phonetic": "/ˈsaɪklɪŋ/", "meaning": "骑自行车运动", "example": "I like <em>cycling</em>.", "emoji": "🚴" },
+                    { "word": "go cycling", "phonetic": "/ɡəʊ ˈsaɪklɪŋ/", "meaning": "去骑自行车", "example": "I <em>go cycling</em> every Sunday.", "emoji": "🚴" },
+                    { "word": "ice-skate", "phonetic": "/ˈaɪsskeɪt/", "meaning": "滑冰", "example": "I like to <em>ice-skate</em>.", "emoji": "⛸️" },
+                    { "word": "badminton", "phonetic": "/ˈbædmɪntən/", "meaning": "羽毛球运动", "example": "I play <em>badminton</em>.", "emoji": "🏸" },
+                    { "word": "star", "phonetic": "/stɑː(r)/", "meaning": "星", "example": "Look at the <em>stars</em>.", "emoji": "⭐" },
+                    { "word": "easy", "phonetic": "/ˈiːzi/", "meaning": "容易的", "example": "It's <em>easy</em>!", "emoji": "✅" },
+                    { "word": "look up", "phonetic": "/lʊk ʌp/", "meaning": "查阅", "example": "<em>Look up</em> the word in the dictionary.", "emoji": "🔍" },
+                    { "word": "Internet", "phonetic": "/ˈɪntənet/", "meaning": "互联网", "example": "I use the <em>Internet</em>.", "emoji": "🌐" },
+                    { "word": "different", "phonetic": "/ˈdɪfrənt/", "meaning": "不同的", "example": "The school is <em>different</em> now.", "emoji": "≠" },
+                    { "word": "active", "phonetic": "/ˈæktɪv/", "meaning": "积极的；活跃的", "example": "She is very <em>active</em>.", "emoji": "🏃" },
+                    { "word": "race", "phonetic": "/reɪs/", "meaning": "赛跑", "example": "I won the <em>race</em>.", "emoji": "🏃" },
+                    { "word": "nothing", "phonetic": "/ˈnʌθɪŋ/", "meaning": "没有什么", "example": "There is <em>nothing</em> to do.", "emoji": "🚫" },
+                    { "word": "thought", "phonetic": "/θɔːt/", "meaning": "想（过去式）", "example": "I <em>thought</em> it was easy.", "emoji": "🤔" },
+                    { "word": "felt", "phonetic": "/felt/", "meaning": "感觉（过去式）", "example": "I <em>felt</em> happy.", "emoji": "😊" },
+                    { "word": "cheetah", "phonetic": "/ˈtʃiːtə/", "meaning": "猎豹", "example": "The <em>cheetah</em> runs fast.", "emoji": "🐆" },
+                    { "word": "trip", "phonetic": "/trɪp/", "meaning": "绊倒", "example": "I <em>tripped</em> over the stone.", "emoji": "🫣" },
+                    { "word": "woke", "phonetic": "/wəʊk/", "meaning": "醒（过去式）", "example": "I <em>woke</em> up early.", "emoji": "⏰" },
+                    { "word": "dream", "phonetic": "/driːm/", "meaning": "梦", "example": "I had a <em>dream</em>.", "emoji": "💭" }
+                ]
+            }
+        }
+    },
     "RJY_5下": {
         "name": "五年级下册（人教版一年起点）",
         "grade": 5,
