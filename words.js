@@ -4628,5 +4628,68 @@ const WORD_DB = {
                 ]
             }
         }
+    },
+    "BNU_5下": {
+        "name": "五年级下册（北师大版）",
+        "grade": 5,
+        "semester": "下",
+        "units": {
+            "7": {
+                "name": "Unit 7",
+                "words": [
+                    { "word": "day", "phonetic": "/deɪ/", "meaning": "一天，一日", "example": "What <em>day</em> is it today?", "emoji": "📅" },
+                    { "word": "week", "phonetic": "/wiːk/", "meaning": "星期，周", "example": "There are 7 days in a <em>week</em>.", "emoji": "📅" },
+                    { "word": "Wednesday", "phonetic": "/ˈwenzdeɪ/", "meaning": "星期三", "example": "I have PE on <em>Wednesday</em>.", "emoji": "📅" },
+                    { "word": "Thursday", "phonetic": "/ˈθɜːzdeɪ/", "meaning": "星期四", "example": "I have art on <em>Thursday</em>.", "emoji": "📅" },
+                    { "word": "Monday", "phonetic": "/ˈmʌndeɪ/", "meaning": "星期一", "example": "I have English on <em>Monday</em>.", "emoji": "📅" },
+                    { "word": "Sunday", "phonetic": "/ˈsʌndeɪ/", "meaning": "星期日", "example": "I rest on <em>Sunday</em>.", "emoji": "📅" },
+                    { "word": "Tuesday", "phonetic": "/ˈtjuːzdeɪ/", "meaning": "星期二", "example": "I have maths on <em>Tuesday</em>.", "emoji": "📅" },
+                    { "word": "Friday", "phonetic": "/ˈfraɪdeɪ/", "meaning": "星期五", "example": "I like <em>Friday</em>.", "emoji": "📅" },
+                    { "word": "Saturday", "phonetic": "/ˈsætədeɪ/", "meaning": "星期六", "example": "I play on <em>Saturday</em>.", "emoji": "📅" },
+                    { "word": "today", "phonetic": "/təˈdeɪ/", "meaning": "今天，今日", "example": "<em>Today</em> is Monday.", "emoji": "📅" },
+                    { "word": "every", "phonetic": "/ˈevri/", "meaning": "每一个", "example": "I read <em>every</em> day.", "emoji": "🔁" },
+                    { "word": "diary", "phonetic": "/ˈdaɪəri/", "meaning": "日记，日记簿", "example": "I write a <em>diary</em>.", "emoji": "📓" },
+                    { "word": "remember", "phonetic": "/rɪˈmembə(r)/", "meaning": "记住", "example": "Please <em>remember</em> this.", "emoji": "🧠" },
+                    { "word": "all", "phonetic": "/ɔːl/", "meaning": "全部", "example": "I like them <em>all</em>.", "emoji": "💯" },
+                    { "word": "tomorrow", "phonetic": "/təˈmɒrəʊ/", "meaning": "明天", "example": "See you <em>tomorrow</em>.", "emoji": "📅" },
+                    { "word": "visit", "phonetic": "/ˈvɪzɪt/", "meaning": "拜访，看望", "example": "I <em>visit</em> my grandma.", "emoji": "🏠" },
+                    { "word": "watch", "phonetic": "/wɒtʃ/", "meaning": "观看，注视", "example": "I <em>watch</em> TV.", "emoji": "👀" }
+                ]
+            },
+            "8": {
+                "name": "Unit 8",
+                "words": [
+                    { "word": "time", "phonetic": "/taɪm/", "meaning": "时间，钟点", "example": "What <em>time</em> is it?", "emoji": "⏰" },
+                    { "word": "o'clock", "phonetic": "/əˈklɒk/", "meaning": "……点钟", "example": "It's 7 <em>o'clock</em>.", "emoji": "🕐" },
+                    { "word": "hurry", "phonetic": "/ˈhʌri/", "meaning": "赶紧", "example": "<em>Hurry</em> up!", "emoji": "🏃" },
+                    { "word": "early", "phonetic": "/ˈɜːli/", "meaning": "早的", "example": "I get up <em>early</em>.", "emoji": "🌅" },
+                    { "word": "late", "phonetic": "/leɪt/", "meaning": "晚的；迟到的", "example": "Don't be <em>late</em>.", "emoji": "⏰" },
+                    { "word": "know", "phonetic": "/nəʊ/", "meaning": "知道，了解", "example": "I <em>know</em> the answer.", "emoji": "💡" },
+                    { "word": "fix", "phonetic": "/fɪks/", "meaning": "修理", "example": "He <em>fixes</em> the bike.", "emoji": "🔧" },
+                    { "word": "tell", "phonetic": "/tel/", "meaning": "告诉，告知", "example": "<em>Tell</em> me the time.", "emoji": "🗣️" }
+                ]
+            },
+            "9": {
+                "name": "Unit 9",
+                "words": [
+                    { "word": "night", "phonetic": "/naɪt/", "meaning": "夜晚，夜间", "example": "Good <em>night</em>.", "emoji": "🌙" },
+                    { "word": "afternoon", "phonetic": "/ˌɑːftəˈnuːn/", "meaning": "下午，午后", "example": "Good <em>afternoon</em>.", "emoji": "🌇" },
+                    { "word": "evening", "phonetic": "/ˈiːvnɪŋ/", "meaning": "傍晚，晚上", "example": "Good <em>evening</em>.", "emoji": "🌆" },
+                    { "word": "morning", "phonetic": "/ˈmɔːnɪŋ/", "meaning": "早晨，上午", "example": "Good <em>morning</em>.", "emoji": "🌅" },
+                    { "word": "space", "phonetic": "/speɪs/", "meaning": "太空", "example": "I want to go to <em>space</em>.", "emoji": "🚀" },
+                    { "word": "ask", "phonetic": "/ɑːsk/", "meaning": "问，询问", "example": "Can I <em>ask</em> you?", "emoji": "❓" },
+                    { "word": "astronaut", "phonetic": "/ˈæstrənɔːt/", "meaning": "宇航员", "example": "He is an <em>astronaut</em>.", "emoji": "👨‍🚀" },
+                    { "word": "when", "phonetic": "/wen/", "meaning": "什么时候", "example": "<em>When</em> do you get up?", "emoji": "🕐" },
+                    { "word": "get up", "phonetic": "/ɡet ʌp/", "meaning": "起床", "example": "I <em>get up</em> at 7.", "emoji": "⏰" },
+                    { "word": "always", "phonetic": "/ˈɔːlweɪz/", "meaning": "总是", "example": "I <em>always</em> get up early.", "emoji": "🔁" },
+                    { "word": "often", "phonetic": "/ˈɒfn/", "meaning": "经常，时常", "example": "I <em>often</em> read books.", "emoji": "🔄" },
+                    { "word": "breakfast", "phonetic": "/ˈbrekfəst/", "meaning": "早餐", "example": "I have <em>breakfast</em> at 7.", "emoji": "🍳" },
+                    { "word": "sometimes", "phonetic": "/ˈsʌmtaɪmz/", "meaning": "有时，不时", "example": "I <em>sometimes</em> walk to school.", "emoji": "⏳" },
+                    { "word": "meat", "phonetic": "/miːt/", "meaning": "肉", "example": "I like <em>meat</em>.", "emoji": "🥩" },
+                    { "word": "newspaper", "phonetic": "/ˈnjuːzpeɪpə(r)/", "meaning": "报纸", "example": "Dad reads a <em>newspaper</em>.", "emoji": "📰" },
+                    { "word": "exercise", "phonetic": "/ˈeksəsaɪz/", "meaning": "运动，锻炼", "example": "I <em>exercise</em> every day.", "emoji": "🏃" }
+                ]
+            }
+        }
     }
 };
