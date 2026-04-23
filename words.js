@@ -4743,5 +4743,70 @@ const WORD_DB = {
                 ]
             }
         }
+    },
+    "BNU_6下": {
+        "name": "六年级下册（北师大版）",
+        "grade": 6,
+        "semester": "下",
+        "units": {
+            "7": {
+                "name": "Unit 7",
+                "words": [
+                    { "word": "vacation", "phonetic": "/vəˈkeɪʃn/", "meaning": "假期", "example": "I like summer <em>vacation</em>.", "emoji": "🏖️" },
+                    { "word": "travel", "phonetic": "/ˈtrævl/", "meaning": "旅行", "example": "I like to <em>travel</em>.", "emoji": "✈️" },
+                    { "word": "housework", "phonetic": "/ˈhaʊswɜːk/", "meaning": "家务劳动", "example": "I help with <em>housework</em>.", "emoji": "🧹" },
+                    { "word": "over", "phonetic": "/ˈəʊvə(r)/", "meaning": "在……期间", "example": "What did you do <em>over</em> the vacation?", "emoji": "⏳" },
+                    { "word": "trip", "phonetic": "/trɪp/", "meaning": "旅行，出行", "example": "We had a school <em>trip</em>.", "emoji": "🎒" },
+                    { "word": "London", "phonetic": "/ˈlʌndən/", "meaning": "伦敦", "example": "I went to <em>London</em>.", "emoji": "🇬🇧" },
+                    { "word": "exciting", "phonetic": "/ɪkˈsaɪtɪŋ/", "meaning": "令人兴奋的", "example": "The trip was <em>exciting</em>.", "emoji": "🤩" },
+                    { "word": "photo", "phonetic": "/ˈfəʊtəʊ/", "meaning": "照片", "example": "I took a <em>photo</em>.", "emoji": "📷" },
+                    { "word": "tour", "phonetic": "/tʊə(r)/", "meaning": "游览，观光", "example": "We went on a <em>tour</em>.", "emoji": "🗺️" },
+                    { "word": "top", "phonetic": "/tɒp/", "meaning": "顶部，上端", "example": "We climbed to the <em>top</em>.", "emoji": "⬆️" },
+                    { "word": "special", "phonetic": "/ˈspeʃl/", "meaning": "特别的", "example": "It was a <em>special</em> day.", "emoji": "⭐" },
+                    { "word": "bring", "phonetic": "/brɪŋ/", "meaning": "带来，带回", "example": "I <em>brought</em> a gift.", "emoji": "🤲" },
+                    { "word": "weekend", "phonetic": "/ˌwiːkˈend/", "meaning": "周末", "example": "I played on the <em>weekend</em>.", "emoji": "📅" },
+                    { "word": "read", "phonetic": "/red/", "meaning": "阅读", "example": "I <em>read</em> a book.", "emoji": "📖" },
+                    { "word": "write", "phonetic": "/raɪt/", "meaning": "写", "example": "I <em>wrote</em> a letter.", "emoji": "✍️" }
+                ]
+            },
+            "8": {
+                "name": "Unit 8",
+                "words": [
+                    { "word": "concert", "phonetic": "/ˈkɒnsət/", "meaning": "音乐会", "example": "I went to a <em>concert</em>.", "emoji": "🎵" },
+                    { "word": "program", "phonetic": "/ˈprəʊɡræm/", "meaning": "节目单；节目", "example": "Look at the <em>program</em>.", "emoji": "📋" },
+                    { "word": "piano", "phonetic": "/piˈænəʊ/", "meaning": "钢琴", "example": "She plays the <em>piano</em>.", "emoji": "🎹" },
+                    { "word": "drum", "phonetic": "/drʌm/", "meaning": "鼓", "example": "He plays the <em>drum</em>.", "emoji": "🥁" },
+                    { "word": "guitar", "phonetic": "/ɡɪˈtɑː(r)/", "meaning": "吉他", "example": "He plays the <em>guitar</em>.", "emoji": "🎸" },
+                    { "word": "flute", "phonetic": "/fluːt/", "meaning": "笛子", "example": "She plays the <em>flute</em>.", "emoji": "🎶" },
+                    { "word": "will", "phonetic": "/wɪl/", "meaning": "将，会，要", "example": "I <em>will</em> go to the concert.", "emoji": "🔜" },
+                    { "word": "wonderful", "phonetic": "/ˈwʌndəfl/", "meaning": "美妙的", "example": "The music is <em>wonderful</em>.", "emoji": "🌟" },
+                    { "word": "begin", "phonetic": "/bɪˈɡɪn/", "meaning": "开始", "example": "The concert <em>begins</em> at 7.", "emoji": "▶️" },
+                    { "word": "soon", "phonetic": "/suːn/", "meaning": "不久", "example": "See you <em>soon</em>.", "emoji": "⏳" },
+                    { "word": "tonight", "phonetic": "/təˈnaɪt/", "meaning": "今晚", "example": "I <em>will</em> watch TV <em>tonight</em>.", "emoji": "🌙" },
+                    { "word": "worried", "phonetic": "/ˈwʌrid/", "meaning": "担忧的", "example": "Don't be <em>worried</em>.", "emoji": "😟" },
+                    { "word": "violin", "phonetic": "/ˌvaɪəˈlɪn/", "meaning": "小提琴", "example": "She plays the <em>violin</em>.", "emoji": "🎻" }
+                ]
+            },
+            "9": {
+                "name": "Unit 9",
+                "words": [
+                    { "word": "year", "phonetic": "/jɪə(r)/", "meaning": "年", "example": "Happy New <em>Year</em>!", "emoji": "🎉" },
+                    { "word": "live", "phonetic": "/lɪv/", "meaning": "居住", "example": "I <em>live</em> in Beijing.", "emoji": "🏠" },
+                    { "word": "people", "phonetic": "/ˈpiːpl/", "meaning": "人，人们", "example": "There are many <em>people</em>.", "emoji": "👥" },
+                    { "word": "think", "phonetic": "/θɪŋk/", "meaning": "认为，以为；思考", "example": "I <em>think</em> so.", "emoji": "🤔" },
+                    { "word": "life", "phonetic": "/laɪf/", "meaning": "生活；生命", "example": "I like school <em>life</em>.", "emoji": "🌈" },
+                    { "word": "hard", "phonetic": "/hɑːd/", "meaning": "困难的", "example": "The question is <em>hard</em>.", "emoji": "💪" },
+                    { "word": "happen", "phonetic": "/ˈhæpən/", "meaning": "发生", "example": "What <em>happened</em>?", "emoji": "❗" },
+                    { "word": "future", "phonetic": "/ˈfjuːtʃə(r)/", "meaning": "未来", "example": "I want to be a teacher in the <em>future</em>.", "emoji": "🔮" },
+                    { "word": "everything", "phonetic": "/ˈevriθɪŋ/", "meaning": "一切，每件事", "example": "<em>Everything</em> is fine.", "emoji": "💯" },
+                    { "word": "more", "phonetic": "/mɔː(r)/", "meaning": "更多", "example": "I need <em>more</em> time.", "emoji": "➕" },
+                    { "word": "better", "phonetic": "/ˈbetə(r)/", "meaning": "更好的，较好的", "example": "I feel <em>better</em> now.", "emoji": "👍" },
+                    { "word": "dirty", "phonetic": "/ˈdɜːti/", "meaning": "脏的", "example": "The water is <em>dirty</em>.", "emoji": "🫧" },
+                    { "word": "terrible", "phonetic": "/ˈterəbl/", "meaning": "糟糕的", "example": "The weather is <em>terrible</em>.", "emoji": "😖" },
+                    { "word": "believe", "phonetic": "/bɪˈliːv/", "meaning": "认为，相信", "example": "I <em>believe</em> you.", "emoji": "🤝" },
+                    { "word": "sea", "phonetic": "/siː/", "meaning": "海洋", "example": "The <em>sea</em> is blue.", "emoji": "🌊" }
+                ]
+            }
+        }
     }
 };
