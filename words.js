@@ -6675,5 +6675,210 @@ const WORD_DB = {
                 ]
             }
         }
+    },
+    "WYS_CL_5下": {
+        "name": "五年级下册（外研社版·陈琳·三年级起点）",
+        "grade": 5,
+        "semester": "下",
+        "units": {
+            "1": {
+                "name": "Module 1",
+                "words": [
+                    { "word": "still", "phonetic": "/stɪl/", "meaning": "还，仍然", "example": "She is <em>still</em> working.", "emoji": "🔄" },
+                    { "word": "programme", "phonetic": "/ˈprəʊɡræm/", "meaning": "（电视或广播）节目", "example": "I like this <em>programme</em>.", "emoji": "📺" },
+                    { "word": "lady", "phonetic": "/ˈleɪdi/", "meaning": "女士，夫人", "example": "The <em>lady</em> is old.", "emoji": "👩" },
+                    { "word": "life", "phonetic": "/laɪf/", "meaning": "生活", "example": "Life was very <em>different</em> then.", "emoji": "🌱" },
+                    { "word": "different", "phonetic": "/ˈdɪfrənt/", "meaning": "不同的", "example": "Life was very <em>different</em>.", "emoji": "🔀" },
+                    { "word": "ago", "phonetic": "/əˈɡəʊ/", "meaning": "以前", "example": "It was many years <em>ago</em>.", "emoji": "⏪" },
+                    { "word": "interviewer", "phonetic": "/ˈɪntəvjuːə(r)/", "meaning": "采访者", "example": "The <em>interviewer</em> asks questions.", "emoji": "🎤" },
+                    { "word": "enough", "phonetic": "/ɪˈnʌf/", "meaning": "足够的", "example": "There wasn't <em>enough</em> food.", "emoji": "👌" },
+                    { "word": "television", "phonetic": "/ˈtelɪvɪʒn/", "meaning": "电视机", "example": "We didn't have a <em>television</em>.", "emoji": "📺" },
+                    { "word": "grandchildren", "phonetic": "/ˈɡræntʃɪldrən/", "meaning": "（grandchild的复数形式）(外)孙子；(外)孙女", "example": "She has many <em>grandchildren</em>.", "emoji": "👶" },
+                    { "word": "change", "phonetic": "/tʃeɪndʒ/", "meaning": "改变，变化", "example": "China is <em>changing</em>.", "emoji": "🔄" },
+                    { "word": "night", "phonetic": "/naɪt/", "meaning": "夜晚，夜间", "example": "She worked in the <em>fields</em> at night.", "emoji": "🌙" },
+                    { "word": "work", "phonetic": "/wɜːk/", "meaning": "工作；劳动；干活儿", "example": "She <em>worked</em> in the fields.", "emoji": "💼" },
+                    { "word": "field", "phonetic": "/fiːld/", "meaning": "田地", "example": "They worked in the <em>fields</em>.", "emoji": "🌾" },
+                    { "word": "fire", "phonetic": "/ˈfaɪə(r)/", "meaning": "火，炉火", "example": "They cooked on a <em>fire</em>.", "emoji": "🔥" },
+                    { "word": "or", "phonetic": "/ɔː(r)/", "meaning": "（用于否定句中）也不，也没", "example": "She didn't have a radio <em>or</em> a television.", "emoji": "🚫" },
+                    { "word": "radio", "phonetic": "/ˈreɪdiəʊ/", "meaning": "收音机", "example": "We didn't have a <em>radio</em>.", "emoji": "📻" },
+                    { "word": "telephone", "phonetic": "/ˈtelɪfəʊn/", "meaning": "电话", "example": "She couldn't use a <em>telephone</em>.", "emoji": "📞" },
+                    { "word": "couldn't = could not", "phonetic": "", "meaning": "不能", "example": "She <em>couldn't</em> read or write.", "emoji": "🚫" },
+                    { "word": "write", "phonetic": "/raɪt/", "meaning": "写", "example": "She couldn't <em>write</em>.", "emoji": "✍️" },
+                    { "word": "hope", "phonetic": "/həʊp/", "meaning": "希望", "example": "I <em>hope</em> you are well.", "emoji": "🤞" }
+                ]
+            },
+            "2": {
+                "name": "Module 2",
+                "words": [
+                    { "word": "learnt", "phonetic": "/lɜːnt/", "meaning": "（learn的过去式）学习", "example": "She <em>learnt</em> to dance.", "emoji": "📖" },
+                    { "word": "taught", "phonetic": "/tɔːt/", "meaning": "（teach的过去式）教，讲授", "example": "She <em>taught</em> languages.", "emoji": "👩‍🏫" },
+                    { "word": "language", "phonetic": "/ˈlæŋɡwɪdʒ/", "meaning": "语言", "example": "She learnt foreign <em>languages</em>.", "emoji": "💬" },
+                    { "word": "wrote", "phonetic": "/rəʊt/", "meaning": "（write的过去式）写", "example": "She <em>wrote</em> a book.", "emoji": "✍️" },
+                    { "word": "dancer", "phonetic": "/ˈdɑːnsə(r)/", "meaning": "舞蹈演员", "example": "She was a <em>dancer</em>.", "emoji": "💃" },
+                    { "word": "foreign", "phonetic": "/ˈfɒrən/", "meaning": "外国的", "example": "She studied <em>foreign</em> languages.", "emoji": "🌍" },
+                    { "word": "studied", "phonetic": "/ˈstʌdid/", "meaning": "（study的过去式）学习", "example": "She <em>studied</em> hard.", "emoji": "📚" },
+                    { "word": "hard", "phonetic": "/hɑːd/", "meaning": "努力地", "example": "She studied very <em>hard</em>.", "emoji": "💪" }
+                ]
+            },
+            "3": {
+                "name": "Module 3",
+                "words": [
+                    { "word": "hamburger", "phonetic": "/ˈhæmbɜːɡə(r)/", "meaning": "汉堡包", "example": "I like <em>hamburgers</em>.", "emoji": "🍔" },
+                    { "word": "English", "phonetic": "/ˈɪŋɡlɪʃ/", "meaning": "英国（式）的", "example": "I had an <em>English</em> breakfast.", "emoji": "🇬🇧" },
+                    { "word": "breakfast", "phonetic": "/ˈbrekfəst/", "meaning": "早餐，早饭", "example": "I had eggs for <em>breakfast</em>.", "emoji": "🍳" },
+                    { "word": "lunch", "phonetic": "/lʌntʃ/", "meaning": "午餐，午饭", "example": "I had <em>lunch</em> at twelve.", "emoji": "🥪" },
+                    { "word": "sandwich", "phonetic": "/ˈsænwɪtʃ/", "meaning": "三明治", "example": "I had a <em>sandwich</em> for lunch.", "emoji": "🥪" },
+                    { "word": "fish and chips", "phonetic": "", "meaning": "炸鱼加炸薯条", "example": "<em>Fish and chips</em> is traditional.", "emoji": "🐟" },
+                    { "word": "traditional", "phonetic": "/trəˈdɪʃənl/", "meaning": "传统的", "example": "It's a <em>traditional</em> English dish.", "emoji": "🏮" },
+                    { "word": "dish", "phonetic": "/dɪʃ/", "meaning": "食品；菜肴", "example": "It's a traditional <em>dish</em>.", "emoji": "🍽️" },
+                    { "word": "very much", "phonetic": "", "meaning": "很，非常", "example": "I like it <em>very much</em>.", "emoji": "💯" },
+                    { "word": "gave", "phonetic": "/ɡeɪv/", "meaning": "（give的过去式）给", "example": "She <em>gave</em> me a hamburger.", "emoji": "🤲" },
+                    { "word": "tonight", "phonetic": "/təˈnaɪt/", "meaning": "今夜，今晚", "example": "What are you going to eat <em>tonight</em>?", "emoji": "🌙" }
+                ]
+            },
+            "4": {
+                "name": "Module 4",
+                "words": [
+                    { "word": "library", "phonetic": "/ˈlaɪbrəri/", "meaning": "图书馆", "example": "Let's go to the <em>library</em>.", "emoji": "📚" },
+                    { "word": "student", "phonetic": "/ˈstjuːdnt/", "meaning": "学生", "example": "We are good <em>students</em>.", "emoji": "🎓" },
+                    { "word": "sent", "phonetic": "/sent/", "meaning": "（send的过去式）发送，寄", "example": "I <em>sent</em> you an email.", "emoji": "📧" },
+                    { "word": "CD", "phonetic": "", "meaning": "激光唱片，光盘", "example": "I borrowed a <em>CD</em>.", "emoji": "💿" },
+                    { "word": "idea", "phonetic": "/aɪˈdɪə/", "meaning": "主意，想法", "example": "That's a good <em>idea</em>.", "emoji": "💡" },
+                    { "word": "put", "phonetic": "/pʊt/", "meaning": "放，安放", "example": "Please <em>put</em> them on the shelf.", "emoji": "📦" },
+                    { "word": "shelf", "phonetic": "/ʃelf/", "meaning": "架子", "example": "Put the books on the <em>shelf</em>.", "emoji": "📚" },
+                    { "word": "heavy", "phonetic": "/ˈhevi/", "meaning": "重的，沉的", "example": "This bag is very <em>heavy</em>.", "emoji": "🏋️" },
+                    { "word": "dictionary", "phonetic": "/ˈdɪkʃənri/", "meaning": "词典；字典", "example": "I need a <em>dictionary</em>.", "emoji": "📖" },
+                    { "word": "card", "phonetic": "/kɑːd/", "meaning": "卡片", "example": "I have a library <em>card</em>.", "emoji": "💳" },
+                    { "word": "library card", "phonetic": "", "meaning": "图书卡，借书证", "example": "You need a <em>library card</em>.", "emoji": "💳" },
+                    { "word": "ask", "phonetic": "/ɑːsk/", "meaning": "邀请", "example": "I want to <em>ask</em> you a question.", "emoji": "🙋" },
+                    { "word": "wrong", "phonetic": "/rɒŋ/", "meaning": "错误的", "example": "What's <em>wrong</em>?", "emoji": "❌" },
+                    { "word": "dear", "phonetic": "/dɪə(r)/", "meaning": "哎呀", "example": "Oh <em>dear</em>!", "emoji": "😮" },
+                    { "word": "information", "phonetic": "/ˌɪnfəˈmeɪʃn/", "meaning": "信息", "example": "I need some <em>information</em>.", "emoji": "ℹ️" },
+                    { "word": "e-book", "phonetic": "", "meaning": "电子书", "example": "I read an <em>e-book</em>.", "emoji": "📱" },
+                    { "word": "project", "phonetic": "/ˈprɒdʒekt/", "meaning": "项目", "example": "We are doing a <em>project</em>.", "emoji": "📋" },
+                    { "word": "guide", "phonetic": "/ɡaɪd/", "meaning": "介绍，指南，手册", "example": "This is a <em>guide</em> for students.", "emoji": "📖" },
+                    { "word": "film", "phonetic": "/fɪlm/", "meaning": "电影", "example": "We watched a <em>film</em>.", "emoji": "🎬" },
+                    { "word": "as well", "phonetic": "", "meaning": "又，还，也", "example": "I like reading <em>as well</em>.", "emoji": "➕" },
+                    { "word": "way", "phonetic": "/weɪ/", "meaning": "方法，方式", "example": "There are many <em>ways</em> to learn.", "emoji": "🛤️" },
+                    { "word": "on", "phonetic": "/ɒn/", "meaning": "关于", "example": "A book <em>on</em> science.", "emoji": "📖" },
+                    { "word": "topic", "phonetic": "/ˈtɒpɪk/", "meaning": "话题", "example": "What's the <em>topic</em>?", "emoji": "💬" }
+                ]
+            },
+            "5": {
+                "name": "Module 5",
+                "words": [
+                    { "word": "light", "phonetic": "/laɪt/", "meaning": "轻的", "example": "This bag is <em>light</em>.", "emoji": "🪶" },
+                    { "word": "hard", "phonetic": "/hɑːd/", "meaning": "困难的，费力的", "example": "It's <em>hard</em> to choose.", "emoji": "😓" },
+                    { "word": "broken", "phonetic": "/ˈbrəʊkən/", "meaning": "坏的，破的", "example": "The wheel is <em>broken</em>.", "emoji": "💔" },
+                    { "word": "department store", "phonetic": "", "meaning": "百货商店", "example": "Let's go to the <em>department store</em>.", "emoji": "🏬" },
+                    { "word": "pocket", "phonetic": "/ˈpɒkɪt/", "meaning": "口袋，兜", "example": "Put it in your <em>pocket</em>.", "emoji": "👕" },
+                    { "word": "umbrella", "phonetic": "/ʌmˈbrelə/", "meaning": "雨伞", "example": "I need an <em>umbrella</em>.", "emoji": "☂️" },
+                    { "word": "sales assistant", "phonetic": "", "meaning": "售货员，营业员", "example": "The <em>sales assistant</em> is helpful.", "emoji": "🛍️" },
+                    { "word": "wheel", "phonetic": "/wiːl/", "meaning": "轮子", "example": "The <em>wheel</em> is broken.", "emoji": "☸️" },
+                    { "word": "easy", "phonetic": "/ˈiːzi/", "meaning": "容易的，不费力的", "example": "It's <em>easy</em> for me.", "emoji": "👌" },
+                    { "word": "take", "phonetic": "/teɪk/", "meaning": "选择要；选择购买", "example": "I'll <em>take</em> this one.", "emoji": "🛒" },
+                    { "word": "too", "phonetic": "/tuː/", "meaning": "太，过于", "example": "It's <em>too</em> big.", "emoji": "⚠️" },
+                    { "word": "try", "phonetic": "/traɪ/", "meaning": "试，尝试", "example": "Can I <em>try</em> it on?", "emoji": "🤔" },
+                    { "word": "lovely", "phonetic": "/ˈlʌvli/", "meaning": "美丽的，可爱的；令人愉快的", "example": "It's a <em>lovely</em> bag.", "emoji": "😍" }
+                ]
+            },
+            "6": {
+                "name": "Module 6",
+                "words": [
+                    { "word": "get", "phonetic": "/ɡet/", "meaning": "到达", "example": "We will <em>get</em> there by bus.", "emoji": "🚌" },
+                    { "word": "west", "phonetic": "/west/", "meaning": "西，西部，西方；向西方", "example": "Xinjiang is in the <em>west</em>.", "emoji": "🧭" },
+                    { "word": "parent", "phonetic": "/ˈpeərənt/", "meaning": "母亲；父亲；家长", "example": "I went with my <em>parents</em>.", "emoji": "👨‍👩‍👧" },
+                    { "word": "stay", "phonetic": "/steɪ/", "meaning": "停留", "example": "We <em>stayed</em> with friends.", "emoji": "🏠" },
+                    { "word": "July", "phonetic": "/dʒuˈlaɪ/", "meaning": "七月", "example": "We went in <em>July</em>.", "emoji": "📅" },
+                    { "word": "south", "phonetic": "/saʊθ/", "meaning": "南，南部，南方；向南方", "example": "Hainan is in the <em>south</em>.", "emoji": "🧭" },
+                    { "word": "remember", "phonetic": "/rɪˈmembə(r)/", "meaning": "记得", "example": "I <em>remember</em> the trip.", "emoji": "💭" },
+                    { "word": "June", "phonetic": "/dʒuːn/", "meaning": "六月", "example": "We went in <em>June</em>.", "emoji": "📅" },
+                    { "word": "east", "phonetic": "/iːst/", "meaning": "东，东部，东方；向东方", "example": "Shanghai is in the <em>east</em>.", "emoji": "🧭" },
+                    { "word": "best", "phonetic": "/best/", "meaning": "最好的", "example": "This is the <em>best</em> trip.", "emoji": "🥇" },
+                    { "word": "north", "phonetic": "/nɔːθ/", "meaning": "北，北部，北方；向北方", "example": "Beijing is in the <em>north</em>.", "emoji": "🧭" },
+                    { "word": "rest", "phonetic": "/rest/", "meaning": "休息", "example": "Let's have a <em>rest</em>.", "emoji": "😴" },
+                    { "word": "have a rest", "phonetic": "", "meaning": "休息一下", "example": "We <em>had a rest</em>.", "emoji": "🛋️" },
+                    { "word": "rode", "phonetic": "/rəʊd/", "meaning": "（ride的过去式）骑", "example": "I <em>rode</em> a horse.", "emoji": "🐎" }
+                ]
+            },
+            "7": {
+                "name": "Module 7",
+                "words": [
+                    { "word": "evening", "phonetic": "/ˈiːvnɪŋ/", "meaning": "傍晚，晚上", "example": "I go home in the <em>evening</em>.", "emoji": "🌆" },
+                    { "word": "late", "phonetic": "/leɪt/", "meaning": "近日暮的；近深夜的；时间不早的", "example": "It's very <em>late</em>.", "emoji": "⏰" },
+                    { "word": "worker", "phonetic": "/ˈwɜːkə(r)/", "meaning": "工人", "example": "My father is a <em>worker</em>.", "emoji": "👷" },
+                    { "word": "factory", "phonetic": "/ˈfæktəri/", "meaning": "制造厂；工厂", "example": "He works in a <em>factory</em>.", "emoji": "🏭" },
+                    { "word": "early", "phonetic": "/ˈɜːli/", "meaning": "早的", "example": "I get up <em>early</em>.", "emoji": "🌅" },
+                    { "word": "taxi", "phonetic": "/ˈtæksi/", "meaning": "出租车，计程车", "example": "I go to work by <em>taxi</em>.", "emoji": "🚕" },
+                    { "word": "quarter", "phonetic": "/ˈkwɔːtə(r)/", "meaning": "一刻钟", "example": "It's a <em>quarter</em> to eight.", "emoji": "🕐" },
+                    { "word": "to", "phonetic": "/tuː/", "meaning": "（距整点）差……", "example": "It's quarter <em>to</em> eight.", "emoji": "⏰" },
+                    { "word": "worry", "phonetic": "/ˈwʌri/", "meaning": "焦虑，担心", "example": "Don't <em>worry</em>.", "emoji": "😟" }
+                ]
+            },
+            "8": {
+                "name": "Module 8",
+                "words": [
+                    { "word": "paper", "phonetic": "/ˈpeɪpə(r)/", "meaning": "纸", "example": "I need some <em>paper</em>.", "emoji": "📄" },
+                    { "word": "Chinese", "phonetic": "/ˌtʃaɪˈniːz/", "meaning": "中国人的", "example": "I made a <em>Chinese</em> kite.", "emoji": "🇨🇳" },
+                    { "word": "so", "phonetic": "/səʊ/", "meaning": "如此，这样", "example": "It's <em>so</em> beautiful.", "emoji": "✨" },
+                    { "word": "word", "phonetic": "/wɜːd/", "meaning": "词，字", "example": "I wrote a <em>word</em> on it.", "emoji": "📝" },
+                    { "word": "drew", "phonetic": "/druː/", "meaning": "（draw的过去式）画", "example": "I <em>drew</em> a dragon.", "emoji": "✏️" },
+                    { "word": "cut", "phonetic": "/kʌt/", "meaning": "（cut的过去式）剪，切，割", "example": "I <em>cut</em> the paper.", "emoji": "✂️" },
+                    { "word": "piece", "phonetic": "/piːs/", "meaning": "张，片，块", "example": "I cut a <em>piece</em> of paper.", "emoji": "📄" },
+                    { "word": "paint", "phonetic": "/peɪnt/", "meaning": "（用颜料）绘画，着色", "example": "I <em>painted</em> it red.", "emoji": "🎨" },
+                    { "word": "put", "phonetic": "/pʊt/", "meaning": "（put的过去式）放，安放", "example": "I <em>put</em> sticks on it.", "emoji": "📦" },
+                    { "word": "stick", "phonetic": "/stɪk/", "meaning": "小木棍，小木条", "example": "I used <em>sticks</em> to make the kite.", "emoji": "🪵" },
+                    { "word": "tied", "phonetic": "/taɪd/", "meaning": "（tie的过去式）扎上，系上", "example": "I <em>tied</em> strings to it.", "emoji": "🪢" },
+                    { "word": "string", "phonetic": "/strɪŋ/", "meaning": "线，绳子", "example": "I <em>tied</em> the string.", "emoji": "🧵" }
+                ]
+            },
+            "9": {
+                "name": "Module 9",
+                "words": [
+                    { "word": "laugh", "phonetic": "/lɑːf/", "meaning": "笑", "example": "We <em>laughed</em> a lot.", "emoji": "😂" },
+                    { "word": "wore", "phonetic": "/wɔː(r)/", "meaning": "（wear的过去式）穿", "example": "The men <em>wore</em> women's clothes.", "emoji": "👔" },
+                    { "word": "letter", "phonetic": "/ˈletə(r)/", "meaning": "信，书信", "example": "I got a <em>letter</em>.", "emoji": "✉️" },
+                    { "word": "theatre", "phonetic": "/ˈθɪətə(r)/", "meaning": "剧院", "example": "We went to a <em>theatre</em>.", "emoji": "🎭" },
+                    { "word": "women", "phonetic": "/ˈwɪmɪn/", "meaning": "（woman的复数形式）女性，妇女", "example": "The <em>women</em> wore men's clothes.", "emoji": "👩" },
+                    { "word": "actor", "phonetic": "/ˈæktə(r)/", "meaning": "演员", "example": "The <em>actors</em> told jokes.", "emoji": "🎭" },
+                    { "word": "told", "phonetic": "/təʊld/", "meaning": "（tell的过去式）口述，讲（故事等）", "example": "They <em>told</em> lots of jokes.", "emoji": "🗣️" },
+                    { "word": "joke", "phonetic": "/dʒəʊk/", "meaning": "笑话", "example": "The jokes were very <em>funny</em>.", "emoji": "😂" },
+                    { "word": "after", "phonetic": "/ˈɑːftə(r)/", "meaning": "在……后", "example": "<em>After</em> the show, we went to a restaurant.", "emoji": "⏭️" },
+                    { "word": "show", "phonetic": "/ʃəʊ/", "meaning": "（尤指剧院的）演出，表演", "example": "The <em>show</em> was very funny.", "emoji": "🎭" },
+                    { "word": "restaurant", "phonetic": "/ˈrestrɒnt/", "meaning": "饭店，餐馆", "example": "We went to a <em>restaurant</em>.", "emoji": "🍽️" },
+                    { "word": "ready", "phonetic": "/ˈredi/", "meaning": "准备好的", "example": "Are you <em>ready</em>?", "emoji": "✅" },
+                    { "word": "borrow", "phonetic": "/ˈbɒrəʊ/", "meaning": "借入，借来", "example": "Can I <em>borrow</em> your book?", "emoji": "📖" },
+                    { "word": "read", "phonetic": "/red/", "meaning": "（read的过去式）读", "example": "I <em>read</em> a book about history.", "emoji": "📖" },
+                    { "word": "at all", "phonetic": "", "meaning": "一点都", "example": "I don't like it <em>at all</em>.", "emoji": "🚫" },
+                    { "word": "in", "phonetic": "/ɪn/", "meaning": "在（将来一段时间）之后", "example": "I'll be back <em>in</em> three days.", "emoji": "⏰" },
+                    { "word": "another", "phonetic": "/əˈnʌðə(r)/", "meaning": "另一个", "example": "Let's read <em>another</em> book.", "emoji": "➕" },
+                    { "word": "history", "phonetic": "/ˈhɪstri/", "meaning": "历史", "example": "I like <em>history</em>.", "emoji": "📜" },
+                    { "word": "ask", "phonetic": "/ɑːsk/", "meaning": "问，询问", "example": "I will <em>ask</em> you some questions.", "emoji": "🙋" },
+                    { "word": "question", "phonetic": "/ˈkwestʃən/", "meaning": "问题", "example": "I have a <em>question</em>.", "emoji": "❓" },
+                    { "word": "forget", "phonetic": "/fəˈɡet/", "meaning": "忘，忘记", "example": "Don't <em>forget</em> to bring your book.", "emoji": "🧠" },
+                    { "word": "bring", "phonetic": "/brɪŋ/", "meaning": "带来，拿来", "example": "Please <em>bring</em> your dictionary.", "emoji": "🤲" },
+                    { "word": "soon", "phonetic": "/suːn/", "meaning": "不久，很快", "example": "See you <em>soon</em>.", "emoji": "👋" }
+                ]
+            },
+            "10": {
+                "name": "Module 10",
+                "words": [
+                    { "word": "when", "phonetic": "/wen/", "meaning": "在什么时候", "example": "<em>When</em> are you going to the airport?", "emoji": "❓" },
+                    { "word": "end", "phonetic": "/end/", "meaning": "结束，终止", "example": "It's the <em>end</em> of the term.", "emoji": "🏁" },
+                    { "word": "nervous", "phonetic": "/ˈnɜːvəs/", "meaning": "紧张的，情绪不安的", "example": "I feel <em>nervous</em>.", "emoji": "😰" },
+                    { "word": "all right", "phonetic": "", "meaning": "没事，没问题", "example": "It will be <em>all right</em>.", "emoji": "👌" },
+                    { "word": "airport", "phonetic": "/ˈeəpɔːt/", "meaning": "机场", "example": "We went to the <em>airport</em>.", "emoji": "✈️" },
+                    { "word": "ticket", "phonetic": "/ˈtɪkɪt/", "meaning": "票", "example": "Here is my <em>ticket</em>.", "emoji": "🎫" },
+                    { "word": "passport", "phonetic": "/ˈpɑːspɔːt/", "meaning": "护照", "example": "Don't forget your <em>passport</em>.", "emoji": "📕" },
+                    { "word": "safe", "phonetic": "/seɪf/", "meaning": "安全的，平安的", "example": "Have a <em>safe</em> trip!", "emoji": "🛡️" },
+                    { "word": "pet", "phonetic": "/pet/", "meaning": "宠物", "example": "I have a <em>pet</em> dog.", "emoji": "🐕" },
+                    { "word": "speak", "phonetic": "/spiːk/", "meaning": "说，讲", "example": "She can <em>speak</em> English.", "emoji": "🗣️" },
+                    { "word": "building", "phonetic": "/ˈbɪldɪŋ/", "meaning": "建筑物", "example": "There are lots of tall <em>buildings</em>.", "emoji": "🏢" },
+                    { "word": "American", "phonetic": "/əˈmerɪkən/", "meaning": "美国的；美国人的；美国", "example": "She is <em>American</em>.", "emoji": "🇺🇸" },
+                    { "word": "find out", "phonetic": "", "meaning": "发现，弄清", "example": "I want to <em>find out</em> more.", "emoji": "🔍" },
+                    { "word": "more", "phonetic": "/mɔː(r)/", "meaning": "更多的（量），较多的（量）", "example": "I want to know <em>more</em>.", "emoji": "📈" }
+                ]
+            }
+        }
     }
 };
