@@ -1501,8 +1501,10 @@ const App = (() => {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = '';
-        const grades = [3, 4, 5, 6];
-        const gradeLabels = { 3: '三年级', 4: '四年级', 5: '五年级', 6: '六年级' };
+        const extraGrades = { 'WYS_CL1': [1, 2], 'JJ_Y': [1, 2], 'WYS_CL1': [1, 2] };
+        const baseGrades = extraGrades[version] ? extraGrades[version].concat([3, 4, 5, 6]) : [3, 4, 5, 6];
+        const grades = baseGrades;
+        const gradeLabels = { 1: '一年级', 2: '二年级', 3: '三年级', 4: '四年级', 5: '五年级', 6: '六年级' };
         const hasAny = grades.some(g => WORD_DB[`${version}_${g}上`] || WORD_DB[`${version}_${g}下`]);
         grades.forEach(grade => {
             const group = document.createElement('div');
