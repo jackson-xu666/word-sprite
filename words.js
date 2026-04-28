@@ -9716,5 +9716,163 @@ const WORD_DB = {
                 ]
             }
         }
+    },
+    "MJ_5下": {
+        "name": "五年级下册（闽教版）",
+        "grade": 5,
+        "semester": "下",
+        "units": {
+            "1": {
+                "name": "Unit 1",
+                "words": [
+                    {"word": "was", "phonetic": "/wɒz/", "meaning": "am、is 的过去式", "example": "I <em>was</em> at home yesterday.", "emoji": "✅"},
+                    {"word": "were", "phonetic": "/wɜː/", "meaning": "are 的过去式", "example": "We <em>were</em> happy.", "emoji": "✅"},
+                    {"word": "China", "phonetic": "/ˈtʃaɪnə/", "meaning": "中国", "example": "I live in <em>China</em>.", "emoji": "🇨🇳"},
+                    {"word": "went", "phonetic": "/went/", "meaning": "go 的过去式", "example": "I <em>went</em> to the park.", "emoji": "🚶"},
+                    {"word": "parent", "phonetic": "/ˈpeərənt/", "meaning": "父，母；家长", "example": "My <em>parents</em> love me.", "emoji": "👨‍👩‍👧"},
+                    {"word": "hometown", "phonetic": "/ˈhəʊmtaʊn/", "meaning": "故乡", "example": "This is my <em>hometown</em>.", "emoji": "🏠"},
+                    {"word": "took", "phonetic": "/tʊk/", "meaning": "take 的过去式", "example": "I <em>took</em> a picture.", "emoji": "📸"},
+                    {"word": "tour", "phonetic": "/tʊə/", "meaning": "旅行；旅游", "example": "We went on a <em>tour</em>.", "emoji": "✈️"},
+                    {"word": "Sun Moon Lake", "phonetic": "/sʌn muːn leɪk/", "meaning": "日月潭", "emoji": "🏞️"},
+                    {"word": "lake", "phonetic": "/leɪk/", "meaning": "湖", "example": "The <em>lake</em> is beautiful.", "emoji": "🏞️"},
+                    {"word": "did", "phonetic": "/dɪd/", "meaning": "do 的过去式", "example": "What <em>did</em> you do?", "emoji": "✅"},
+                    {"word": "swam", "phonetic": "/swæm/", "meaning": "swim 的过去式", "example": "I <em>swam</em> in the lake.", "emoji": "🏊"}
+                ]
+            },
+            "2": {
+                "name": "Unit 2",
+                "words": [
+                    {"word": "elephant", "phonetic": "/ˈelɪfənt/", "meaning": "大象", "example": "The <em>elephant</em> is big.", "emoji": "🐘"},
+                    {"word": "map", "phonetic": "/mæp/", "meaning": "地图", "example": "Look at the <em>map</em>.", "emoji": "🗺️"},
+                    {"word": "over there", "phonetic": "/ˈəʊvə ðeə/", "meaning": "在那边", "example": "The elephant is <em>over there</em>.", "emoji": "👉"},
+                    {"word": "hill", "phonetic": "/hɪl/", "meaning": "小山", "example": "Let's climb the <em>hill</em>.", "emoji": "⛰️"},
+                    {"word": "under", "phonetic": "/ˈʌndə/", "meaning": "在……下面", "example": "The cat is <em>under</em> the tree.", "emoji": "⬇️"},
+                    {"word": "next to", "phonetic": "/nekst tuː/", "meaning": "紧挨着", "example": "The park is <em>next to</em> the school.", "emoji": "📍"},
+                    {"word": "animal", "phonetic": "/ˈænɪml/", "meaning": "动物", "example": "I like <em>animals</em>.", "emoji": "🐾"},
+                    {"word": "saw", "phonetic": "/sɔː/", "meaning": "see 的过去式", "example": "I <em>saw</em> an elephant.", "emoji": "👀"},
+                    {"word": "hungry", "phonetic": "/ˈhʌŋɡri/", "meaning": "饿的", "example": "The monkey is <em>hungry</em>.", "emoji": "🤤"},
+                    {"word": "ate", "phonetic": "/eɪt/", "meaning": "eat 的过去式", "example": "I <em>ate</em> a banana.", "emoji": "🍽️"},
+                    {"word": "any", "phonetic": "/ˈeni/", "meaning": "任何的；若干", "example": "Do you have <em>any</em> bananas?", "emoji": "❓"}
+                ]
+            },
+            "3": {
+                "name": "Unit 3",
+                "words": [
+                    {"word": "doctor", "phonetic": "/ˈdɒktə/", "meaning": "医生", "example": "The <em>doctor</em> is kind.", "emoji": "👨‍⚕️"},
+                    {"word": "search for", "phonetic": "/sɜːtʃ fɔː/", "meaning": "搜索；查找", "example": "Let's <em>search for</em> information.", "emoji": "🔍"},
+                    {"word": "information", "phonetic": "/ˌɪnfəˈmeɪʃn/", "meaning": "信息", "example": "I need some <em>information</em>.", "emoji": "ℹ️"},
+                    {"word": "tired", "phonetic": "/taɪəd/", "meaning": "疲倦的", "example": "I am <em>tired</em>.", "emoji": "😴"},
+                    {"word": "fight", "phonetic": "/faɪt/", "meaning": "战斗，与……作斗争", "example": "Doctors <em>fight</em> the virus.", "emoji": "🛡️"},
+                    {"word": "Covid-19", "phonetic": "/kəʊvɪd naɪnˈtiːn/", "meaning": "新型冠状病毒感染", "emoji": "🦠"},
+                    {"word": "love", "phonetic": "/lʌv/", "meaning": "爱", "example": "I <em>love</em> my family.", "emoji": "❤️"},
+                    {"word": "people", "phonetic": "/ˈpiːpl/", "meaning": "人；人们", "example": "Many <em>people</em> were sick.", "emoji": "👥"},
+                    {"word": "hero", "phonetic": "/ˈhɪərəʊ/", "meaning": "英雄", "example": "The doctor is a <em>hero</em>.", "emoji": "🦸"},
+                    {"word": "award", "phonetic": "/əˈwɔːd/", "meaning": "授予；奖励", "example": "They <em>awarded</em> him a medal.", "emoji": "🏅"},
+                    {"word": "Medal of the Republic", "phonetic": "/ˈmedl əv ðə rɪˈpʌblɪk/", "meaning": "共和国勋章", "emoji": "🎖️"},
+                    {"word": "honor", "phonetic": "/ˈɒnə/", "meaning": "荣誉", "example": "It is a great <em>honor</em>.", "emoji": "🏆"},
+                    {"word": "Young Pioneer", "phonetic": "/jʌŋ ˌpaɪəˈnɪə/", "meaning": "少先队员", "example": "I am a <em>Young Pioneer</em>.", "emoji": "🧣"},
+                    {"word": "learn", "phonetic": "/lɜːn/", "meaning": "学习", "example": "I <em>learn</em> from the heroes.", "emoji": "📚"},
+                    {"word": "hard", "phonetic": "/hɑːd/", "meaning": "努力", "example": "They work <em>hard</em>.", "emoji": "💪"},
+                    {"word": "serve", "phonetic": "/sɜːv/", "meaning": "服务", "example": "They <em>serve</em> the people.", "emoji": "🤝"},
+                    {"word": "grow up", "phonetic": "/ɡrəʊ ʌp/", "meaning": "长大", "example": "I want to be a doctor when I <em>grow up</em>.", "emoji": "🌱"},
+                    {"word": "Dr.", "phonetic": "/ˈdɒktə/", "meaning": "医生；博士", "example": "<em>Dr.</em> Zhong is a hero.", "emoji": "👨‍⚕️"},
+                    {"word": "still", "phonetic": "/stɪl/", "meaning": "还是；仍然", "example": "He <em>still</em> works hard.", "emoji": "🔄"},
+                    {"word": "wife", "phonetic": "/waɪf/", "meaning": "妻子", "example": "His <em>wife</em> is also a doctor.", "emoji": "👩"},
+                    {"word": "member", "phonetic": "/ˈmembə/", "meaning": "成员", "example": "He is a <em>member</em> of the team.", "emoji": "👤"},
+                    {"word": "women", "phonetic": "/ˈwɪmɪn/", "meaning": "成年女子；妇女（woman 的复数）", "example": "Many <em>women</em> are doctors.", "emoji": "👩"},
+                    {"word": "team", "phonetic": "/tiːm/", "meaning": "（体育的）队", "example": "They are a <em>team</em>.", "emoji": "👥"}
+                ]
+            },
+            "4": {
+                "name": "Unit 4",
+                "words": [
+                    {"word": "spring outing", "phonetic": "/sprɪŋ ˈaʊtɪŋ/", "meaning": "春游", "example": "We are going on a <em>spring outing</em>.", "emoji": "🌸"},
+                    {"word": "climb", "phonetic": "/klaɪm/", "meaning": "攀爬", "example": "Let's <em>climb</em> the mountain.", "emoji": "🧗"},
+                    {"word": "mountain", "phonetic": "/ˈmaʊntɪn/", "meaning": "山", "example": "The <em>mountain</em> is high.", "emoji": "⛰️"},
+                    {"word": "water", "phonetic": "/ˈwɔːtə/", "meaning": "水", "example": "I want some <em>water</em>.", "emoji": "💧"},
+                    {"word": "thirsty", "phonetic": "/ˈθɜːsti/", "meaning": "渴的", "example": "I am <em>thirsty</em>.", "emoji": "🥤"},
+                    {"word": "camera", "phonetic": "/ˈkæmərə/", "meaning": "照相机", "example": "I have a <em>camera</em>.", "emoji": "📷"},
+                    {"word": "sky", "phonetic": "/skaɪ/", "meaning": "天空", "example": "Look at the <em>sky</em>.", "emoji": "🌤️"},
+                    {"word": "cloud", "phonetic": "/klaʊd/", "meaning": "云", "example": "There is a <em>cloud</em> in the sky.", "emoji": "☁️"},
+                    {"word": "get on", "phonetic": "/ɡet ɒn/", "meaning": "上车", "example": "Let's <em>get on</em> the bus.", "emoji": "🚌"},
+                    {"word": "gate", "phonetic": "/ɡeɪt/", "meaning": "大门", "example": "Meet at the <em>gate</em>.", "emoji": "🚪"},
+                    {"word": "pick", "phonetic": "/pɪk/", "meaning": "采；摘", "example": "Let's <em>pick</em> flowers.", "emoji": "🌷"},
+                    {"word": "village", "phonetic": "/ˈvɪlɪdʒ/", "meaning": "乡村；村庄", "example": "This is a beautiful <em>village</em>.", "emoji": "🏘️"},
+                    {"word": "hard-working", "phonetic": "/hɑːd ˈwɜːkɪŋ/", "meaning": "努力工作的", "example": "The farmers are <em>hard-working</em>.", "emoji": "💪"},
+                    {"word": "top", "phonetic": "/tɒp/", "meaning": "顶部", "example": "We are at the <em>top</em> of the mountain.", "emoji": "🔝"}
+                ]
+            },
+            "R1": {
+                "name": "Review 1",
+                "words": [
+                    {"word": "farmhouse", "phonetic": "/ˈfɑːmhaʊs/", "meaning": "农舍", "example": "We stayed at a <em>farmhouse</em>.", "emoji": "🏡"},
+                    {"word": "really", "phonetic": "/ˈrɪəli/", "meaning": "确实地；的确", "example": "It is <em>really</em> beautiful.", "emoji": "💯"},
+                    {"word": "meal", "phonetic": "/miːl/", "meaning": "一顿饭", "example": "We had a big <em>meal</em>.", "emoji": "🍽️"}
+                ]
+            },
+            "5": {
+                "name": "Unit 5",
+                "words": [
+                    {"word": "Sports Day", "phonetic": "/spɔːts deɪ/", "meaning": "运动会", "example": "Today is <em>Sports Day</em>.", "emoji": "🏅"},
+                    {"word": "meter", "phonetic": "/ˈmiːtə/", "meaning": "米", "example": "I run 100 <em>meters</em>.", "emoji": "📏"},
+                    {"word": "fast", "phonetic": "/fɑːst/", "meaning": "快", "example": "He runs <em>fast</em>.", "emoji": "⚡"},
+                    {"word": "long jump", "phonetic": "/lɒŋ dʒʌmp/", "meaning": "跳远", "example": "I am good at <em>long jump</em>.", "emoji": "🦘"},
+                    {"word": "try", "phonetic": "/traɪ/", "meaning": "尝试", "example": "Let me <em>try</em>.", "emoji": "💪"},
+                    {"word": "high jump", "phonetic": "/haɪ dʒʌmp/", "meaning": "跳高", "example": "She is good at <em>high jump</em>.", "emoji": "🏋️"},
+                    {"word": "shout", "phonetic": "/ʃaʊt/", "meaning": "喊叫", "example": "We <em>shout</em> for our team.", "emoji": "📢"},
+                    {"word": "proud", "phonetic": "/praʊd/", "meaning": "自豪的；骄傲的", "example": "I am <em>proud</em> of you.", "emoji": "🏆"},
+                    {"word": "fall down", "phonetic": "/fɔːl daʊn/", "meaning": "跌倒；跌下", "example": "Don't <em>fall down</em>.", "emoji": "😵"},
+                    {"word": "well", "phonetic": "/wel/", "meaning": "好", "example": "You did <em>well</em>.", "emoji": "👍"},
+                    {"word": "busy", "phonetic": "/ˈbɪzi/", "meaning": "忙的", "example": "I am <em>busy</em> today.", "emoji": "🏃"},
+                    {"word": "ran", "phonetic": "/ræn/", "meaning": "run 的过去式", "example": "I <em>ran</em> fast.", "emoji": "🏃"},
+                    {"word": "grass", "phonetic": "/ɡrɑːs/", "meaning": "草", "example": "Don't run on the <em>grass</em>.", "emoji": "🌿"}
+                ]
+            },
+            "6": {
+                "name": "Unit 6",
+                "words": [
+                    {"word": "race", "phonetic": "/reɪs/", "meaning": "赛跑", "example": "I won the <em>race</em>.", "emoji": "🏃"},
+                    {"word": "first", "phonetic": "/fɜːst/", "meaning": "第一", "example": "I was <em>first</em>.", "emoji": "🥇"},
+                    {"word": "second", "phonetic": "/ˈsekənd/", "meaning": "第二", "example": "He was <em>second</em>.", "emoji": "🥈"},
+                    {"word": "third", "phonetic": "/θɜːd/", "meaning": "第三", "example": "She was <em>third</em>.", "emoji": "🥉"},
+                    {"word": "drink", "phonetic": "/drɪŋk/", "meaning": "喝", "example": "I <em>drink</em> some water.", "emoji": "🥤"},
+                    {"word": "sad", "phonetic": "/sæd/", "meaning": "难过的", "example": "Don't be <em>sad</em>.", "emoji": "😢"},
+                    {"word": "cheer up", "phonetic": "/tʃɪə ʌp/", "meaning": "振作起来", "example": "<em>Cheer up</em>!", "emoji": "😊"},
+                    {"word": "only", "phonetic": "/ˈəʊnli/", "meaning": "仅仅", "example": "I was <em>only</em> third.", "emoji": "☝️"},
+                    {"word": "fourth", "phonetic": "/fɔːθ/", "meaning": "第四", "example": "She was <em>fourth</em>.", "emoji": "4️⃣"},
+                    {"word": "angry", "phonetic": "/ˈæŋɡri/", "meaning": "生气的", "example": "Don't be <em>angry</em>.", "emoji": "😠"},
+                    {"word": "program", "phonetic": "/ˈprəʊɡræm/", "meaning": "节目", "example": "We watch the <em>program</em>.", "emoji": "📺"}
+                ]
+            },
+            "7": {
+                "name": "Unit 7",
+                "words": [
+                    {"word": "building", "phonetic": "/ˈbɪldɪŋ/", "meaning": "建筑物", "example": "This is a tall <em>building</em>.", "emoji": "🏢"},
+                    {"word": "floor", "phonetic": "/flɔː/", "meaning": "楼层", "example": "I live on the third <em>floor</em>.", "emoji": "🏢"},
+                    {"word": "twelfth", "phonetic": "/twelfθ/", "meaning": "第十二", "example": "He lives on the <em>twelfth</em> floor.", "emoji": "🔢"},
+                    {"word": "would", "phonetic": "/wʊd/", "meaning": "表达较合意愿的做法", "example": "I <em>would</em> like some tea.", "emoji": "💭"},
+                    {"word": "living room", "phonetic": "/ˈlɪvɪŋ ruːm/", "meaning": "客厅；起居室", "example": "We watch TV in the <em>living room</em>.", "emoji": "🛋️"},
+                    {"word": "bridge", "phonetic": "/brɪdʒ/", "meaning": "桥", "example": "There is a <em>bridge</em> over the river.", "emoji": "🌉"},
+                    {"word": "also", "phonetic": "/ˈɔːlsəʊ/", "meaning": "也", "example": "I <em>also</em> like it.", "emoji": "➕"},
+                    {"word": "fifteenth", "phonetic": "/fɪfˈtiːnθ/", "meaning": "第十五", "example": "She lives on the <em>fifteenth</em> floor.", "emoji": "🔢"},
+                    {"word": "neighbor", "phonetic": "/ˈneɪbə/", "meaning": "邻居", "example": "My <em>neighbor</em> is kind.", "emoji": "🏘️"},
+                    {"word": "river", "phonetic": "/ˈrɪvə/", "meaning": "河", "example": "The <em>river</em> is long.", "emoji": "🏞️"},
+                    {"word": "grandmother", "phonetic": "/ˈɡrænmʌðə/", "meaning": "祖母；外婆", "example": "I love my <em>grandmother</em>.", "emoji": "👵"},
+                    {"word": "grandfather", "phonetic": "/ˈɡrænfɑːðə/", "meaning": "祖父；外公", "example": "I love my <em>grandfather</em>.", "emoji": "👴"}
+                ]
+            },
+            "8": {
+                "name": "Unit 8",
+                "words": [
+                    {"word": "date", "phonetic": "/deɪt/", "meaning": "日期", "example": "What is the <em>date</em> today?", "emoji": "📅"},
+                    {"word": "lucky", "phonetic": "/ˈlʌki/", "meaning": "幸运的", "example": "You are <em>lucky</em>.", "emoji": "🍀"},
+                    {"word": "guess", "phonetic": "/ɡes/", "meaning": "猜", "example": "Can you <em>guess</em>?", "emoji": "🤔"},
+                    {"word": "difficult", "phonetic": "/ˈdɪfɪkəlt/", "meaning": "困难的", "example": "This is <em>difficult</em>.", "emoji": "😰"},
+                    {"word": "calendar", "phonetic": "/ˈkælɪndə/", "meaning": "日历", "example": "Look at the <em>calendar</em>.", "emoji": "📅"},
+                    {"word": "before", "phonetic": "/bɪˈfɔː/", "meaning": "在……之前", "example": "Wash your hands <em>before</em> eating.", "emoji": "⬅️"},
+                    {"word": "Mrs.", "phonetic": "/ˈmɪsɪz/", "meaning": "夫人；太太", "example": "<em>Mrs.</em> Li is our teacher.", "emoji": "👩"}
+                ]
+            }
+        }
     }
 };
