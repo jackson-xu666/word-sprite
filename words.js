@@ -9113,4 +9113,135 @@ const WORD_DB = {
             }
         }
     }
+,
+    "JJ_3下": {
+        "name": "三年级下册（冀教版）",
+        "grade": 3,
+        "semester": "下",
+        "units": {
+            "1": {
+                "name": "Unit 1",
+                "words": [
+                    { "word": "like", "phonetic": "/laɪk/", "meaning": "喜欢", "example": "I <em>like</em> apples.", "emoji": "❤️" },
+                    { "word": "apple", "phonetic": "/ˈæpl/", "meaning": "苹果", "example": "I like <em>apples</em>.", "emoji": "🍎" },
+                    { "word": "orange", "phonetic": "/ˈɒrɪndʒ/", "meaning": "橙子", "example": "Do you like <em>oranges</em>?", "emoji": "🍊" },
+                    { "word": "rice", "phonetic": "/raɪs/", "meaning": "米饭", "example": "I like <em>rice</em>.", "emoji": "🍚" },
+                    { "word": "you", "phonetic": "/juː/", "meaning": "你；你们", "example": "Thank <em>you</em>.", "emoji": "👉" },
+                    { "word": "vegetable", "phonetic": "/ˈvedʒtəbl/", "meaning": "蔬菜", "example": "Eat more <em>vegetables</em>.", "emoji": "🥬" },
+                    { "word": "meat", "phonetic": "/miːt/", "meaning": "肉", "example": "I don't like <em>meat</em>.", "emoji": "🥩" },
+                    { "word": "food", "phonetic": "/fuːd/", "meaning": "食物", "example": "What <em>food</em> do you like?", "emoji": "🍽️" },
+                    { "word": "fruit", "phonetic": "/fruːt/", "meaning": "水果", "example": "I like <em>fruit</em>.", "emoji": "🍇" },
+                    { "word": "banana", "phonetic": "/bəˈnɑːnə/", "meaning": "香蕉", "example": "I like <em>bananas</em>.", "emoji": "🍌" },
+                    { "word": "grape", "phonetic": "/ɡreɪp/", "meaning": "葡萄", "example": "The <em>grapes</em> are sweet.", "emoji": "🍇" },
+                    { "word": "eleven", "phonetic": "/ɪˈlevn/", "meaning": "十一", "example": "I have <em>eleven</em> apples.", "emoji": "🔢" },
+                    { "word": "twelve", "phonetic": "/twelv/", "meaning": "十二", "example": "There are <em>twelve</em> months.", "emoji": "🔢" },
+                    { "word": "bread", "phonetic": "/bred/", "meaning": "面包", "example": "I eat <em>bread</em> for breakfast.", "emoji": "🍞" },
+                    { "word": "my", "phonetic": "/maɪ/", "meaning": "我的", "example": "This is <em>my</em> book.", "emoji": "✋" },
+                    { "word": "favourite", "phonetic": "/ˈfeɪvərɪt/", "meaning": "特别喜爱的；特别喜爱的事物", "example": "What is your <em>favourite</em> food?", "emoji": "⭐" },
+                    { "word": "chicken", "phonetic": "/ˈtʃɪkɪn/", "meaning": "鸡肉", "example": "I like <em>chicken</em>.", "emoji": "🍗" },
+                    { "word": "fish", "phonetic": "/fɪʃ/", "meaning": "鱼肉；鱼", "example": "I like <em>fish</em>.", "emoji": "🐟" }
+                ]
+            },
+            "2": {
+                "name": "Unit 2",
+                "words": [
+                    { "word": "breakfast", "phonetic": "/ˈbrekfəst/", "meaning": "早餐", "example": "I have <em>breakfast</em> at seven.", "emoji": "🥣" },
+                    { "word": "egg", "phonetic": "/eɡ/", "meaning": "鸡蛋", "example": "I have an <em>egg</em> for breakfast.", "emoji": "🥚" },
+                    { "word": "juice", "phonetic": "/dʒuːs/", "meaning": "果汁", "example": "I like <em>juice</em>.", "emoji": "🧃" },
+                    { "word": "milk", "phonetic": "/mɪlk/", "meaning": "牛奶", "example": "I drink <em>milk</em> every day.", "emoji": "🥛" },
+                    { "word": "lunch", "phonetic": "/lʌntʃ/", "meaning": "午餐", "example": "I have <em>lunch</em> at twelve.", "emoji": "🍱" },
+                    { "word": "hungry", "phonetic": "/ˈhʌŋɡri/", "meaning": "饥饿的", "example": "I am <em>hungry</em>.", "emoji": "🤤" },
+                    { "word": "noodle", "phonetic": "/ˈnuːdl/", "meaning": "面条", "example": "I like <em>noodles</em>.", "emoji": "🍜" },
+                    { "word": "water", "phonetic": "/ˈwɔːtə/", "meaning": "水", "example": "I drink <em>water</em>.", "emoji": "💧" },
+                    { "word": "eat", "phonetic": "/iːt/", "meaning": "吃", "example": "I <em>eat</em> an apple.", "emoji": "🍽️" },
+                    { "word": "drink", "phonetic": "/drɪŋk/", "meaning": "喝", "example": "I <em>drink</em> milk.", "emoji": "🥛" },
+                    { "word": "soup", "phonetic": "/suːp/", "meaning": "汤", "example": "I like <em>soup</em>.", "emoji": "🍲" },
+                    { "word": "dinner", "phonetic": "/ˈdɪnə/", "meaning": "正餐；晚餐", "example": "We have <em>dinner</em> at six.", "emoji": "🍽️" },
+                    { "word": "good", "phonetic": "/ɡʊd/", "meaning": "好的", "example": "The food is <em>good</em>.", "emoji": "👍" }
+                ]
+            },
+            "3": {
+                "name": "Unit 3",
+                "words": [
+                    { "word": "morning", "phonetic": "/ˈmɔːnɪŋ/", "meaning": "早晨；上午", "example": "Good <em>morning</em>!", "emoji": "🌅" },
+                    { "word": "get up", "phonetic": "/ɡet ʌp/", "meaning": "起床", "example": "I <em>get up</em> at seven.", "emoji": "⏰" },
+                    { "word": "make my bed", "phonetic": "/meɪk maɪ bed/", "meaning": "整理床铺", "example": "I <em>make my bed</em> every morning.", "emoji": "🛏️" },
+                    { "word": "wash", "phonetic": "/wɒʃ/", "meaning": "洗", "example": "I <em>wash</em> my face.", "emoji": "🧼" },
+                    { "word": "evening", "phonetic": "/ˈiːvnɪŋ/", "meaning": "晚上；傍晚", "example": "Good <em>evening</em>!", "emoji": "🌆" },
+                    { "word": "do", "phonetic": "/duː/", "meaning": "做；干", "example": "What do you <em>do</em>?", "emoji": "✋" },
+                    { "word": "schoolbag", "phonetic": "/ˈskuːlbæɡ/", "meaning": "书包", "example": "My <em>schoolbag</em> is blue.", "emoji": "🎒" },
+                    { "word": "put", "phonetic": "/pʊt/", "meaning": "放；置", "example": "<em>Put</em> the book on the desk.", "emoji": "📥" },
+                    { "word": "clean", "phonetic": "/kliːn/", "meaning": "干净的；打扫", "example": "My room is <em>clean</em>.", "emoji": "🧹" },
+                    { "word": "tidy", "phonetic": "/ˈtaɪdi/", "meaning": "整洁的；整理", "example": "Keep your room <em>tidy</em>.", "emoji": "✨" },
+                    { "word": "room", "phonetic": "/ruːm/", "meaning": "房间", "example": "This is my <em>room</em>.", "emoji": "🏠" },
+                    { "word": "sock", "phonetic": "/sɒk/", "meaning": "短袜", "example": "Where is my <em>sock</em>?", "emoji": "🧦" }
+                ]
+            },
+            "4": {
+                "name": "Unit 4",
+                "words": [
+                    { "word": "farm", "phonetic": "/fɑːm/", "meaning": "农场", "example": "This is a <em>farm</em>.", "emoji": "🌾" },
+                    { "word": "river", "phonetic": "/ˈrɪvə/", "meaning": "河；江", "example": "The <em>river</em> is long.", "emoji": "🏞️" },
+                    { "word": "see", "phonetic": "/siː/", "meaning": "看见", "example": "I can <em>see</em> a horse.", "emoji": "👀" },
+                    { "word": "horse", "phonetic": "/hɔːs/", "meaning": "马", "example": "The <em>horse</em> is big.", "emoji": "🐴" },
+                    { "word": "cow", "phonetic": "/kaʊ/", "meaning": "奶牛", "example": "The <em>cow</em> gives us milk.", "emoji": "🐄" },
+                    { "word": "pig", "phonetic": "/pɪɡ/", "meaning": "猪", "example": "The <em>pig</em> is pink.", "emoji": "🐷" },
+                    { "word": "rabbit", "phonetic": "/ˈræbɪt/", "meaning": "兔", "example": "The <em>rabbit</em> is white.", "emoji": "🐰" },
+                    { "word": "sheep", "phonetic": "/ʃiːp/", "meaning": "绵羊；羊（复数 sheep）", "example": "I can see three <em>sheep</em>.", "emoji": "🐑" },
+                    { "word": "duck", "phonetic": "/dʌk/", "meaning": "鸭", "example": "The <em>duck</em> can swim.", "emoji": "🦆" },
+                    { "word": "bird", "phonetic": "/bɜːd/", "meaning": "鸟", "example": "The <em>bird</em> can fly.", "emoji": "🐦" },
+                    { "word": "tree", "phonetic": "/triː/", "meaning": "树；树木", "example": "There is a <em>tree</em> on the farm.", "emoji": "🌳" },
+                    { "word": "thirteen", "phonetic": "/ˌθɜːˈtiːn/", "meaning": "十三", "example": "I can see <em>thirteen</em> ducks.", "emoji": "🔢" },
+                    { "word": "fourteen", "phonetic": "/ˌfɔːˈtiːn/", "meaning": "十四", "emoji": "🔢" },
+                    { "word": "fifteen", "phonetic": "/ˌfɪfˈtiːn/", "meaning": "十五", "emoji": "🔢" },
+                    { "word": "sixteen", "phonetic": "/ˌsɪkˈstiːn/", "meaning": "十六", "emoji": "🔢" },
+                    { "word": "seventeen", "phonetic": "/ˌsevnˈtiːn/", "meaning": "十七", "emoji": "🔢" },
+                    { "word": "eighteen", "phonetic": "/ˌeɪˈtiːn/", "meaning": "十八", "emoji": "🔢" },
+                    { "word": "nineteen", "phonetic": "/ˌnaɪnˈtiːn/", "meaning": "十九", "emoji": "🔢" },
+                    { "word": "twenty", "phonetic": "/ˈtwenti/", "meaning": "二十", "example": "There are <em>twenty</em> animals.", "emoji": "🔢" },
+                    { "word": "animal", "phonetic": "/ˈænɪml/", "meaning": "动物", "example": "I like <em>animals</em>.", "emoji": "🐾" },
+                    { "word": "many", "phonetic": "/ˈmeni/", "meaning": "许多", "example": "There are <em>many</em> animals.", "emoji": "📦" }
+                ]
+            },
+            "5": {
+                "name": "Unit 5",
+                "words": [
+                    { "word": "zoo", "phonetic": "/zuː/", "meaning": "动物园", "example": "Let's go to the <em>zoo</em>.", "emoji": "🦁" },
+                    { "word": "panda", "phonetic": "/ˈpændə/", "meaning": "熊猫", "example": "The <em>panda</em> is cute.", "emoji": "🐼" },
+                    { "word": "it", "phonetic": "/ɪt/", "meaning": "它", "example": "<em>It</em> is a panda.", "emoji": "👉" },
+                    { "word": "white", "phonetic": "/waɪt/", "meaning": "白色（的）", "example": "The panda is <em>white</em> and black.", "emoji": "⬜" },
+                    { "word": "elephant", "phonetic": "/ˈelɪfənt/", "meaning": "象", "example": "The <em>elephant</em> is big.", "emoji": "🐘" },
+                    { "word": "tiger", "phonetic": "/ˈtaɪɡə/", "meaning": "老虎", "example": "The <em>tiger</em> is strong.", "emoji": "🐯" },
+                    { "word": "bear", "phonetic": "/beə/", "meaning": "熊", "example": "The <em>bear</em> is brown.", "emoji": "🐻" },
+                    { "word": "monkey", "phonetic": "/ˈmʌŋki/", "meaning": "猴子", "example": "The <em>monkey</em> is clever.", "emoji": "🐵" },
+                    { "word": "plant", "phonetic": "/plɑːnt/", "meaning": "植物", "example": "There are many <em>plants</em>.", "emoji": "🌱" },
+                    { "word": "cute", "phonetic": "/kjuːt/", "meaning": "可爱的", "example": "The panda is very <em>cute</em>.", "emoji": "🥰" },
+                    { "word": "its", "phonetic": "/ɪts/", "meaning": "它的", "example": "<em>Its</em> tail is short.", "emoji": "👉" },
+                    { "word": "can", "phonetic": "/kæn/", "meaning": "能；会", "example": "The monkey <em>can</em> climb.", "emoji": "💪" },
+                    { "word": "swim", "phonetic": "/swɪm/", "meaning": "游泳", "example": "The duck <em>can swim</em>.", "emoji": "🏊" }
+                ]
+            },
+            "6": {
+                "name": "Unit 6",
+                "words": [
+                    { "word": "day", "phonetic": "/deɪ/", "meaning": "一天；一日", "example": "What <em>day</em> is today?", "emoji": "📅" },
+                    { "word": "week", "phonetic": "/wiːk/", "meaning": "周；星期", "example": "There are seven days in a <em>week</em>.", "emoji": "📅" },
+                    { "word": "Monday", "phonetic": "/ˈmʌndeɪ/", "meaning": "星期一", "example": "I go to school on <em>Monday</em>.", "emoji": "📅" },
+                    { "word": "Tuesday", "phonetic": "/ˈtjuːzdeɪ/", "meaning": "星期二", "emoji": "📅" },
+                    { "word": "Wednesday", "phonetic": "/ˈwenzdeɪ/", "meaning": "星期三", "emoji": "📅" },
+                    { "word": "Thursday", "phonetic": "/ˈθɜːzdeɪ/", "meaning": "星期四", "emoji": "📅" },
+                    { "word": "Friday", "phonetic": "/ˈfraɪdeɪ/", "meaning": "星期五", "emoji": "📅" },
+                    { "word": "Saturday", "phonetic": "/ˈsætədeɪ/", "meaning": "星期六", "example": "I play on <em>Saturday</em>.", "emoji": "📅" },
+                    { "word": "Sunday", "phonetic": "/ˈsʌndeɪ/", "meaning": "星期日", "example": "<em>Sunday</em> is fun.", "emoji": "📅" },
+                    { "word": "time", "phonetic": "/taɪm/", "meaning": "时间", "example": "What <em>time</em> is it?", "emoji": "⏰" },
+                    { "word": "thirty", "phonetic": "/ˈθɜːti/", "meaning": "三十", "emoji": "🔢" },
+                    { "word": "forty", "phonetic": "/ˈfɔːti/", "meaning": "四十", "emoji": "🔢" },
+                    { "word": "ball", "phonetic": "/bɔːl/", "meaning": "球", "example": "I play with a <em>ball</em>.", "emoji": "⚽" },
+                    { "word": "dog", "phonetic": "/dɒɡ/", "meaning": "狗", "example": "The <em>dog</em> is my friend.", "emoji": "🐶" },
+                    { "word": "at", "phonetic": "/æt/", "meaning": "在", "example": "I get up <em>at</em> seven.", "emoji": "🕐" },
+                    { "word": "early", "phonetic": "/ˈɜːli/", "meaning": "提早的", "example": "I get up <em>early</em>.", "emoji": "🌅" }
+                ]
+            }
+        }
+    }
 };
