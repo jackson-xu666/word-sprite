@@ -9479,5 +9479,80 @@ const WORD_DB = {
                 ]
             }
         }
+    },
+    "JJ_6下": {
+    "name": "六年级下册（冀教版）",
+    "grade": 6,
+    "semester": "下",
+    "units": {
+        "1": {
+            "name": "Unit 1",
+            "words": [
+                { "word": "sport", "phonetic": "/spɔːt/", "meaning": "运动", "example": "What <em>sport</em> do you like?", "emoji": "🏅" },
+                { "word": "football", "phonetic": "/ˈfʊtbɔːl/", "meaning": "足球", "example": "I like <em>football</em>.", "emoji": "⚽" },
+                { "word": "any", "phonetic": "/ˈeni/", "meaning": "任一；一些", "example": "Do you have <em>any</em> balls?", "emoji": "❓" },
+                { "word": "some", "phonetic": "/sʌm/", "meaning": "一些", "example": "I have <em>some</em> balls.", "emoji": "📦" },
+                { "word": "wear", "phonetic": "/weə/", "meaning": "穿", "example": "I <em>wear</em> a T-shirt.", "emoji": "👕" },
+                { "word": "or", "phonetic": "/ɔː/", "meaning": "或者；还是", "example": "Do you like football <em>or</em> basketball?", "emoji": "❓" },
+                { "word": "basketball", "phonetic": "/ˈbɑːskɪtbɔːl/", "meaning": "篮球", "example": "I like playing <em>basketball</em>.", "emoji": "🏀" },
+                { "word": "try", "phonetic": "/traɪ/", "meaning": "试；尝试", "example": "Let me <em>try</em>.", "emoji": "💪" },
+                { "word": "heavy", "phonetic": "/ˈhevi/", "meaning": "重的", "example": "The ball is <em>heavy</em>.", "emoji": "⚖️" },
+                { "word": "difficult", "phonetic": "/ˈdɪfɪkəlt/", "meaning": "困难的；费力的", "example": "This is <em>difficult</em>.", "emoji": "😰" },
+                { "word": "easy", "phonetic": "/ˈiːzi/", "meaning": "容易的", "example": "This is <em>easy</em>.", "emoji": "😊" },
+                { "word": "hand", "phonetic": "/hænd/", "meaning": "手", "example": "Raise your <em>hand</em>.", "emoji": "✋" },
+                { "word": "game", "phonetic": "/ɡeɪm/", "meaning": "比赛；游戏", "example": "We play a <em>game</em>.", "emoji": "🏆" },
+                { "word": "ask", "phonetic": "/ɑːsk/", "meaning": "问", "example": "Can I <em>ask</em> you a question?", "emoji": "❓" },
+                { "word": "very", "phonetic": "/ˈveri/", "meaning": "很；非常", "example": "Thank you <em>very</em> much.", "emoji": "💯" },
+                { "word": "answer", "phonetic": "/ˈɑːnsə/", "meaning": "回答；答案", "example": "What is the <em>answer</em>?", "emoji": "💬" },
+                { "word": "policeman", "phonetic": "/pəˈliːsmən/", "meaning": "警察", "example": "The <em>policeman</em> is kind.", "emoji": "👮" }
+            ]
+        },
+        "2": {
+            "name": "Unit 2",
+            "words": [
+                { "word": "healthy", "phonetic": "/ˈhelθi/", "meaning": "健康的", "example": "Eat <em>healthy</em> food.", "emoji": "🥗" },
+                { "word": "strong", "phonetic": "/strɒŋ/", "meaning": "强壮的；有力的", "example": "Exercise makes you <em>strong</em>.", "emoji": "💪" },
+                { "word": "before", "phonetic": "/bɪˈfɔː/", "meaning": "在……之前", "example": "Wash your hands <em>before</em> eating.", "emoji": "⬅️" },
+                { "word": "after", "phonetic": "/ˈɑːftə/", "meaning": "在……之后", "example": "I rest <em>after</em> lunch.", "emoji": "➡️" },
+                { "word": "bad", "phonetic": "/bæd/", "meaning": "有害的；糟糕的", "example": "Too much candy is <em>bad</em>.", "emoji": "❌" },
+                { "word": "next", "phonetic": "/nekst/", "meaning": "紧接着；下一个的", "example": "What is <em>next</em>?", "emoji": "➡️" },
+                { "word": "often", "phonetic": "/ˈɒfn/", "meaning": "常常；经常", "example": "I <em>often</em> play sports.", "emoji": "🔄" },
+                { "word": "exercise", "phonetic": "/ˈeksəsaɪz/", "meaning": "锻炼；练习", "example": "I <em>exercise</em> every day.", "emoji": "🏃" },
+                { "word": "minute", "phonetic": "/ˈmɪnɪt/", "meaning": "分（钟）", "example": "I exercise for 30 <em>minutes</em>.", "emoji": "⏱️" },
+                { "word": "hour", "phonetic": "/aʊə/", "meaning": "小时", "example": "There are 60 <em>minutes</em> in an <em>hour</em>.", "emoji": "⏰" },
+                { "word": "high", "phonetic": "/haɪ/", "meaning": "高；高的；在高处", "example": "The mountain is very <em>high</em>.", "emoji": "⛰️" }
+            ]
+        },
+        "3": {
+            "name": "Unit 3",
+            "words": [
+                { "word": "fan", "phonetic": "/fæn/", "meaning": "风扇；扇子；扇", "example": "It is hot. Turn on the <em>fan</em>.", "emoji": "🌡️" },
+                { "word": "close", "phonetic": "/kləʊz/", "meaning": "关；关闭；合上", "example": "Please <em>close</em> the window.", "emoji": "🚪" },
+                { "word": "angry", "phonetic": "/ˈæŋɡri/", "meaning": "发怒的；生气的", "example": "Don't be <em>angry</em>.", "emoji": "😠" },
+                { "word": "lake", "phonetic": "/leɪk/", "meaning": "湖", "example": "We <em>swim</em> in the lake.", "emoji": "🏞️" },
+                { "word": "swim", "phonetic": "/swɪm/", "meaning": "游泳（过去式 swam）", "example": "I like to <em>swim</em>.", "emoji": "🏊" },
+                { "word": "ship", "phonetic": "/ʃɪp/", "meaning": "船；舰", "example": "We went by <em>ship</em>.", "emoji": "🚢" },
+                { "word": "visit", "phonetic": "/ˈvɪzɪt/", "meaning": "拜访；参观", "example": "I <em>visit</em> my grandma.", "emoji": "👋" },
+                { "word": "clever", "phonetic": "/ˈklevə/", "meaning": "聪明的", "example": "The monkey is very <em>clever</em>.", "emoji": "🧠" }
+            ]
+        },
+        "4": {
+            "name": "Unit 4",
+            "words": [
+                { "word": "find", "phonetic": "/faɪnd/", "meaning": "发现，找到（过去式 found）", "example": "I can't <em>find</em> my pen.", "emoji": "🔍" },
+                { "word": "get", "phonetic": "/ɡet/", "meaning": "开始；得到（过去式 got）", "example": "I <em>got</em> a present.", "emoji": "🎁" },
+                { "word": "party", "phonetic": "/ˈpɑːti/", "meaning": "聚会；晚会", "example": "We have a <em>party</em>.", "emoji": "🎉" },
+                { "word": "tell", "phonetic": "/tel/", "meaning": "告诉；讲述", "example": "Can you <em>tell</em> me a story?", "emoji": "💬" },
+                { "word": "begin", "phonetic": "/bɪˈɡɪn/", "meaning": "开始", "example": "Let's <em>begin</em> the game.", "emoji": "▶️" },
+                { "word": "late", "phonetic": "/leɪt/", "meaning": "晚的；迟到的", "example": "Don't be <em>late</em>.", "emoji": "⏰" },
+                { "word": "early", "phonetic": "/ˈɜːli/", "meaning": "早的；早到的", "example": "I get up <em>early</em>.", "emoji": "🌅" },
+                { "word": "cake", "phonetic": "/keɪk/", "meaning": "蛋糕", "example": "I like <em>cake</em>.", "emoji": "🎂" },
+                { "word": "every", "phonetic": "/ˈevri/", "meaning": "每个（人或物）", "example": "<em>Every</em> student is happy.", "emoji": "👥" },
+                { "word": "all", "phonetic": "/ɔːl/", "meaning": "全部；所有的", "example": "We <em>all</em> like the party.", "emoji": "💯" },
+                { "word": "good-bye", "phonetic": "/ɡʊdˈbaɪ/", "meaning": "再见", "example": "<em>Good-bye</em>!", "emoji": "👋" },
+                { "word": "hear", "phonetic": "/hɪə/", "meaning": "听见；听到", "example": "I can <em>hear</em> you.", "emoji": "👂" }
+            ]
+        }
+    }
     }
 };
