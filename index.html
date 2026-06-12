@@ -1,3 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛋小灵 - 趣味背单词</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Analytics: 替换 GA_MEASUREMENT_ID 为你的 Tracking ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <!-- 百度统计: 替换 BAIDU_TONGJI_KEY 为你的统计 key -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?cdf95d6381ad3400a655a505936c6459";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+<body>
+    <!-- 侧边栏导航 -->
+    <nav class="sidebar" id="sidebar" role="navigation" aria-label="主导航">
+        <div class="sidebar-top">
+            <div class="sidebar-logo">🥚</div>
+            <div class="sidebar-title">蛋小灵</div>
+            <button class="sidebar-toggle" onclick="App.toggleSidebar()" aria-label="折叠侧边栏">◀</button>
+        </div>
+        <div class="sidebar-nav">
+            <button class="nav-item active" data-screen="home-screen" onclick="App.showScreen('home-screen')">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">首页</span>
+            </button>
+            <button class="nav-item" data-screen="learn-screen" onclick="App.startLearn()">
+                <span class="nav-icon">📖</span>
+                <span class="nav-label">学新词</span>
+            </button>
+            <button class="nav-item" data-screen="review-screen" onclick="App.startReview()">
+                <span class="nav-icon">🔄</span>
+                <span class="nav-label">复习</span>
+            </button>
+            <button class="nav-item" data-screen="spell-screen" onclick="App.startChallenge()">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-label">挑战赛</span>
+            </button>
+            <button class="nav-item" data-screen="wordbook-screen" onclick="App.showScreen('wordbook-screen')">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">单词本</span>
+            </button>
+            <button class="nav-item" data-screen="stats-screen" onclick="App.showScreen('stats-screen')">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">统计</span>
+            </button>
+            <button class="nav-item" data-screen="profile-screen" onclick="App.showScreen('profile-screen')">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">我的</span>
+            </button>
+        </div>
+        <div class="sidebar-bottom">
+            <div class="sidebar-user" id="sidebar-user">
+                <span class="sidebar-avatar" id="sidebar-avatar">🥚</span>
+                <span class="sidebar-username" id="sidebar-username">未登录</span>
+            </div>
+        </div>
+    </nav>
 
-<!DOCTYPE html><html lang="zh-CN"><head>  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>蛋小灵 - 趣味背单词</title>  <style>    *{margin:0;padding:0;box-sizing:border-box}    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#FFF8F0;color:#2D2B55;overflow:hidden;height:100vh}    .sidebar{position:fixed;left:0;top:0;width:200px;height:100vh;background:rgba(255,255,255,0.85);backdrop-filter:blur(18px);border-right:2px solid rgba(255,200,170,0.45);display:flex;flex-direction:column;z-index:10;padding:20px 0}    .sidebar-top{display:flex;align-items:center;gap:10px;padding:0 20px 20px;border-bottom:1px solid rgba(255,200,170,0.3)}    .sidebar-logo{font-size:32px}    .sidebar-title{font-size:18px;font-weight:700;background:linear-gradient(135deg,#FF4757,#FFD32A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}    .sidebar-nav{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px}    .nav-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;border:none;background:transparent;font-size:14px;color:#2D2B55;cursor:pointer;text-align:left;width:100%}    .nav-item.active{background:linear-gradient(135deg,rgba(255,71,87,0.12),rgba(255,211,42,0.12));font-weight:600}    .nav-icon{font-size:18px}    .sidebar-bottom{padding:16px 20px;border-top:1px solid rgba(255,200,170,0.3);display:flex;align-items:center;gap:10px}    .sidebar-avatar{font-size:24px}    .sidebar-username{font-size:13px;color:#888}    .main-content{margin-left:200px;height:100vh;padding:24px 28px;background:radial-gradient(ellipse at 20% 50%,rgba(255,71,87,0.06),transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(46,216,163,0.06),transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(255,211,42,0.06),transparent 50%),#FFF8F0}    .page-title{font-size:22px;font-weight:700;margin-bottom:20px}    .dashboard{display:grid;grid-template-columns:1fr 1.5fr;gap:20px}    .card{background:rgba(255,255,255,0.78);border:2px solid rgba(255,200,170,0.45);border-radius:24px;padding:20px;box-shadow:0 4px 16px rgba(0,0,0,0.04)}    .pet-card{text-align:center;padding:28px 20px}    .pet-emoji{font-size:64px;animation:wobble 2s ease-in-out infinite}    .pet-name{font-size:16px;font-weight:600;margin-top:8px}    .pet-level{font-size:13px;color:#888;margin-top:4px}    .exp-bar{width:100%;height:10px;background:rgba(0,0,0,0.06);border-radius:10px;margin-top:12px;overflow:hidden}    .exp-fill{height:100%;width:65%;background:linear-gradient(90deg,#2ED8A3,#60A5FA);border-radius:10px}    .section-title{font-size:15px;font-weight:600;margin-bottom:12px}    .word-card{background:linear-gradient(135deg,#FFF0F0,#FFF8F0);border-radius:16px;padding:16px;text-align:center}    .word-en{font-size:20px;font-weight:700;color:#FF4757}    .word-phonetic{font-size:13px;color:#888;margin-top:4px}    .word-cn{font-size:15px;margin-top:6px}    .actions-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}    .action-btn{padding:14px;border-radius:16px;border:2px solid rgba(255,200,170,0.45);background:rgba(255,255,255,0.78);font-size:14px;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px}    .action-icon{font-size:24px}    .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}    .stat-item{text-align:center;padding:14px;border-radius:14px;background:rgba(255,255,255,0.5)}    .stat-value{font-size:22px;font-weight:700}    .stat-label{font-size:12px;color:#888;margin-top:2px}    .stat-1 .stat-value{color:#FF4757}    .stat-2 .stat-value{color:#2ED8A3}    .stat-3 .stat-value{color:#FFD32A}    .stat-4 .stat-value{color:#B388FF}    @keyframes wobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}    @media(max-width:1024px){.dashboard{grid-template-columns:1fr}}    @media(max-width:768px){.sidebar{width:64px}.sidebar-title,.nav-label,.sidebar-username{display:none}.sidebar-top{padding:0 16px 16px;justify-content:center}.nav-item{justify-content:center;padding:10px}.main-content{margin-left:64px;padding:16px}}  </style></head><body>  <nav class="sidebar">    <div class="sidebar-top">      <div class="sidebar-logo">🥚</div>div>      <div class="sidebar-title">蛋小灵</div>div>    </div>div>    <div class="sidebar-nav">      <button class="nav-item active"><span class="nav-icon">🏠</span>span><span class="nav-label">首页</span>span></button>button>      <button class="nav-item"><span class="nav-icon">📖</span>span><span class="nav-label">学新词</span>span></button>button>      <button class="nav-item"><span class="nav-icon">🔄</span>span><span class="nav-label">复习</span>span></button>button>      <button class="nav-item"><span class="nav-icon">🏆</span>span><span class="nav-label">挑战赛</span>span></button>button>      <button class="nav-item"><span class="nav-icon">📚</span>span><span class="nav-label">单词本</span></button>button>      <button class="nav-item"><span class="nav-icon">📊</span>span><span class="nav-label">统计</span>span></button>button>      <button class="nav-item"><span class="nav-icon">👤</span>span><span class="nav-label">我的</span>span></button>button>    </div>div>    <div class="sidebar-bottom">      <span class="sidebar-avatar">🥚</span>span>      <span class="sidebar-username">加载中...</span>span>    </div>div>  </nav>nav>  <main class="main-content">    <h1 class="page-title">欢迎回来 👋</h1>h1>    <div class="dashboard">      <div>        <div class="card pet-card">          <div class="pet-emoji">🥚</div>          <div class="pet-name">小灵</div>          <div class="pet-level">Lv.5 · 成长中</div>          <div class="exp-bar"><div class="exp-fill"></div></div>        </div>        <div class="card" style="margin-top:16px">          <div class="section-title">📝 今日单词</div>          <div class="word-card">            <div class="word-en">adventure</div>            <div class="word-phonetic">/ədˈventʃər/</div>            <div class="word-cn">n. 冒险；奇遇</div>          </div>        </div>        <div class="card" style="margin-top:16px">          <div class="section-title">🎯 今日目标</div>          <div style="display:flex;align-items:center;gap:12px">            <div class="exp-bar" style="flex:1"><div class="exp-fill" style="width:40%"></div></div>            <span style="font-size:13px;color:#888">4/10</span>span>          </div>        </div>      </div>      <div>        <div class="card">          <div class="section-title">✨ 快速开始</div>          <div class="actions-grid">            <button class="action-btn"><span class="action-icon">📖</span>span>学新词</button>button>            <button class="action-btn"><span class="action-icon">🔄</span>span>复习</button>button>            <button class="action-btn"><span class="action-icon">🏆</span>span>挑战赛</button>button>            <button class="action-btn"><span class="action-icon">📚</span>span>单词本</button>button>          </div>        </div>        <div class="card" style="margin-top:16px">          <div class="section-title">📊 学习统计</div>          <div class="stats-grid">            <div class="stat-item stat-1"><div class="stat-value">128</div><div class="stat-label">已学单词</div></div>            <div class="stat-item stat-2"><div class="stat-value">7</div><div class="stat-label">连续天数</div></div>            <div class="stat-item stat-3"><div class="stat-value">92%</div><div class="stat-label">正确率</div></div>            <div class="stat-item stat-4"><div class="stat-value">1,560</div><div class="stat-label">总积分</div></div>          </div>        </div>      </div>    </div>  </main>main>  <script>setTimeout(function(){window.location.replace("https://danxiaoling.pages.dev/");},800);</script></body></html>html></script></div></div></body></style></title></head>
- main
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 启动画面 -->
+        <div id="splash-screen" class="screen active">
+            <div class="splash-content">
+                <div class="splash-logo">🥚</div>
+                <h1 class="splash-title">蛋小灵</h1>
+                <p class="splash-subtitle">养一只精灵，背一串单词</p>
+                <button class="btn-primary btn-glow" onclick="App.start()">开始冒险</button>
+            </div>
+        </div>
+
+        <!-- 输入名字 -->
+        <div id="name-screen" class="screen">
+            <div class="screen-content">
+                <div class="emoji-large">👋</div>
+                <h2>你好呀！我叫什么好呢？</h2>
+                <input type="text" id="user-name" placeholder="输入你的名字" maxlength="8" class="input-name">
+                <button class="btn-primary" onclick="App.setName()">确认</button>
+            </div>
+        </div>
+
+        <!-- 选择精灵蛋 -->
+        <div id="egg-screen" class="screen">
+            <div class="screen-content">
+                <h2 id="egg-greeting">选一只精灵蛋吧！</h2>
+                <p class="hint-text">它会陪你一起学单词哦</p>
+                <div class="egg-choices">
+                    <div class="egg-option" onclick="App.choosePet('fire')">
+                        <div class="egg-display">🔥</div>
+                        <span>火焰蛋</span>
+                    </div>
+                    <div class="egg-option" onclick="App.choosePet('water')">
+                        <div class="egg-display">💧</div>
+                        <span>水滴蛋</span>
+                    </div>
+                    <div class="egg-option" onclick="App.choosePet('leaf')">
+                        <div class="egg-display">🌿</div>
+                        <span>叶子蛋</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 选择教材 -->
+        <div id="textbook-screen" class="screen">
+            <div class="screen-content textbook-select">
+                <div class="emoji-large">📚</div>
+                <h2>选择你的教材</h2>
+                <p class="hint-text">选择教材版本和年级</p>
+                <!-- 版本切换 -->
+                <div class="textbook-version-tabs" id="textbook-version-tabs"></div>
+                <div class="textbook-grid" id="textbook-grid"></div>
+            </div>
+        </div>
+
+        <!-- 主页面 -->
+        <div id="home-screen" class="screen">
+            <div class="home-top-bar">
+                <div class="home-greeting">
+                    <span id="home-user-name" class="user-name"></span>
+                    <span id="home-streak" class="streak-badge">🔥 0天</span>
+                    <span id="home-textbook-tag" class="textbook-badge">📖 教材</span>
+                </div>
+            </div>
+
+            <div class="home-dashboard">
+                <!-- 左侧：精灵展示 -->
+                <div class="dash-pet-section">
+                    <div class="pet-card">
+                        <div class="pet-area">
+                            <div id="pet-container" class="pet-container">
+                                <div id="pet-emoji" class="pet-emoji">🥚</div>
+                                <div id="pet-name-tag" class="pet-name-tag"></div>
+                                <div id="pet-mood" class="pet-mood"></div>
+                            </div>
+                            <div class="pet-stats">
+                                <div class="stat-bar">
+                                    <span class="stat-label">经验值</span>
+                                    <div class="stat-track">
+                                        <div id="exp-bar" class="stat-fill exp-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="exp-text" class="stat-text">Lv.1</span>
+                                </div>
+                                <div class="pet-energy-display">
+                                    <span>⚡ 能量: </span>
+                                    <span id="energy-count">0</span>
+                                </div>
+                            </div>
+                            <div class="pet-interactions">
+                                <button class="btn-interact" onclick="App.interactPet('feed')">
+                                    <span class="interact-emoji">🍖</span>
+                                    喂食
+                                </button>
+                                <button class="btn-interact" onclick="App.interactPet('pet')">
+                                    <span class="interact-emoji">🤗</span>
+                                    抚摸
+                                </button>
+                                <button class="btn-interact" onclick="App.interactPet('play')">
+                                    <span class="interact-emoji">🎾</span>
+                                    玩耍
+                                </button>
+                            </div>
+                            <div id="pet-reaction-text" class="pet-reaction-text"></div>
+                        </div>
+                    </div>
+
+                    <!-- 今日推荐单词 -->
+                    <div class="daily-word-card">
+                        <div class="daily-word-header">📅 今日推荐单词</div>
+                        <div class="daily-word-body">
+                            <span id="daily-word-emoji" class="daily-word-emoji"></span>
+                            <div class="daily-word-info">
+                                <div id="daily-word-en" class="daily-word-en"></div>
+                                <div id="daily-word-cn" class="daily-word-cn"></div>
+                                <span id="daily-word-status" class="daily-word-status"></span>
+                            </div>
+                            <button id="btn-daily-speak" class="btn-daily-speak" onclick="App.speakDailyWord()">🔊</button>
+                        </div>
+                    </div>
+
+                    <!-- 今日目标 -->
+                    <div class="daily-goal">
+                        <h3>📅 今日目标</h3>
+                        <div class="goal-progress">
+                            <div class="goal-track">
+                                <div id="goal-fill" class="goal-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="goal-text">0/10 词</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：功能按钮区 -->
+                <div class="dash-actions-section">
+                    <div class="home-actions">
+                        <button class="btn-action btn-learn" onclick="App.startLearn()">
+                            <span class="btn-emoji">📖</span>
+                            <span class="btn-label">学新词</span>
+                            <span class="btn-count" id="new-word-count">0个新词</span>
+                        </button>
+                        <button class="btn-action btn-review" onclick="App.startReview()">
+                            <span class="btn-emoji">🔄</span>
+                            <span class="btn-label">复习</span>
+                            <span class="btn-count" id="review-count">0个待复习</span>
+                        </button>
+                        <button class="btn-action btn-challenge" onclick="App.startChallenge()">
+                            <span class="btn-emoji">🏆</span>
+                            <span class="btn-label">挑战赛</span>
+                            <span class="btn-count">限时闯关</span>
+                        </button>
+                        <button class="btn-action btn-book" onclick="App.showScreen('wordbook-screen')">
+                            <span class="btn-emoji">📚</span>
+                            <span class="btn-label">单词本</span>
+                            <span class="btn-count" id="total-words">已学0词</span>
+                        </button>
+                    </div>
+
+                    <!-- 快速统计卡片 -->
+                    <div class="quick-stats">
+                        <div class="qs-card">
+                            <div class="qs-value" id="qs-learned">0</div>
+                            <div class="qs-label">已学单词</div>
+                        </div>
+                        <div class="qs-card">
+                            <div class="qs-value" id="qs-mastered">0</div>
+                            <div class="qs-label">已掌握</div>
+                        </div>
+                        <div class="qs-card">
+                            <div class="qs-value" id="qs-streak">0</div>
+                            <div class="qs-label">连续天数</div>
+                        </div>
+                        <div class="qs-card">
+                            <div class="qs-value" id="qs-accuracy">0%</div>
+                            <div class="qs-label">正确率</div>
+                        </div>
+                    </div>
+
+                    <!-- 最近成就 -->
+                    <div class="recent-achievements">
+                        <h3>🏅 最近成就</h3>
+                        <div id="achievement-list" class="achievement-list">
+                            <div class="achievement-empty">继续学习解锁成就吧~</div>
+                        </div>
+                        <button class="btn-all-achievements" onclick="App.showScreen('stats-screen')">查看全部成就 →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="learn-screen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>
+                <div class="screen-title">📖 学习新词</div>
+                <div class="progress-dots" id="learn-progress"></div>
+            </div>
+            <div class="learn-layout">
+                <div id="learn-card" class="learn-card">
+                    <div id="learn-emoji" class="learn-emoji"></div>
+                    <div class="word-display">
+                        <div id="learn-word" class="word-main"></div>
+                        <div id="learn-phonetic" class="word-phonetic"></div>
+                        <button class="btn-speak" onclick="App.speakWord()">🔊</button>
+                    </div>
+                    <div id="learn-meaning" class="word-meaning hidden"></div>
+                    <div id="learn-example" class="word-example hidden"></div>
+                </div>
+                <div class="learn-actions">
+                    <button id="btn-show-answer" class="btn-primary btn-lg" onclick="App.showAnswer()">显示释义</button>
+                    <div id="rate-buttons" class="rate-buttons hidden">
+                        <button class="btn-rate btn-hard" onclick="App.rateWord(1)">😰 不熟</button>
+                        <button class="btn-rate btn-ok" onclick="App.rateWord(3)">🤔 一般</button>
+                        <button class="btn-rate btn-easy" onclick="App.rateWord(5)">😊 简单</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 复习页面 -->
+        <div id="review-screen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>
+                <div class="screen-title">🔄 复习测试</div>
+                <span id="review-counter" class="review-counter">1/10</span>
+            </div>
+            <div class="review-layout">
+                <div id="review-card" class="review-card">
+                    <div id="review-emoji" class="review-emoji"></div>
+                    <div id="review-question" class="review-question"></div>
+                    <div id="review-options" class="review-options"></div>
+                </div>
+                <div id="review-feedback" class="review-feedback hidden">
+                    <div id="feedback-icon" class="feedback-icon"></div>
+                    <div id="feedback-text" class="feedback-text"></div>
+                    <button class="btn-primary btn-lg" onclick="App.nextReview()">下一题</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 拼写挑战 -->
+        <div id="spell-screen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>
+                <div class="screen-title">🏆 拼写挑战</div>
+                <div class="timer" id="challenge-timer">⏱ 60s</div>
+            </div>
+            <div class="spell-layout">
+                <div class="spell-area">
+                    <div id="spell-meaning" class="spell-hint"></div>
+                    <div id="spell-inputs" class="spell-inputs"></div>
+                    <div id="spell-feedback" class="spell-feedback hidden"></div>
+                </div>
+                <div class="spell-keyboard">
+                    <div id="keyboard-keys" class="keyboard-keys"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 单词本 -->
+        <div id="wordbook-screen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>
+                <div class="screen-title">📚 我的单词本</div>
+            </div>
+            <div class="unit-tabs" id="unit-tabs">
+                <button class="tab active" data-unit="all" onclick="App.filterByUnit('all')">全部单元</button>
+            </div>
+            <div class="filter-tabs">
+                <button class="tab active" onclick="App.filterWords('all')">全部</button>
+                <button class="tab" onclick="App.filterWords('mastered')">已掌握</button>
+                <button class="tab" onclick="App.filterWords('learning')">学习中</button>
+                <button class="tab" onclick="App.filterWords('new')">未学习</button>
+            </div>
+            <div class="wordbook-search">
+                <input type="text" id="wordbook-search-input" placeholder="搜索单词..." aria-label="搜索单词" oninput="App.searchWords(this.value)">
+            </div>
+            <div id="wordbook-list" class="wordbook-list"></div>
+        </div>
+
+        <!-- 统计页面 -->
+        <div id="stats-screen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>
+                <div class="screen-title">📊 学习统计</div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-total">0</div>
+                    <div class="stat-desc">已学单词</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-mastered">0</div>
+                    <div class="stat-desc">已掌握</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-streak">0</div>
+                    <div class="stat-desc">连续天数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-accuracy">0%</div>
+                    <div class="stat-desc">正确率</div>
+                </div>
+            </div>
+            <div class="visit-stats-section">
+                <h3>📈 访问统计</h3>
+                <div class="visit-stats-grid">
+                    <div class="visit-stat-card">
+                        <div class="visit-stat-number" id="stat-total-visits">0</div>
+                        <div class="visit-stat-desc">累计访问</div>
+                    </div>
+                    <div class="visit-stat-card">
+                        <div class="visit-stat-number" id="stat-visit-days">0</div>
+                        <div class="visit-stat-desc">活跃天数</div>
+                    </div>
+                </div>
+                <div class="visit-chart-container">
+                    <div class="chart-title">近14天访问量</div>
+                    <div id="visit-chart" class="weekly-chart"></div>
+                </div>
+            </div>
+            <div class="stats-chart">
+                <h3>近7天学习量</h3>
+                <div id="weekly-chart" class="weekly-chart"></div>
+            </div>
+            <div class="stats-detail">
+                <h3>成就墙</h3>
+                <div id="achievements" class="achievements"></div>
+            </div>
+        </div>
+
+        <!-- 个人页面 -->
+        <div id="profile-screen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="App.showScreen('home-screen')">← 返回首页</button>
+                <div class="screen-title">👤 我的资料</div>
+            </div>
+            <div class="profile-layout">
+                <div class="profile-info">
+                    <div class="profile-avatar" id="profile-avatar">🥚</div>
+                    <div class="profile-name" id="profile-name"></div>
+                    <div class="profile-level" id="profile-level">Lv.1</div>
+                </div>
+                <div class="profile-settings">
+                    <div id="textbook-progress" class="textbook-progress-info">当前教材信息</div>
+                    <div class="profile-textbook">
+                        <h3>选择教材</h3>
+                        <div class="textbook-version-tabs" id="profile-version-tabs"></div>
+                        <div class="textbook-select-grid" id="profile-textbook-grid"></div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-secondary" onclick="App.resetData()">🔄 重置进度</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 完成庆祝 -->
+        <div id="celebration-screen" class="screen">
+            <div class="screen-content celebration">
+                <div id="celebrate-emoji" class="celebrate-emoji">🎉</div>
+                <h2 id="celebrate-title">太棒了！</h2>
+                <div id="celebrate-details" class="celebrate-details"></div>
+                <div id="pet-reaction" class="pet-reaction"></div>
+                <button class="btn-primary btn-glow btn-lg" onclick="App.showScreen('home-screen')">回到首页</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast 通知容器 -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Modal 认框 -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div id="modal-title" class="modal-title"></div>
+            <div id="modal-message" class="modal-message"></div>
+            <div class="modal-actions">
+                <button id="modal-cancel" class="btn-secondary">取消</button>
+                <button id="modal-confirm" class="btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
