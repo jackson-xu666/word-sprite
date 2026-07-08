@@ -441,6 +441,17 @@
         </div>
     </main>
 
+    <!-- 首页欢迎弹窗 -->
+    <div id="welcome-overlay" class="welcome-overlay">
+        <div class="welcome-modal">
+            <button class="welcome-close" onclick="App.closeWelcomeModal()" aria-label="关闭欢迎弹窗">×</button>
+            <div class="welcome-emoji">🥚</div>
+            <h2>欢迎使用蛋小灵</h2>
+            <p>一起把今天的单词轻轻拿下。</p>
+            <button class="btn-primary" onclick="App.closeWelcomeModal()">开始使用</button>
+        </div>
+    </div>
+
     <!-- Toast 通知容器 -->
     <div id="toast-container" class="toast-container"></div>
 

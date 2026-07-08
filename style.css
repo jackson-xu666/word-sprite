@@ -987,6 +987,35 @@ body.sidebar-collapsed .sidebar-toggle { transform: rotate(180deg); }
 .modal-message { font-size: 16px; color: var(--text-light); margin-bottom: 28px; line-height: 1.6; font-weight: 500; }
 .modal-actions { display: flex; gap: 16px; justify-content: center; }
 
+/* ===== 首页欢迎弹窗 ===== */
+.welcome-overlay {
+    position: fixed; inset: 0; z-index: var(--z-modal);
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(44, 62, 80, 0.38); backdrop-filter: blur(8px);
+    opacity: 0; visibility: hidden; transition: var(--transition);
+    padding: 24px;
+}
+.welcome-overlay.active { opacity: 1; visibility: visible; }
+.welcome-modal {
+    position: relative; width: min(420px, 100%);
+    background: rgba(255,255,255,0.96); border: 2px solid var(--border);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+    padding: 36px 28px 32px; text-align: center;
+    transform: translateY(16px) scale(0.96); transition: var(--transition-bounce);
+}
+.welcome-overlay.active .welcome-modal { transform: translateY(0) scale(1); }
+.welcome-close {
+    position: absolute; top: 12px; right: 12px;
+    width: 36px; height: 36px; border: 2px solid var(--border);
+    border-radius: var(--radius-full); background: var(--bg-card);
+    color: var(--text-light); font-size: 24px; line-height: 1;
+    cursor: pointer; transition: var(--transition);
+}
+.welcome-close:hover { color: var(--primary); border-color: var(--primary); transform: scale(1.08); }
+.welcome-emoji { font-size: 64px; margin-bottom: 12px; animation: wobble 3s ease-in-out infinite; }
+.welcome-modal h2 { margin-bottom: 10px; font-size: 28px; color: var(--text); }
+.welcome-modal p { margin-bottom: 24px; color: var(--text-light); font-size: 16px; font-weight: 600; }
+
 /* ===== 设置模式隐藏侧边栏 ===== */
 body.setup-mode .sidebar { display: none; }
 body.setup-mode .main-content { margin-left: 0; }

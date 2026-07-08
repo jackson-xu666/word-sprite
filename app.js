@@ -6,6 +6,7 @@ const App = (() => {
     // ===== 数据状态 =====
     const STORAGE_KEY = 'word_sprite_data';
     let state = loadState();
+    let welcomeShown = false;
 
     // Restore sidebar state
     const sidebarState = localStorage.getItem('word_sprite_sidebar');
@@ -237,6 +238,7 @@ const App = (() => {
         updateSidebar();
 
         if (id === 'home-screen') updateHome();
+        if (id === 'home-screen') showWelcomeModal();
         if (id === 'stats-screen') updateStats();
         if (id === 'wordbook-screen') {
             renderUnitTabs();
@@ -1266,6 +1268,18 @@ const App = (() => {
         updateHome();
     }
 
+    function showWelcomeModal() {
+        if (welcomeShown) return;
+        welcomeShown = true;
+        const overlay = document.getElementById('welcome-overlay');
+        if (overlay) overlay.classList.add('active');
+    }
+
+    function closeWelcomeModal() {
+        const overlay = document.getElementById('welcome-overlay');
+        if (overlay) overlay.classList.remove('active');
+    }
+
     function exportData() {
         const payload = {
             app: 'word-sprite',
@@ -1664,6 +1678,7 @@ const App = (() => {
         switchVersionProfile,
         setTextbook,
         setGrade: setTextbook, // 向后兼容
+        closeWelcomeModal,
         exportData,
         chooseImportFile,
         importData,
