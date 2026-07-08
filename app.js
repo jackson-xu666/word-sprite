@@ -1266,6 +1266,61 @@ const App = (() => {
         updateHome();
     }
 
+    function exportData() {
+        const payload = {
+            app: 'word-sprite',
+            version: 1,
+            exportedAt: new Date().toISOString(),
+            data: state,
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `word-sprite-backup-${getTodayKey()}.json`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        showToast('学习进度备份已导出', 'success');
+    }
+
+    function chooseImportFile() {
+        const input = document.getElementById('backup-file-input');
+        if (!input) return;
+        input.value = '';
+        input.click();
+    }
+
+    async function importData(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        try {
+            const text = await file.text();
+            const parsed = JSON.parse(text);
+            const importedState = parsed && parsed.app === 'word-sprite' ? parsed.data : parsed;
+
+            if (!importedState || typeof importedState !== 'object' || !importedState.userName) {
+                showToast('备份文件格式不正确', 'error');
+                return;
+            }
+
+            const confirmed = await showConfirm('导入备份', '导入后会覆盖当前学习进度，确定继续吗？');
+            if (!confirmed) return;
+
+            state = { ...defaultState(), ...importedState };
+            saveState();
+            updateSidebar();
+            updateHome();
+            updateProfile();
+            showScreen('home-screen');
+            showToast('学习进度已恢复', 'success');
+        } catch (e) {
+            showToast('导入失败，请选择正确的备份文件', 'error');
+        }
+    }
+
     async function resetData() {
         const confirmed = await showConfirm('重置进度', '确定要重置所有进度吗？这不可恢复！');
         if (confirmed) {
@@ -1609,6 +1664,9 @@ const App = (() => {
         switchVersionProfile,
         setTextbook,
         setGrade: setTextbook, // 向后兼容
+        exportData,
+        chooseImportFile,
+        importData,
         resetData,
         interactPet,
         speakDailyWord,

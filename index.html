@@ -420,7 +420,10 @@
                         <div class="textbook-select-grid" id="profile-textbook-grid"></div>
                     </div>
                     <div class="profile-actions">
+                        <button class="btn-secondary" onclick="App.exportData()">💾 导出备份</button>
+                        <button class="btn-secondary" onclick="App.chooseImportFile()">📥 导入备份</button>
                         <button class="btn-secondary" onclick="App.resetData()">🔄 重置进度</button>
+                        <input id="backup-file-input" class="hidden" type="file" accept="application/json,.json" onchange="App.importData(event)">
                     </div>
                 </div>
             </div>
