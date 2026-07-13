@@ -5,6 +5,7 @@
 const App = (() => {
     // ===== 数据状态 =====
     const STORAGE_KEY = 'word_sprite_data';
+    let wordsReady = false;
     let state = loadState();
     let welcomeShown = false;
 
@@ -252,6 +253,32 @@ const App = (() => {
     }
 
     // ===== 应用启动 =====
+    async function init() {
+        try {
+            await loadWords();
+            start();
+        } catch (error) {
+            console.error(error);
+            showScreen('splash-screen');
+            showToast('词库加载失败，请稍后刷新重试', 'error', 6000);
+        }
+    }
+
+    async function loadWords() {
+        if (wordsReady && window.WORD_DB) return;
+
+        const response = await fetch('/api/words', {
+            headers: { Accept: 'application/json' },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to load words: ${response.status}`);
+        }
+
+        window.WORD_DB = await response.json();
+        wordsReady = true;
+    }
+
     function start() {
         trackVisit();
         if (!state.setupDone) {
@@ -1660,6 +1687,7 @@ const App = (() => {
 
     // ===== 暴露公共API =====
     return {
+        init,
         start,
         setName,
         choosePet,
@@ -1692,5 +1720,5 @@ const App = (() => {
 
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
-    App.start();
+    App.init();
 });
