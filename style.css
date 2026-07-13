@@ -321,9 +321,9 @@ body.sidebar-collapsed .sidebar-toggle { transform: rotate(180deg); }
     background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,245,240,0.85));
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-bottom: 2px solid var(--border);
-    position: relative;
+    position: relative; z-index: var(--z-overlay); isolation: isolate;
 }
-.home-greeting { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.home-greeting { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 3; }
 .user-name { font-weight: 800; font-size: 24px; color: var(--text); }
 .streak-badge {
     background: linear-gradient(135deg, var(--accent), #FFE066);
@@ -350,7 +350,7 @@ body.sidebar-collapsed .sidebar-toggle { transform: rotate(180deg); }
 .home-textbook-trigger[aria-expanded="true"] .textbook-chevron { transform: rotate(180deg); }
 .home-textbook-dropdown {
     position: absolute; top: calc(100% + 10px); right: 28px;
-    z-index: var(--z-overlay); width: min(620px, calc(100vw - 250px));
+    z-index: 3; width: min(620px, calc(100vw - 250px));
     max-height: min(650px, calc(100vh - 110px)); overflow: auto;
     padding: 20px; border-radius: var(--radius);
     background: rgba(255,255,255,0.97); border: 2px solid var(--border);
@@ -361,6 +361,17 @@ body.sidebar-collapsed .sidebar-toggle { transform: rotate(180deg); }
 }
 .home-textbook-dropdown.open {
     opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1);
+}
+.home-textbook-backdrop {
+    position: fixed; inset: 0; z-index: 2;
+    display: block; width: 100vw; height: 100dvh; padding: 0;
+    border: 0; border-radius: 0; background: rgba(45,43,85,0.24);
+    backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s;
+}
+.home-textbook-dropdown.open + .home-textbook-backdrop {
+    opacity: 1; visibility: visible; pointer-events: auto;
 }
 .home-textbook-dropdown-header {
     display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
