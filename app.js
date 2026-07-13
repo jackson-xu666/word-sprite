@@ -203,8 +203,10 @@ const App = (() => {
     function highlightNav(screenId) {
         document.querySelectorAll('.nav-item').forEach(item => {
             item.classList.remove('active');
+            item.removeAttribute('aria-current');
             if (item.dataset.screen === screenId) {
                 item.classList.add('active');
+                item.setAttribute('aria-current', 'page');
             }
         });
     }
@@ -237,6 +239,10 @@ const App = (() => {
 
         highlightNav(id);
         updateSidebar();
+
+        // 切换功能页时回到内容顶部，手机端不会停留在上一个页面的滚动位置。
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) mainContent.scrollTo({ top: 0, behavior: 'auto' });
 
         if (id === 'home-screen') updateHome();
         if (id === 'home-screen') showWelcomeModal();
@@ -522,9 +528,9 @@ const App = (() => {
 
         // 显示当前教材信息
         const book = WORD_DB[state.textbook];
-        const textbookTag = document.getElementById('home-textbook-tag');
-        if (textbookTag && book) {
-            textbookTag.textContent = `📖 ${book.name}`;
+        const textbookLabel = document.getElementById('home-textbook-label');
+        if (textbookLabel && book) {
+            textbookLabel.textContent = `📖 ${book.name}`;
         }
 
         // 精灵
@@ -1118,6 +1124,52 @@ const App = (() => {
         renderTextbookGrid('profile-textbook-grid', version, 'setTextbook');
     }
 
+    function toggleHomeTextbookMenu(forceOpen) {
+        const dropdown = document.getElementById('home-textbook-dropdown');
+        const trigger = document.getElementById('home-textbook-tag');
+        if (!dropdown || !trigger) return;
+
+        const shouldOpen = typeof forceOpen === 'boolean'
+            ? forceOpen
+            : !dropdown.classList.contains('open');
+
+        dropdown.classList.toggle('open', shouldOpen);
+        dropdown.setAttribute('aria-hidden', String(!shouldOpen));
+        trigger.setAttribute('aria-expanded', String(shouldOpen));
+
+        if (shouldOpen) {
+            const currentVersion = getTextbookVersion(state.textbook);
+            renderVersionTabs('home-version-tabs', currentVersion, 'switchVersionHome');
+            renderTextbookGrid('home-textbook-grid', currentVersion, 'setHomeTextbook');
+            markCurrentTextbook('home-textbook-grid');
+        }
+    }
+
+    function closeHomeTextbookMenu() {
+        toggleHomeTextbookMenu(false);
+    }
+
+    function switchVersionHome(version) {
+        document.querySelectorAll('#home-version-tabs .version-tab').forEach(t => {
+            t.classList.toggle('active', t.dataset.version === version);
+        });
+        renderTextbookGrid('home-textbook-grid', version, 'setHomeTextbook');
+        markCurrentTextbook('home-textbook-grid');
+    }
+
+    function markCurrentTextbook(containerId) {
+        document.querySelectorAll(`#${containerId} .textbook-btn[data-textbook]`).forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.textbook === state.textbook);
+        });
+    }
+
+    function setHomeTextbook(textbook) {
+        setTextbook(textbook);
+        closeHomeTextbookMenu();
+        const book = WORD_DB[textbook];
+        if (book) showToast(`已切换到${book.name}`, 'success');
+    }
+
     function filterByUnit(unit) {
         currentUnit = unit;
         // 更新单元 tab 状态
@@ -1263,7 +1315,7 @@ const App = (() => {
         });
 
         // Update textbook grid for current version
-        const currentVersion = state.textbook.split('_')[0];
+        const currentVersion = getTextbookVersion(state.textbook);
         renderVersionTabs('profile-version-tabs', currentVersion, 'switchVersionProfile');
         renderTextbookGrid('profile-textbook-grid', currentVersion, 'setTextbook');
 
@@ -1585,6 +1637,11 @@ const App = (() => {
         { id: 'LN', label: '辽宁师大版' },
     ];
 
+    function getTextbookVersion(textbook) {
+        const matched = TEXTBOOK_VERSIONS.find(v => textbook.startsWith(`${v.id}_`));
+        return matched ? matched.id : textbook.split('_')[0];
+    }
+
     function renderVersionTabs(containerId, activeVersion, switchFn) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -1704,8 +1761,12 @@ const App = (() => {
         filterByUnit,
         switchVersion,
         switchVersionProfile,
+        switchVersionHome,
         setTextbook,
+        setHomeTextbook,
         setGrade: setTextbook, // 向后兼容
+        toggleHomeTextbookMenu,
+        closeHomeTextbookMenu,
         closeWelcomeModal,
         exportData,
         chooseImportFile,
@@ -1721,4 +1782,17 @@ const App = (() => {
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
     App.init();
+});
+
+document.addEventListener('click', (event) => {
+    const dropdown = document.getElementById('home-textbook-dropdown');
+    const trigger = document.getElementById('home-textbook-tag');
+    if (!dropdown || !trigger || !dropdown.classList.contains('open')) return;
+    if (!dropdown.contains(event.target) && !trigger.contains(event.target)) {
+        App.closeHomeTextbookMenu();
+    }
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') App.closeHomeTextbookMenu();
 });
