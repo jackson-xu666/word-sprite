@@ -10,6 +10,7 @@ const App = (() => {
     let welcomeShown = false;
     let speechVoices = [];
     let activeUtterance = null;
+    let activeAudio = null;
 
     function refreshSpeechVoices() {
         if (!('speechSynthesis' in window)) return;
@@ -25,12 +26,16 @@ const App = (() => {
     function speakEnglish(text) {
         if (!text) return false;
         if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
-            showToast('当前浏览器不支持语音，请使用 Safari 或 Chrome 打开', 'warning', 5000);
-            return false;
+            return playOnlinePronunciation(text);
         }
 
         const synth = window.speechSynthesis;
         refreshSpeechVoices();
+
+        if (activeAudio) {
+            activeAudio.pause();
+            activeAudio = null;
+        }
 
         // 手机浏览器偶尔会把上一条语音留在队列或暂停，播放前先恢复并清空。
         synth.cancel();
@@ -51,7 +56,7 @@ const App = (() => {
         utterance.onerror = (event) => {
             if (activeUtterance === utterance) activeUtterance = null;
             if (!['canceled', 'interrupted'].includes(event.error)) {
-                showToast('语音播放失败，请检查媒体音量或换用 Safari / Chrome', 'warning', 5000);
+                playOnlinePronunciation(text);
             }
         };
 
@@ -59,6 +64,64 @@ const App = (() => {
         activeUtterance = utterance;
         synth.speak(utterance);
         if (synth.paused) synth.resume();
+        return true;
+    }
+
+    function playOnlinePronunciation(text) {
+        if (!('Audio' in window)) {
+            showToast('当前浏览器无法播放音频', 'warning', 5000);
+            return false;
+        }
+
+        const words = String(text).toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || [];
+        if (words.length === 0) return false;
+
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        if (activeAudio) activeAudio.pause();
+
+        const audio = new Audio();
+        audio.preload = 'auto';
+        audio.setAttribute('playsinline', '');
+        activeAudio = audio;
+        let index = 0;
+        let playedCount = 0;
+        let attemptId = 0;
+
+        const finish = () => {
+            if (activeAudio === audio) activeAudio = null;
+            if (playedCount === 0) {
+                showToast('暂时找不到这个单词的在线发音', 'warning', 5000);
+            }
+        };
+
+        const playNext = () => {
+            if (index >= words.length) {
+                finish();
+                return;
+            }
+
+            const word = words[index++];
+            const currentAttempt = ++attemptId;
+            const advance = () => {
+                if (currentAttempt !== attemptId) return;
+                attemptId++;
+                if (index < words.length) playNext();
+                else finish();
+            };
+            audio.src = `/api/pronounce?word=${encodeURIComponent(word)}`;
+            audio.load();
+            const promise = audio.play();
+            if (promise && typeof promise.catch === 'function') {
+                promise.catch(advance);
+            }
+            audio.onerror = advance;
+            audio.onended = advance;
+        };
+
+        audio.onplaying = () => { playedCount++; };
+
+        // 首次 play() 保持在用户点击事件中，兼容微信与其他手机内置浏览器。
+        playNext();
         return true;
     }
 
