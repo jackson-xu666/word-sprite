@@ -8,6 +8,59 @@ const App = (() => {
     let wordsReady = false;
     let state = loadState();
     let welcomeShown = false;
+    let speechVoices = [];
+    let activeUtterance = null;
+
+    function refreshSpeechVoices() {
+        if (!('speechSynthesis' in window)) return;
+        speechVoices = window.speechSynthesis.getVoices() || [];
+    }
+
+    function setupSpeech() {
+        if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) return;
+        refreshSpeechVoices();
+        window.speechSynthesis.addEventListener('voiceschanged', refreshSpeechVoices);
+    }
+
+    function speakEnglish(text) {
+        if (!text) return false;
+        if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+            showToast('当前浏览器不支持语音，请使用 Safari 或 Chrome 打开', 'warning', 5000);
+            return false;
+        }
+
+        const synth = window.speechSynthesis;
+        refreshSpeechVoices();
+
+        // 手机浏览器偶尔会把上一条语音留在队列或暂停，播放前先恢复并清空。
+        synth.cancel();
+        if (synth.paused) synth.resume();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        const englishVoice = speechVoices.find(v => /^en-US$/i.test(v.lang))
+            || speechVoices.find(v => /^en[-_]/i.test(v.lang));
+        if (englishVoice) utterance.voice = englishVoice;
+        utterance.lang = englishVoice ? englishVoice.lang : 'en-US';
+        utterance.rate = 0.82;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+
+        utterance.onend = () => {
+            if (activeUtterance === utterance) activeUtterance = null;
+        };
+        utterance.onerror = (event) => {
+            if (activeUtterance === utterance) activeUtterance = null;
+            if (!['canceled', 'interrupted'].includes(event.error)) {
+                showToast('语音播放失败，请检查媒体音量或换用 Safari / Chrome', 'warning', 5000);
+            }
+        };
+
+        // 保留引用，避免部分移动浏览器过早回收语音对象。
+        activeUtterance = utterance;
+        synth.speak(utterance);
+        if (synth.paused) synth.resume();
+        return true;
+    }
 
     // Restore sidebar state
     const sidebarState = localStorage.getItem('word_sprite_sidebar');
@@ -261,6 +314,7 @@ const App = (() => {
     // ===== 应用启动 =====
     async function init() {
         try {
+            setupSpeech();
             await loadWords();
             start();
         } catch (error) {
@@ -368,12 +422,7 @@ const App = (() => {
     }
 
     function speakDailyWord() {
-        if (_dailyWord && 'speechSynthesis' in window) {
-            const u = new SpeechSynthesisUtterance(_dailyWord.word);
-            u.lang = 'en-US';
-            u.rate = 0.8;
-            speechSynthesis.speak(u);
-        }
+        if (_dailyWord) speakEnglish(_dailyWord.word);
     }
 
     // ===== 精灵互动 =====
@@ -687,12 +736,7 @@ const App = (() => {
 
     function speakWord() {
         const word = learnIndex < learnQueue.length ? learnQueue[learnIndex].word : '';
-        if (word && 'speechSynthesis' in window) {
-            const utterance = new SpeechSynthesisUtterance(word);
-            utterance.lang = 'en-US';
-            utterance.rate = 0.8;
-            speechSynthesis.speak(utterance);
-        }
+        if (word) speakEnglish(word);
     }
 
     // ===== 复习模式 =====
@@ -1063,12 +1107,7 @@ const App = (() => {
                 }</span>
             `;
             item.onclick = () => {
-                if ('speechSynthesis' in window) {
-                    const u = new SpeechSynthesisUtterance(w.word);
-                    u.lang = 'en-US';
-                    u.rate = 0.8;
-                    speechSynthesis.speak(u);
-                }
+                speakEnglish(w.word);
             };
             list.appendChild(item);
         });
@@ -1732,11 +1771,7 @@ const App = (() => {
                 }</span>
             `;
             item.onclick = () => {
-                if ('speechSynthesis' in window) {
-                    const u = new SpeechSynthesisUtterance(w.word);
-                    u.lang = 'en-US'; u.rate = 0.8;
-                    speechSynthesis.speak(u);
-                }
+                speakEnglish(w.word);
             };
             list.appendChild(item);
         });

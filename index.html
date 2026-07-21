@@ -209,7 +209,8 @@
                                 <div id="daily-word-cn" class="daily-word-cn"></div>
                                 <span id="daily-word-status" class="daily-word-status"></span>
                             </div>
-                            <button id="btn-daily-speak" class="btn-daily-speak" onclick="App.speakDailyWord()">🔊</button>
+                            <button id="btn-daily-speak" class="btn-daily-speak" type="button"
+                                    aria-label="播放今日单词发音" onclick="App.speakDailyWord()">🔊</button>
                         </div>
                     </div>
 
@@ -293,7 +294,8 @@
                     <div class="word-display">
                         <div id="learn-word" class="word-main"></div>
                         <div id="learn-phonetic" class="word-phonetic"></div>
-                        <button class="btn-speak" onclick="App.speakWord()">🔊</button>
+                        <button class="btn-speak" type="button" aria-label="播放单词发音"
+                                onclick="App.speakWord()">🔊</button>
                     </div>
                     <div id="learn-meaning" class="word-meaning hidden"></div>
                     <div id="learn-example" class="word-example hidden"></div>
